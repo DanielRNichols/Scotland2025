@@ -1,0 +1,54 @@
+﻿@page "/roster"
+@using MediatR
+@using Scotland2025.Application.Roster
+@attribute [StreamRendering]
+
+<PageTitle>Roster</PageTitle>
+
+<h1>Roster</h1>
+
+@if (players == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Hcp</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var player in players)
+            {
+                <tr>
+                    <td>@player.Name</td>
+                    <td>@player.Hcp</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+}
+
+@code {
+    [Inject]
+    private ISender Sender { get; set; } = default!;
+
+    private IList<RosterEntry>? players;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var getRosterQuery = new GetRosterQuery();
+        var result = await Sender.Send(getRosterQuery);
+        if (result.IsError)
+        {
+            // Handle error here
+            return;
+        }
+
+        players = result.Value;
+    }
+}

@@ -1,0 +1,75 @@
+﻿@page "/leaderboard"
+@using Scotland2025.Application.Leaderboard
+<h3>Leaderboard</h3>
+
+@if (leaderboard == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Pos</th>
+                <th class="nameCol">Name</th>
+                <th>Hcp</th>
+                <th>Total</th>
+                <th>Kingsbarns</th>
+                <th>Dumbarnie</th>
+                <th>Castle</th>
+                <th>OldCourse</th>
+                <th>Carnoustie</th>
+                <th>$</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var entry in leaderboard.Entries)
+            {
+                <tr>
+                    <td>@entry.Pos</td>
+                    <td>@entry.Name</td>
+                    <td>@entry.Hcp</td>
+                    <td>@entry.Total</td>
+                    <td>@entry.Kingsbarn</td>
+                    <td>@entry.Dumbarnie</td>
+                    <td>@entry.Castle</td>
+                    <td>@entry.OldCourse</td>
+                    <td>@entry.Carnoustie</td>
+                    <td>@entry.Winnings</td>
+
+@*                     <td>@Utilities.DisplayPos(entry.Pos)</td>
+                    <td>@entry.Name</td>
+                    <td>@entry.Hcp</td>
+                    <td class="@Utilities.NetClass(entry.Total)">@DisplayNetScore(0, entry.Pos, entry.Total)</td>
+                    <td class="@Utilities.NetClass(entry.Round1)">@DisplayNetScore(1, entry.Pos, entry.Round1)</td>
+                    <td class="@Utilities.NetClass(entry.Round2)">@DisplayNetScore(2, entry.Pos, entry.Round2)</td>
+                    <td class="@Utilities.NetClass(entry.Round3)">@DisplayNetScore(3, entry.Pos, entry.Round3)</td>
+                    <td>@DisplayWinnings(entry.Winnings)</td>
+ *@                
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    [Inject]
+    private ISender Sender { get; set; } = default!;
+
+    private Leaderboard? leaderboard;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var getLeaderboardQuery = new GetLeaderboardQuery();
+        var result = await Sender.Send(getLeaderboardQuery);
+        if (result.IsError)
+        {
+            // Handle error here
+            return;
+        }
+
+        leaderboard = result.Value;
+    }
+
+}

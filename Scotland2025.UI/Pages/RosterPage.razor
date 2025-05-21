@@ -1,0 +1,49 @@
+﻿@page "/roster"
+@using Scotland2025.Application.Roster
+@using Scotland2025.UI.Abstractions.Data
+
+<PageTitle>Roster</PageTitle>
+
+<h1>Scotland 2025 Roster</h1>
+
+@if(roster == null)
+{
+    <MudProgressCircular Color="Color.Default" Indeterminate="true" />
+}
+else
+{
+    <MudSimpleTable Dense="@true" Bordered="@true" Style="width:20rem">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Hcp</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var entry in roster)
+            {
+                <tr>
+                    <td>@entry.Name</td>
+                    <td>@entry.Hcp</td>
+                </tr>
+            }
+        </tbody>
+
+    </MudSimpleTable>
+}
+
+@code {
+    [Inject]
+    public IRosterService rosterService { get; set; } = default!;
+
+    private IList<RosterEntry>? roster;
+
+    //PaginationState pagination = new PaginationState() { ItemsPerPage = 2 };
+
+    //private RenderFragment template = @<span />;
+
+    protected override async Task OnInitializedAsync()
+    {
+        roster = await rosterService.GetRosterAsync();
+    }
+}

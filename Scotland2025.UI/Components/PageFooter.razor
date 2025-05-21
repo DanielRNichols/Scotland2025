@@ -1,0 +1,33 @@
+﻿@using Scotland2025.UI.Abstractions.Versioning
+
+<MudDivider Class="mt-5" />
+<div class="footer">
+    <MudGrid Spacing="0">
+        <MudItem Class="footerLeft" xs="6">
+            <p>Scotland 2025</p>
+            <p class="copyright">© 2025 Red Stick Software</p>
+        </MudItem>
+        <MudItem Class="footerRight" xs="6">
+            <p>@VersionNumber</p>
+            <p>@LastUpdated</p>
+        </MudItem>
+
+    </MudGrid>
+</div>
+
+
+@code {
+    [Inject]
+    public IVersioningService versioningService { get; set; } = default!;
+    //private Info? info;
+
+    protected override async Task OnInitializedAsync()
+    {
+        //info = await dataService.GetInfo($"2024-info");
+    }
+
+    private string VersionNumber => versioningService.GetVersion();
+
+    private string LastUpdated => "Refreshed: Add date here"; // String.IsNullOrWhiteSpace(info?.LastUpdated) ? "" : $"Refreshed: {info.LastUpdated}";
+
+}

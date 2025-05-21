@@ -1,0 +1,35 @@
+@Scotland2025.Api_HostAddress = https://localhost:7243/api
+
+GET {{Scotland2025.Api_HostAddress}}/test/
+Accept: application/json
+
+###
+
+GET {{Scotland2025.Api_HostAddress}}/jsonDocuments/
+Accept: application/json
+
+###
+GET {{Scotland2025.Api_HostAddress}}/jsonDocuments/75
+Accept: application/json
+
+###
+GET {{Scotland2025.Api_HostAddress}}/jsonDocuments/find/2025-scotland-roster
+Accept: application/json
+
+###
+POST {{Scotland2025.Api_HostAddress}}/jsonDocuments
+Content-Type: application/json
+{
+  "documentName": "TestDocument",
+  "jsonValue": "{ \"testKey\": \"test\"}"
+}
+
+###
+PUT {{Scotland2025.Api_HostAddress}}/jsonDocuments/TestDocument
+Content-Type: application/json
+{
+  "jsonValue": "{ \"testKey\": \"test1\"}"
+}
+
+###
+DELETE {{Scotland2025.Api_HostAddress}}/jsonDocuments/testdocument

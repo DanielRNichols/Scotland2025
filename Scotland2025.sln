@@ -3,19 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.13.35931.197
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scotland2025", "Scotland2025\Scotland2025\Scotland2025.csproj", "{4BD1470B-B6B5-F0B1-3432-61F5E5E6BE50}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scotland2025.UI", "Scotland2025.UI\Scotland2025.UI.csproj", "{1CF07FC5-665E-886E-D862-3E57BB4BCB69}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scotland2025.Client", "Scotland2025\Scotland2025.Client\Scotland2025.Client.csproj", "{321D9EB1-FAF0-C35E-AFC0-CBBB837DEC7C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scotland2025.AppHost", "Scotland2025.AppHost\Scotland2025.AppHost.csproj", "{2C6E2269-8232-494A-92CB-EC9B4C4FB205}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scotland2025.AppHost", "Scotland2025.AppHost\Scotland2025.AppHost.csproj", "{906666ED-5F0E-46EB-AF03-42F0F3B77E5E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scotland2025.ServiceDefaults", "Scotland2025.ServiceDefaults\Scotland2025.ServiceDefaults.csproj", "{FE2A95BA-0CEF-766D-6E16-BD06DED04510}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scotland2025.ServiceDefaults", "Scotland2025.ServiceDefaults\Scotland2025.ServiceDefaults.csproj", "{57DA57C0-D673-06F9-E955-BDEC43D3485E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scotland2025.Api", "Scotland2025.Api\Scotland2025.Api.csproj", "{56A0948B-C6A6-9A93-8F9F-AA3F3BFE87F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scotland2025.Application", "Scotland2025.Application\Scotland2025.Application.csproj", "{AA0D9DD1-F5F3-4854-B38D-E7BE9E9BC6B4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scotland2025.Application", "Scotland2025.Application\Scotland2025.Application.csproj", "{DD96C715-CCDF-4D24-BD7C-AA66AB66A660}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scotland2025.Infrastructure", "Scotland2025.Infrastructure\Scotland2025.Infrastructure.csproj", "{5AD98987-9BEF-4987-AE19-FE08DA55FBAD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scotland2025.Infrastructure", "Scotland2025.Infrastructure\Scotland2025.Infrastructure.csproj", "{7E5A6CBE-2A36-4DBF-8416-BD2C6659BFEB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scotland2025.JsonDocumentPoster", "Scotland2025.JsonDocumentPoster\Scotland2025.JsonDocumentPoster.csproj", "{D38C2787-A4F6-4987-BA73-F381CF2E5C1E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scotland2025.JsonDocumentUploader", "Scotland2025.JsonDocumentUploader\Scotland2025.JsonDocumentUploader.csproj", "{6103B8B1-1808-4AF3-BFD2-20C1C3BDCB83}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scotland2025.Contracts", "Scotland2025.Contracts\Scotland2025.Contracts.csproj", "{187ADD66-1289-4069-9C96-863EA3E7BB08}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,39 +25,43 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4BD1470B-B6B5-F0B1-3432-61F5E5E6BE50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4BD1470B-B6B5-F0B1-3432-61F5E5E6BE50}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4BD1470B-B6B5-F0B1-3432-61F5E5E6BE50}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4BD1470B-B6B5-F0B1-3432-61F5E5E6BE50}.Release|Any CPU.Build.0 = Release|Any CPU
-		{321D9EB1-FAF0-C35E-AFC0-CBBB837DEC7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{321D9EB1-FAF0-C35E-AFC0-CBBB837DEC7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{321D9EB1-FAF0-C35E-AFC0-CBBB837DEC7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{321D9EB1-FAF0-C35E-AFC0-CBBB837DEC7C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{906666ED-5F0E-46EB-AF03-42F0F3B77E5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{906666ED-5F0E-46EB-AF03-42F0F3B77E5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{906666ED-5F0E-46EB-AF03-42F0F3B77E5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{906666ED-5F0E-46EB-AF03-42F0F3B77E5E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{57DA57C0-D673-06F9-E955-BDEC43D3485E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{57DA57C0-D673-06F9-E955-BDEC43D3485E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{57DA57C0-D673-06F9-E955-BDEC43D3485E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{57DA57C0-D673-06F9-E955-BDEC43D3485E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AA0D9DD1-F5F3-4854-B38D-E7BE9E9BC6B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AA0D9DD1-F5F3-4854-B38D-E7BE9E9BC6B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AA0D9DD1-F5F3-4854-B38D-E7BE9E9BC6B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AA0D9DD1-F5F3-4854-B38D-E7BE9E9BC6B4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5AD98987-9BEF-4987-AE19-FE08DA55FBAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5AD98987-9BEF-4987-AE19-FE08DA55FBAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5AD98987-9BEF-4987-AE19-FE08DA55FBAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5AD98987-9BEF-4987-AE19-FE08DA55FBAD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D38C2787-A4F6-4987-BA73-F381CF2E5C1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D38C2787-A4F6-4987-BA73-F381CF2E5C1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D38C2787-A4F6-4987-BA73-F381CF2E5C1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D38C2787-A4F6-4987-BA73-F381CF2E5C1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CF07FC5-665E-886E-D862-3E57BB4BCB69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CF07FC5-665E-886E-D862-3E57BB4BCB69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CF07FC5-665E-886E-D862-3E57BB4BCB69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CF07FC5-665E-886E-D862-3E57BB4BCB69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C6E2269-8232-494A-92CB-EC9B4C4FB205}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C6E2269-8232-494A-92CB-EC9B4C4FB205}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C6E2269-8232-494A-92CB-EC9B4C4FB205}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C6E2269-8232-494A-92CB-EC9B4C4FB205}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE2A95BA-0CEF-766D-6E16-BD06DED04510}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE2A95BA-0CEF-766D-6E16-BD06DED04510}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE2A95BA-0CEF-766D-6E16-BD06DED04510}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE2A95BA-0CEF-766D-6E16-BD06DED04510}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56A0948B-C6A6-9A93-8F9F-AA3F3BFE87F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56A0948B-C6A6-9A93-8F9F-AA3F3BFE87F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56A0948B-C6A6-9A93-8F9F-AA3F3BFE87F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56A0948B-C6A6-9A93-8F9F-AA3F3BFE87F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD96C715-CCDF-4D24-BD7C-AA66AB66A660}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD96C715-CCDF-4D24-BD7C-AA66AB66A660}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD96C715-CCDF-4D24-BD7C-AA66AB66A660}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD96C715-CCDF-4D24-BD7C-AA66AB66A660}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E5A6CBE-2A36-4DBF-8416-BD2C6659BFEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E5A6CBE-2A36-4DBF-8416-BD2C6659BFEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E5A6CBE-2A36-4DBF-8416-BD2C6659BFEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E5A6CBE-2A36-4DBF-8416-BD2C6659BFEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6103B8B1-1808-4AF3-BFD2-20C1C3BDCB83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6103B8B1-1808-4AF3-BFD2-20C1C3BDCB83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6103B8B1-1808-4AF3-BFD2-20C1C3BDCB83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6103B8B1-1808-4AF3-BFD2-20C1C3BDCB83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{187ADD66-1289-4069-9C96-863EA3E7BB08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{187ADD66-1289-4069-9C96-863EA3E7BB08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{187ADD66-1289-4069-9C96-863EA3E7BB08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{187ADD66-1289-4069-9C96-863EA3E7BB08}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {780D50FD-5FB0-48F6-AC8F-F7F2498D64E1}
+		SolutionGuid = {12C5929A-8361-4C84-8115-284F3127932F}
 	EndGlobalSection
 EndGlobal

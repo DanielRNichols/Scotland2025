@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <Sdk Name="Aspire.AppHost.Sdk" Version="9.1.0" />
 
@@ -8,7 +8,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <IsAspireHost>true</IsAspireHost>
-    <UserSecretsId>8fcc908b-fc29-4184-ad38-79d43ae1b56e</UserSecretsId>
+    <UserSecretsId>29777af3-d8cc-4fa0-ab55-033758c14180</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Scotland2025\Scotland2025\Scotland2025.csproj" />
+    <ProjectReference Include="..\Scotland2025.Api\Scotland2025.Api.csproj" />
   </ItemGroup>
 
 </Project>

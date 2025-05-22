@@ -1,7 +1,7 @@
 ﻿namespace Scotland2025.UI.Abstractions.Data;
 
-public interface IJsonDocumentService<T> where T : class
+public interface IJsonDocumentService
 {
-    Task<T?> GetJsonDocumentByIdAsync(int id, CancellationToken cancellationToken = default);
-    Task<T?> GetJsonDocumentByNameAsync(string documentName, CancellationToken cancellationToken = default);
+    Task<T?> GetJsonDocumentByIdAsync<T>(int id, CancellationToken cancellationToken = default);
+    Task<T?> GetJsonDocumentByNameAsync<T>(string documentName, CancellationToken cancellationToken = default);
 }

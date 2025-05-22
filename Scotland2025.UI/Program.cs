@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Scotland2025.UI;
 using MudBlazor.Services;
-using Scotland2025.UI.Data.Roster;
 using Scotland2025.UI.Abstractions.Data;
 using Scotland2025.UI.Abstractions.Versioning;
 using Scotland2025.UI.Services.Versioning;
@@ -21,8 +20,8 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https:/
 //        BaseAddress = new Uri(builder.Configuration["ApiUrl"] ?? throw new ArgumentException("ApiUrl must be set"))
 //    });
 
-builder.Services.AddScoped(typeof(IJsonDocumentService<>), typeof(JsonDocumentService<>));
-builder.Services.AddScoped<IRosterService, RosterService>();
+builder.Services.AddScoped<IJsonDocumentService, JsonDocumentService>();
+builder.Services.AddScoped<IDataService, DataService>();
 builder.Services.AddScoped<IVersioningService, VersioningService>();
 
 builder.Services.AddMudServices();

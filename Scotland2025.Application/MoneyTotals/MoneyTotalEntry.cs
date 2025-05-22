@@ -1,0 +1,11 @@
+﻿namespace Scotland2025.Application.MoneyTotals;
+public class MoneyTotalEntry
+{
+    public string Name { get; set; } = string.Empty;
+    public double Total { get; set; }
+    public double TotalIndividual { get; set; }
+    public double TotalTeam { get; set; }
+    public double TotalScats { get; set; }
+    public double TotalClosest { get; set; }
+
+}

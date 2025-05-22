@@ -1,0 +1,61 @@
+﻿@page "/leaderboard"
+@using Scotland2025.Application.Leaderboard
+@using Scotland2025.UI.Abstractions.Data
+<h3>Leaderboard</h3>
+
+@if (leaderboard == null)
+{
+    <MudProgressCircular Color="Color.Default" Indeterminate="true" />
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Pos</th>
+                <th class="nameCol">Name</th>
+                <th>Hcp</th>
+                <th>Total</th>
+                <th>Kingsbarns</th>
+                <th>Dumbarnie</th>
+                <th>Castle</th>
+                <th>OldCourse</th>
+                <th>Carnoustie</th>
+                <th>$</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var entry in leaderboard.Entries)
+            {
+                <tr>
+                    <td>@entry.Pos</td>
+                    <td>@entry.Name</td>
+                    <td>@entry.Hcp</td>
+                    <td>@entry.Total</td>
+                    <td>@entry.Round1</td>
+                    <td>@entry.Round2</td>
+                    <td>@entry.Round3</td>
+                    <td>@entry.Round4</td>
+                    <td>@entry.Round5</td>
+                    <td>@entry.Winnings</td>
+               
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    [Inject]
+    public IDataService leaderboardService { get; set; } = default!;
+
+
+    private Leaderboard? leaderboard;
+
+    protected override async Task OnInitializedAsync()
+    {
+        leaderboard = await leaderboardService.GetLeaderboardAsync();
+    }
+
+}
+

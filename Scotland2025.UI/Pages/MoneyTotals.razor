@@ -1,0 +1,58 @@
+﻿@page "/moneytotals"
+@using Scotland2025.Application.Lottery
+@using Scotland2025.Application.MoneyTotals
+@using Scotland2025.UI.Abstractions.Data
+
+<PageTitle>Money Totals</PageTitle>
+
+<h3>Money Totals</h3>
+
+@if (moneyTotals == null)
+{
+    <MudProgressCircular Color="Color.Default" Indeterminate="true" />
+}
+else
+{
+    <MudSimpleTable Dense="@true" Bordered="@true" Style="width:40rem">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Individual</th>
+                <th>Team</th>
+                <th>Scats</th>
+                <th>Closest</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var entry in moneyTotals)
+            {
+                <tr>
+                    <td>@entry.Name</td>
+                    <td>@entry.TotalIndividual</td>
+                    <td>@entry.TotalTeam</td>
+                    <td>@entry.TotalScats</td>
+                    <td>@entry.TotalClosest</td>
+                    <td>@entry.Total</td>
+                </tr>
+            }
+        </tbody>
+
+    </MudSimpleTable>
+}
+
+@code {
+    [Inject]
+    public IDataService dataService { get; set; } = default!;
+
+    private IList<MoneyTotalEntry>? moneyTotals;
+
+    //PaginationState pagination = new PaginationState() { ItemsPerPage = 2 };
+
+    //private RenderFragment template = @<span />;
+
+    protected override async Task OnInitializedAsync()
+    {
+        moneyTotals = await dataService.GetMoneyTotalsAsync();
+    }
+}

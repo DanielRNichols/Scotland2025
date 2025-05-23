@@ -15,8 +15,8 @@ else
     <MudSimpleTable Dense="@true" Bordered="@true" Style="width:20rem">
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Pick</th>
+                <th class="name">Name</th>
+                <th class="name">Pick</th>
                 <th>Pos</th>
                 <th>$</th>
             </tr>
@@ -25,10 +25,10 @@ else
             @foreach (var entry in lotteryEntries)
             {
                 <tr>
-                    <td>@entry.Name</td>
-                    <td>@entry.Pick</td>
+                    <td class="name">@entry.Name</td>
+                    <td class="name">@entry.Pick</td>
                     <td>@entry.Pos</td>
-                    <td>@entry.Money</td>
+                    <td>@Utilities.DisplayWinnings(entry.Money)</td>
                 </tr>
             }
         </tbody>

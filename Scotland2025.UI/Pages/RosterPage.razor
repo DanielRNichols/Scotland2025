@@ -15,7 +15,7 @@ else
     <MudSimpleTable Dense="@true" Bordered="@true" Style="width:20rem">
         <thead>
             <tr>
-                <th>Name</th>
+                <th class="name">Name</th>
                 <th>Hcp</th>
             </tr>
         </thead>
@@ -23,7 +23,7 @@ else
             @foreach(var entry in roster)
             {
                 <tr>
-                    <td>@entry.Name</td>
+                    <td class="name">@entry.Name</td>
                     <td>@entry.Hcp</td>
                 </tr>
             }

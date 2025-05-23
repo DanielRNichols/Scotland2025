@@ -1,0 +1,80 @@
+
+.loading-progress {
+    position: relative;
+    display: block;
+    width: 8rem;
+    height: 8rem;
+    margin: 20vh auto 1rem auto;
+}
+
+.loading-progress circle {
+    fill: none;
+    stroke: #e0e0e0;
+    stroke-width: 0.6rem;
+    transform-origin: 50% 50%;
+    transform: rotate(-90deg);
+}
+
+.loading-progress circle:last-child {
+    stroke: #1a4cbe;
+    stroke-dasharray: calc(3.141 * var(--blazor-load-percentage, 0%) * 0.8), 500%;
+    transition: stroke-dasharray 0.05s ease-in-out;
+}
+
+.loading-progress-text {
+    position: absolute;
+    text-align: center;
+    font-weight: bold;
+    inset: calc(20vh + 3.25rem) 0 auto 0.2rem;
+}
+
+.loading-progress-text:after {
+    content: var(--blazor-load-percentage-text, "Loading");
+}
+
+
+.mud-simple-table table tr td, .mud-simple-table table tr th {
+    /*
+        font-family: 'Roboto Condensed', sans-serif;
+    */
+    text-align: center;
+    color: black;
+    font-weight: 400;
+}
+
+.mud-simple-table table tr th {
+    font-family: 'Roboto Condensed', sans-serif;
+    background-color: #1b6ac1;
+    color: white;
+}
+
+.mud-simple-table table tr th.name,
+.mud-simple-table table tr td.name {
+    text-align: left;
+}
+
+.mud-simple-table table tr td.underpar {
+    color: red;
+}
+
+.footer {
+    margin: 0.25rem 0 0.25rem 0;
+    padding: 0.4rem 0.8rem 0.4rem 0.8rem;
+    text-align: center;
+    font-size: 0.7rem;
+    font-weight: 300;
+    background-color: #1a4cbe;
+    color: #EEEEEE; /* #ECEFF1;  */
+}
+
+.footerLeft {
+    text-align: left;
+}
+
+.footerRight {
+    text-align: right;
+}
+
+.footer .copyright {
+    font-style: italic;
+}

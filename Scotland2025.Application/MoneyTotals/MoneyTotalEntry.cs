@@ -7,5 +7,7 @@ public class MoneyTotalEntry
     public double TotalTeam { get; set; }
     public double TotalScats { get; set; }
     public double TotalClosest { get; set; }
+    public double IndividualChampionship { get; set; }
+    public double Lottery { get; set; }
 
 }

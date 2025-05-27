@@ -1,4 +1,4 @@
-﻿namespace Scotland2025.Application.MoneyTotals;
+﻿namespace Scotland2025.UI.Models;
 public class MoneyTotalEntry
 {
     public string Name { get; set; } = string.Empty;

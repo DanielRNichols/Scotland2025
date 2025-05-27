@@ -1,7 +1,4 @@
 ﻿@page "/moneytotals"
-@using Scotland2025.Application.Lottery
-@using Scotland2025.Application.MoneyTotals
-@using Scotland2025.UI.Abstractions.Data
 
 <PageTitle>Money Totals</PageTitle>
 
@@ -16,28 +13,28 @@ else
     <MudSimpleTable Dense="@true" Bordered="@true" Style="width:60rem">
         <thead>
             <tr>
-                <th class="name">Name</th>
-                <th>Individual</th>
-                <th>Team</th>
-                <th>Scats</th>
-                <th>Closest</th>
-                <th>Championship</th>
-                <th>Lottery</th>
-                <th>Total</th>
+                <th class="nameCol">Name</th>
+                <th class="moneyCol">Ind</th>
+                <th class="moneyCol">Team</th>
+                <th class="moneyCol">Scats</th>
+                <th class="moneyCol">Closest</th>
+                <th class="moneyCol">Champ</th>
+                <th class="moneyCol">Lottery</th>
+                <th class="moneyCol">Total</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var entry in moneyTotals)
+            @foreach (var entry in moneyTotals.OrderByDescending(e => e.Total))
             {
                 <tr>
-                    <td class="name">@entry.Name</td>
-                    <td>@Utilities.DisplayWinnings(entry.TotalIndividual)</td>
-                    <td>@Utilities.DisplayWinnings(entry.TotalTeam)</td>
-                    <td>@Utilities.DisplayWinnings(entry.TotalScats)</td>
-                    <td>@Utilities.DisplayWinnings(entry.TotalClosest)</td>
-                    <td>@Utilities.DisplayWinnings(entry.IndividualChampionship)</td>
-                    <td>@Utilities.DisplayWinnings(entry.Lottery)</td>
-                    <td>@Utilities.DisplayWinnings(entry.Total)</td>
+                    <td class="nameCol">@entry.Name</td>
+                    <td class="moneyCol">@Utilities.DisplayWinnings(entry.TotalIndividual)</td>
+                    <td class="moneyCol">@Utilities.DisplayWinnings(entry.TotalTeam)</td>
+                    <td class="moneyCol">@Utilities.DisplayWinnings(entry.TotalScats)</td>
+                    <td class="moneyCol">@Utilities.DisplayWinnings(entry.TotalClosest)</td>
+                    <td class="moneyCol">@Utilities.DisplayWinnings(entry.IndividualChampionship)</td>
+                    <td class="moneyCol">@Utilities.DisplayWinnings(entry.Lottery)</td>
+                    <td class="moneyCol">@Utilities.DisplayWinnings(entry.Total)</td>
                 </tr>
             }
         </tbody>

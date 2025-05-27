@@ -1,6 +1,5 @@
 ﻿@page "/leaderboard"
-@using Scotland2025.Application.Leaderboard
-@using Scotland2025.UI.Abstractions.Data
+
 <h3>Leaderboard</h3>
 
 @if (leaderboard == null)
@@ -9,36 +8,35 @@
 }
 else
 {
-    <MudSimpleTable Dense="@true" Bordered="@true" Style="width:60rem">
+    <MudSimpleTable Dense="@true" Bordered="@true" Style="width:40rem">
         <thead>
             <tr>
-                <th>Pos</th>
-                <th class="name">Name</th>
-                <th>Hcp</th>
-                <th>Total</th>
-                <th>Kingsbarns</th>
-                <th>Dumbarnie</th>
-                <th>Castle</th>
-                <th>OldCourse</th>
-                <th>Carnoustie</th>
-                <th>$</th>
+                <th class="posCol">Pos</th>
+                <th class="nameCol">Name</th>
+                <th class="hcpCol">Hcp</th>
+                <th class="grossCol">Total</th>
+                <th class="netCol">Kings</th>
+                <th class="netCol">Dumb</th>
+                <th class="netCol">Castle</th>
+                <th class="netCol">Old</th>
+                <th class="netCol">Carn</th>
+                <th class="moneyCol">$</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var entry in leaderboard.Entries.OrderBy(e => e.Pos))
             {
                 <tr>
-                    <td>@entry.Pos</td>
-                    <td class="name">@entry.Name</td>
-                    <td>@entry.Hcp</td>
-                    <td class ="@Utilities.NetClass(entry.Total)">@Utilities.DisplayNetScore(Posted(1), entry.Pos, entry.Total)</td>
-                    <td class="@Utilities.NetClass(entry.Round1)">@Utilities.DisplayNetScore(Posted(1), entry.Pos, entry.Round1)</td>
-                    <td class="@Utilities.NetClass(entry.Round2)">@Utilities.DisplayNetScore(Posted(2), entry.Pos, entry.Round2)</td>
-                    <td class="@Utilities.NetClass(entry.Round3)">@Utilities.DisplayNetScore(Posted(3), entry.Pos, entry.Round3)</td>
-                    <td class="@Utilities.NetClass(entry.Round4)">@Utilities.DisplayNetScore(Posted(4), entry.Pos, entry.Round4)</td>
-                    <td class="@Utilities.NetClass(entry.Round5)">@Utilities.DisplayNetScore(Posted(5), entry.Pos, entry.Round5)</td>
-                    <td>@Utilities.DisplayWinnings(entry.Winnings)</td>
-
+                    <td class="posCol">@Utilities.DisplayPos(entry.Pos)</td>
+                    <td class="nameCol">@entry.Name</td>
+                    <td class="hcpCol">@entry.Hcp</td>
+                    <td class="grossCol @Utilities.NetClass(entry.Total)">@Utilities.DisplayNet(entry.Pos, entry.Total)</td>
+                    <td class="netCol @Utilities.NetClass(entry.Round1)">@Utilities.DisplayNet(entry.Pos, entry.Round1)</td>
+                    <td class="netCol @Utilities.NetClass(entry.Round2)">@Utilities.DisplayNet(entry.Pos, entry.Round2)</td>
+                    <td class="netCol @Utilities.NetClass(entry.Round3)">@Utilities.DisplayNet(entry.Pos, entry.Round3)</td>
+                    <td class="netCol @Utilities.NetClass(entry.Round4)">@Utilities.DisplayNet(entry.Pos, entry.Round4)</td>
+                    <td class="netCol @Utilities.NetClass(entry.Round5)">@Utilities.DisplayNet(entry.Pos, entry.Round5)</td>
+                    <td class="moneyCol">@Utilities.DisplayWinnings(entry.Winnings)</td>
                 </tr>
             }
         </tbody>
@@ -47,17 +45,15 @@ else
 
 @code {
     [Inject]
-    public IDataService leaderboardService { get; set; } = default!;
+    public IDataService dataService { get; set; } = default!;
 
 
     private Leaderboard? leaderboard;
 
     protected override async Task OnInitializedAsync()
     {
-        leaderboard = await leaderboardService.GetLeaderboardAsync();
+        leaderboard = await dataService.GetLeaderboardAsync();
     }
 
-    private bool Posted(int round) => 
-        leaderboard == null ? false : round <= leaderboard.RoundsCompleted;
 }
 

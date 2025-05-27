@@ -1,0 +1,14 @@
+﻿<PageTitle>@title</PageTitle>
+
+<IndividualResults key="@key" title="Daily Individual" />
+<ClosestToHoleResult key="@key" title="Closest to Hole" />
+<TeamEventResult key="@key" teamEvent="@teamEvent" />
+<ScatsResults key="@key" title="Scats" />
+
+@code {
+    [Parameter, EditorRequired] public string title { get; set; } = string.Empty;
+    [Parameter, EditorRequired] public string key { get; set; } = string.Empty;
+    [Parameter] public TeamEvent teamEvent { get; set; } = TeamEvent.None;
+
+
+}

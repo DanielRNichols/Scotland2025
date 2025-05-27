@@ -32,31 +32,65 @@
     content: var(--blazor-load-percentage-text, "Loading");
 }
 
-
-.mud-simple-table table tr td, .mud-simple-table table tr th {
-    /*
-        font-family: 'Roboto Condensed', sans-serif;
-    */
+/* Table elements */
+.mud-simple-table table tr td,
+.mud-simple-table table tr th {
+    font-family: Roboto Condensed, sans-serif;
     text-align: center;
     color: black;
     font-weight: 400;
 }
 
+/* Table headers */
 .mud-simple-table table tr th {
     font-family: 'Roboto Condensed', sans-serif;
     background-color: #1b6ac1;
     color: white;
 }
 
-.mud-simple-table table tr th.name,
-.mud-simple-table table tr td.name {
-    text-align: left;
+/* Table Columns */
+.mud-simple-table table td.posCol,
+.mud-simple-table table th.posCol {
+    column-width: 2rem;
 }
 
+.mud-simple-table table tr th.nameCol,
+.mud-simple-table table tr td.nameCol {
+    text-align: left;
+    column-width: 2rem;
+}
+
+.mud-simple-table table tr th.hcpCol,
+.mud-simple-table table tr td.hcpCol {
+    column-width: 2rem;
+}
+
+.mud-simple-table table tr th.grossCol,
+.mud-simple-table table tr td.grossCol {
+    column-width: 2rem;
+}
+
+.mud-simple-table table tr th.netCol,
+.mud-simple-table table tr td.netCol {
+    column-width: 2rem;
+}
+
+.mud-simple-table table tr th.moneyCol,
+.mud-simple-table table tr td.moneyCol {
+    column-width: 4rem;
+
+}
+
+.mud-simple-table table tr th.countCol,
+.mud-simple-table table tr td.countCol {
+    column-width: 3rem;
+}
 .mud-simple-table table tr td.underpar {
     color: red;
 }
 
+
+/* Footer */
 .footer {
     margin: 0.25rem 0 0.25rem 0;
     padding: 0.4rem 0.8rem 0.4rem 0.8rem;

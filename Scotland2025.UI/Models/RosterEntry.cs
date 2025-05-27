@@ -1,4 +1,4 @@
-﻿namespace Scotland2025.Application.Roster;
+﻿namespace Scotland2025.UI.Models;
 public class RosterEntry
 {
     public string Name { get; set; } = string.Empty;

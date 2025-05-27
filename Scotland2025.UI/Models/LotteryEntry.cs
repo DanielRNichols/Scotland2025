@@ -1,4 +1,4 @@
-﻿namespace Scotland2025.Application.Lottery;
+﻿namespace Scotland2025.UI.Models;
 public class LotteryEntry
 {
     public string Name { get; set; } = string.Empty;

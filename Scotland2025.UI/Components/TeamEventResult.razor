@@ -1,0 +1,16 @@
+﻿@if (teamEvent == TeamEvent.BestBallNet)
+{
+    <BestBallNetResults title="Best Ball Net" key = "@key" />
+} 
+else if(teamEvent == TeamEvent.MatchPlay)
+{
+    <MatchPlayResults title="Match Play" key = "@key" />
+}
+
+
+
+@code {
+    [Parameter, EditorRequired] public string key { get; set; } = string.Empty;
+    [Parameter] public TeamEvent teamEvent { get; set; } = TeamEvent.None;
+
+}

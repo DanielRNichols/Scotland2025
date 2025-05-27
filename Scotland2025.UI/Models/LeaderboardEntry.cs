@@ -1,4 +1,4 @@
-﻿namespace Scotland2025.Application.Leaderboard;
+﻿namespace Scotland2025.UI.Models;
 public class LeaderboardEntry
 {
     public string Name { get; set; } = string.Empty;

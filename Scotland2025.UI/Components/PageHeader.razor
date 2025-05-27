@@ -1,0 +1,7 @@
+﻿<h3 class="mt-3">@ChildContent</h3>
+
+@code {
+    [Parameter] public string? lastUpdated { get; set; }
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+
+}

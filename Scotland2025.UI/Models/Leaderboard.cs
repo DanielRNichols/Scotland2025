@@ -1,4 +1,4 @@
-﻿namespace Scotland2025.Application.Leaderboard;
+﻿namespace Scotland2025.UI.Models;
 public class Leaderboard
 {
     public int RoundsCompleted { get; set; }

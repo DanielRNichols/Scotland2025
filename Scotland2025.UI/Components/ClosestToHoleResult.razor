@@ -1,0 +1,47 @@
+﻿
+<PageHeader>@title</PageHeader>
+@if (results == null || !ResultPosted)
+{
+    <ResultsNotPosted />
+}
+else
+{
+    <MudSimpleTable Dense="true" Bordered="true" Striped="true" Style="width:20rem">
+        <thead>
+            <tr>
+                <th class="nameCol">Hole</th>
+                <th class="nameCol">Winner</th>
+                <th class="moneyCol">$</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var result in results)
+            {
+                <tr>
+                    <td class="nameCol">@result.Hole</td>
+                    <td class="nameCol">@result.Winner</td>
+                    <td class="moneyCol">@Utilities.DisplayWinnings(result.Payout)</td>
+                </tr>
+            }
+        </tbody>
+
+    </MudSimpleTable>
+}
+
+@code {
+    [Parameter, EditorRequired] public string key { get; set; } = string.Empty;
+    [Parameter, EditorRequired] public string title { get; set; } = string.Empty;
+
+    [Inject]
+    public IDataService dataService { get; set; } = default!;
+
+    private IList<ClosestToHoleEntry>? results;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        results = await dataService.GetClosestToHoleAsync(key);
+    }
+
+    private bool ResultPosted => results != null && results.Any();
+
+}

@@ -5,6 +5,7 @@ namespace Scotland2025.UI.Abstractions.Data;
 public interface IDataService
 {
     Task<IList<BestBallNetTeam>> GetBestBallNetTeamsAsync(string name, CancellationToken cancellationToken = default);
+    Task<IList<ChicagoPtsMatch>> GetChicagoPtsAsync(string name, CancellationToken cancellationToken = default);
     Task<IList<ClosestToHoleEntry>> GetClosestToHoleAsync(string name, CancellationToken cancellationToken = default);
     Task<IList<DailyIndividualEntry>> GetDailyIndividualAsync(string name, CancellationToken cancellationToken = default);
     Task<IList<DailyScatsEntry>> GetDailyScatsAsync(string name, CancellationToken cancellationToken = default);

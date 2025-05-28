@@ -16,8 +16,14 @@ public class DataService : IDataService
 
     public async Task<IList<BestBallNetTeam>> GetBestBallNetTeamsAsync(string name, CancellationToken cancellationToken = default)
     {
-        var result = await _jsonDocumentService.GetJsonDocumentByNameAsync<IList<BestBallNetTeam>>($"2025-scotland-{name}bestballnetteams", cancellationToken);
+        var result = await _jsonDocumentService.GetJsonDocumentByNameAsync<IList<BestBallNetTeam>>($"2025-scotland-{name}bestballnet", cancellationToken);
         return result ?? new List<BestBallNetTeam>();
+    }
+
+    public async Task<IList<ChicagoPtsMatch>> GetChicagoPtsAsync(string name, CancellationToken cancellationToken = default)
+    {
+        var result = await _jsonDocumentService.GetJsonDocumentByNameAsync<IList<ChicagoPtsMatch>>($"2025-scotland-{name}chicagopts", cancellationToken);
+        return result ?? new List<ChicagoPtsMatch>();
     }
 
     public async Task<IList<ClosestToHoleEntry>> GetClosestToHoleAsync(string name, CancellationToken cancellationToken = default)

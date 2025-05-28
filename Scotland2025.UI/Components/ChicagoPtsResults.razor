@@ -6,12 +6,12 @@
 }
 else
 {
-    <MudSimpleTable Dense="true" Bordered="true" Striped="true" Style="width:50rem">
+    <MudSimpleTable Dense="true" Bordered="true" Striped="true" Style="width:60rem">
         <thead>
             <tr>
                 <th colspan="3">Matches</th>
-                <th colspan="4">Points</th>
-                <th colspan="5">Money</th>
+                <th colspan="8">Points</th>
+                <th colspan="3">Money</th>
             </tr>
             <tr>
                 <th>#</th>
@@ -20,9 +20,11 @@ else
                 <th>Front</th>
                 <th>Back</th>
                 <th>Total</th>
+                <th>Goal</th>
+                <th>Net</th>
                 <th>Team</th>
-                <th>Front</th>
-                <th>Back</th>
+                <th>Goal</th>
+                <th>Net</th>
                 <th>18</th>
                 <th>Team</th>
                 <th class="moneyCol">Total</th>
@@ -35,12 +37,14 @@ else
                     <td rowspan="4">@match.MatchNumber</td>
                     <td class="nameCol">@match.Team1.Player1.Name</td>
                     <td class="hcpCol">@match.Team1.Player1.Hcp</td>
-                    <td rowspan="2">@match.Team1.Points.Front</td>
-                    <td rowspan="2">@match.Team1.Points.Back</td>
-                    <td rowspan="2">@match.Team1.Points.Total</td>
+                    <td rowspan="2">@match.Team1.Team.Front</td>
+                    <td rowspan="2">@match.Team1.Team.Back</td>
+                    <td rowspan="2">@match.Team1.Team.Total</td>
+                    <td rowspan="2">@match.Team1.Team.Goal</td>
+                    <td rowspan="2">@match.Team1.Team.Net</td>
                     <td rowspan="2">@TotalTeamPoints(1)</td>
-                    <td class="moneyCol" rowspan="2">@Utilities.DisplayWinnings(match.Team1.Player1.MoneyFront)</td>
-                    <td class="moneyCol" rowspan="2">@Utilities.DisplayWinnings(match.Team1.Player1.MoneyBack)</td>
+                    <td rowspan="2">@TotalTeamGoal(1)</td>
+                    <td rowspan="2">@TotalTeamNet(1)</td>
                     <td class="moneyCol" rowspan="2">@Utilities.DisplayWinnings(match.Team1.Player1.Money18)</td>
                     <td class="moneyCol" rowspan="2">@Utilities.DisplayWinnings(match.Team1.Player1.MoneyTeam)</td>
                     <td class="moneyCol" rowspan="2">@Utilities.DisplayWinnings(match.Team1.Player1.MoneyTotal)</td>
@@ -53,12 +57,14 @@ else
                 <tr>
                     <td class="nameCol">@match.Team2.Player1.Name</td>
                     <td class="hcpCol">@match.Team2.Player1.Hcp</td>
-                    <td rowspan="2">@match.Team2.Points.Front</td>
-                    <td rowspan="2">@match.Team2.Points.Back</td>
-                    <td rowspan="2">@match.Team2.Points.Total</td>
+                    <td rowspan="2">@match.Team2.Team.Front</td>
+                    <td rowspan="2">@match.Team2.Team.Back</td>
+                    <td rowspan="2">@match.Team2.Team.Total</td>
+                    <td rowspan="2">@match.Team2.Team.Goal</td>
+                    <td rowspan="2">@match.Team2.Team.Net</td>
                     <td rowspan="2">@TotalTeamPoints(2)</td>
-                    <td class="moneyCol" rowspan="2">@Utilities.DisplayWinnings(match.Team2.Player1.MoneyFront)</td>
-                    <td class="moneyCol" rowspan="2">@Utilities.DisplayWinnings(match.Team2.Player1.MoneyBack)</td>
+                    <td rowspan="2">@TotalTeamGoal(2)</td>
+                    <td rowspan="2">@TotalTeamNet(2)</td>
                     <td class="moneyCol" rowspan="2">@Utilities.DisplayWinnings(match.Team2.Player1.Money18)</td>
                     <td class="moneyCol" rowspan="2">@Utilities.DisplayWinnings(match.Team2.Player1.MoneyTeam)</td>
                     <td class="moneyCol" rowspan="2">@Utilities.DisplayWinnings(match.Team2.Player1.MoneyTotal)</td>
@@ -80,20 +86,33 @@ else
     [Inject]
     public IDataService dataService { get; set; } = default!;
 
-    private IList<MatchPlayMatch>? matches;
+    private IList<ChicagoPtsMatch>? matches;
 
     protected override async Task OnParametersSetAsync()
     {
-        matches = await dataService.GetMatchPlayAsync(key);
+        matches = await dataService.GetChicagoPtsAsync(key);
     }
 
     private double TotalTeamPoints(int teamNumber) => teamNumber switch
     {
-        1 => matches?.Sum(m => m.Team1.Points.Total) ?? 0,
-        2 => matches?.Sum(m => m.Team2.Points.Total) ?? 0,
+        1 => matches?.Sum(m => m.Team1.Team.Total) ?? 0,
+        2 => matches?.Sum(m => m.Team2.Team.Total) ?? 0,
         _ => 0
     };
     
+    private double TotalTeamGoal(int teamNumber) => teamNumber switch
+    {
+        1 => matches?.Sum(m => m.Team1.Team.Goal) ?? 0,
+        2 => matches?.Sum(m => m.Team2.Team.Goal) ?? 0,
+        _ => 0
+    };
+
+    private double TotalTeamNet(int teamNumber) => teamNumber switch
+    {
+        1 => matches?.Sum(m => m.Team1.Team.Net) ?? 0,
+        2 => matches?.Sum(m => m.Team2.Team.Net) ?? 0,
+        _ => 0
+    };
 
     private bool ResultsPosted => matches != null;
 

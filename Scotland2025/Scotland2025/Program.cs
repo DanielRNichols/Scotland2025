@@ -1,16 +1,19 @@
+using FluentValidation;
 using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Http.Json;
+using Microsoft.FluentUI.AspNetCore.Components;
+using Scotland2025.Application;
 using Scotland2025.Client.Pages;
 using Scotland2025.Components;
-using Scotland2025.Application;
-using Scotland2025.Infrastructure;
 using Scotland2025.Endpoints;
-using FluentValidation;
+using Scotland2025.Infrastructure;
 using System.Text.Json;
-using Microsoft.AspNetCore.Http.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.AddServiceDefaults();
+
+builder.Services.AddFluentUIComponents();
 
 builder.Services.Configure<JsonOptions>(options =>
 {

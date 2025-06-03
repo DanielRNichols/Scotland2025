@@ -8,54 +8,27 @@
 }
 else
 {
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Pos</th>
-                <th class="nameCol">Name</th>
-                <th>Hcp</th>
-                <th>Total</th>
-                <th>Kingsbarns</th>
-                <th>Dumbarnie</th>
-                <th>Castle</th>
-                <th>OldCourse</th>
-                <th>Carnoustie</th>
-                <th>$</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var entry in leaderboard.Entries)
-            {
-                <tr>
-                    <td>@entry.Pos</td>
-                    <td>@entry.Name</td>
-                    <td>@entry.Hcp</td>
-                    <td>@entry.Total</td>
-                    <td>@entry.Kingsbarn</td>
-                    <td>@entry.Dumbarnie</td>
-                    <td>@entry.Castle</td>
-                    <td>@entry.OldCourse</td>
-                    <td>@entry.Carnoustie</td>
-                    <td>@entry.Winnings</td>
-
-@*                     <td>@Utilities.DisplayPos(entry.Pos)</td>
-                    <td>@entry.Name</td>
-                    <td>@entry.Hcp</td>
-                    <td class="@Utilities.NetClass(entry.Total)">@DisplayNetScore(0, entry.Pos, entry.Total)</td>
-                    <td class="@Utilities.NetClass(entry.Round1)">@DisplayNetScore(1, entry.Pos, entry.Round1)</td>
-                    <td class="@Utilities.NetClass(entry.Round2)">@DisplayNetScore(2, entry.Pos, entry.Round2)</td>
-                    <td class="@Utilities.NetClass(entry.Round3)">@DisplayNetScore(3, entry.Pos, entry.Round3)</td>
-                    <td>@DisplayWinnings(entry.Winnings)</td>
- *@                
-                </tr>
-            }
-        </tbody>
-    </table>
+    <div style="width:400px; overflow-x:scroll;">
+        <FluentDataGrid @ref="grid"
+                        Items="@SortedEntries">
+            <PropertyColumn Class="posCol" Title="Pos" Property="@(c => Utilities.DisplayPos(c.Pos))" />
+            <PropertyColumn Style="width: 120px" Property="@(c => c.Name)" Align="Align.Start" />
+            <PropertyColumn Style="width: 100px" Property="@(c => c.Hcp)" />
+            <PropertyColumn Style="width: 100px" Title="Total" Property="@(c => Utilities.DisplayNet(c.Pos, c.Total))" />
+            <PropertyColumn Style="width: 100px" Title="R1" Property="@(c => Utilities.DisplayNet(c.Pos, c.Round1))" />
+            <PropertyColumn Style="width: 100px" Title="R2" Property="@(c => Utilities.DisplayNet(c.Pos, c.Round2))" />
+            <PropertyColumn Style="width: 100px" Title="R3" Property="@(c => Utilities.DisplayNet(c.Pos, c.Round3))" />
+            <PropertyColumn Style="width: 100px" Title="R4" Property="@(c => Utilities.DisplayNet(c.Pos, c.Round4))" />
+            <PropertyColumn Style="width: 100px" Title="R5" Property="@(c => Utilities.DisplayNet(c.Pos, c.Round5))" />
+            <PropertyColumn Style="width: 120px" Title="$" Property="@(c => Utilities.DisplayWinnings(c.Winnings))" />
+        </FluentDataGrid>
+    </div>
 }
 
 @code {
     [Inject]
     private ISender Sender { get; set; } = default!;
+    FluentDataGrid<LeaderboardEntry>? grid;
 
     private Leaderboard? leaderboard;
 
@@ -71,5 +44,7 @@ else
 
         leaderboard = result.Value;
     }
+
+    IQueryable<LeaderboardEntry>? SortedEntries => leaderboard?.Entries?.OrderBy(p => p.Pos).AsQueryable<LeaderboardEntry>();
 
 }

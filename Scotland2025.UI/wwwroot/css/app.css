@@ -112,3 +112,59 @@
 .footer .copyright {
     font-style: italic;
 }
+
+.carouselArrows {
+    color: white;
+}
+
+.carouselArrows:hover {
+    color: black;
+    background-color: lightgrey;
+}
+
+.responsive-image {
+    width: 100%;
+    max-width: 720px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1rem;
+}
+
+
+@media only screen and (max-width: 400px) {
+    .imageCarousel {
+        height: 16rem;
+    }
+}
+
+@media only screen and (min-width: 400px) {
+    .imageCarousel {
+        height: 24rem;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    .imageCarousel {
+        height: 28rem;
+    }
+
+    .footer {
+        margin: 0.5rem 0 0.5rem 0;
+        padding: 0.6rem;
+        font-size: 0.8rem;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .imageCarousel {
+        height: 32rem;
+    }
+}
+
+@media only screen and (min-width: 960px) {
+    .imageCarousel {
+        height: 32rem;
+    }
+}
+

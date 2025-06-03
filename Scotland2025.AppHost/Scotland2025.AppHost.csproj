@@ -12,12 +12,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Aspire.Hosting.AppHost" Version="9.1.0" />
+    <PackageReference Include="Aspire.Hosting.AppHost" Version="9.3.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Scotland2025.Api\Scotland2025.Api.csproj" />
     <ProjectReference Include="..\Scotland2025.UI\Scotland2025.UI.csproj" />
+    <ProjectReference Include="..\Scotland2025\Scotland2025\Scotland2025.csproj" />
   </ItemGroup>
 
 </Project>

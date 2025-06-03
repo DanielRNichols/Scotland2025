@@ -2,26 +2,59 @@
 
 <PageTitle>Scotland 2025</PageTitle>
 
-<MudPaper>
-    <MudGrid>
-        <MudItem xs="12">
-            <MudImage class="welcomeImage" Src="images/scotland2025WelcomeImage.jpg" Width=800 Alt="Scotland 2025" />
-        </MudItem>
-        <MudItem xs="12">
-            <Md MarkdownText="@greeting" />
-        </MudItem>
-    </MudGrid>
-
-</MudPaper>
-
+<div style="text-align:center">
+    <div class="mt-5">
+        <ImageCarousel images="@images.ToArray()" />
+    </div>
+    <Md MarkdownText="@greeting" />
+</div>
+ 
+<MudFileUpload T="IReadOnlyList<IBrowserFile>" FilesChanged="UploadImages">
+    <ActivatorContent>
+        <MudButton Variant="Variant.Filled"
+                   Color="Color.Primary"
+                   StartIcon="@Icons.Material.Filled.CloudUpload">
+            Upload Images
+        </MudButton>
+    </ActivatorContent>
+</MudFileUpload>
+ 
 @code {
+    private string imageFolder = "wwwroot/images";
+    IList<string> images = new List<string>() { "/images/SampleImage.jpg" };
+
+    private IList<string> imageUrls = new List<string>();
+
+    private async void UploadImages(IReadOnlyList<IBrowserFile> browserFiles)
+    {
+        foreach (var file in browserFiles)
+        {
+            var stream = file.OpenReadStream();
+            var imageUrl = await SaveImage(file);
+            imageUrls.Add(imageUrl);
+        }
+        StateHasChanged();
+    }
+
+    private async Task<string> SaveImage(IBrowserFile browserFile)
+    {
+        var fileName = Guid.NewGuid().ToString() + Path.GetExtension(browserFile.Name);
+        var filePath = Path.Combine(imageFolder, fileName);
+        using var stream = new FileStream(filePath, FileMode.Create);
+        await browserFile.OpenReadStream().CopyToAsync(stream);
+        return filePath;
+    }
+
+    private async Task<string> ConvertToBase64Async(IBrowserFile browserFile)
+    {
+        using var memoryStream = new MemoryStream();
+        await browserFile.OpenReadStream().CopyToAsync(memoryStream);
+        byte[] fileBytes = memoryStream.ToArray();
+        return Convert.ToBase64String(fileBytes);
+    }
+
+
     private string greeting = @"
-## Welcome to Scotland 2025
-### Itenerary
-#### Kingsbarn
-#### Dumbarnie
-#### The Castle Course
-#### The Old Course
-#### Carnoustie";
+## Welcome to Scotland 2025";
 
 }

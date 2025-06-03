@@ -1,7 +1,7 @@
 ﻿@page "/roster"
 @using MediatR
 @using Scotland2025.Application.Roster
-@attribute [StreamRendering]
+@rendermode InteractiveServer
 
 <PageTitle>Roster</PageTitle>
 
@@ -13,23 +13,15 @@
 }
 else
 {
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Hcp</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var player in players)
-            {
-                <tr>
-                    <td>@player.Name</td>
-                    <td>@player.Hcp</td>
-                </tr>
-            }
-        </tbody>
-    </table>
+
+    <div style="width:300px; display:flex;">
+        <FluentDataGrid @ref="grid"
+                        Items="@SortedPlayers"
+                        GridTemplateColumns="1fr 0.5fr">
+            <PropertyColumn Property="@(c => c.Name)" Sortable="true" />
+            <PropertyColumn Property="@(c => c.Hcp)" Sortable="true" />
+        </FluentDataGrid>
+    </div>
 
 }
 
@@ -38,6 +30,9 @@ else
     private ISender Sender { get; set; } = default!;
 
     private IList<RosterEntry>? players;
+
+    FluentDataGrid<RosterEntry>? grid;
+
 
     protected override async Task OnInitializedAsync()
     {
@@ -51,4 +46,6 @@ else
 
         players = result.Value;
     }
+
+    IQueryable<RosterEntry>? SortedPlayers => players?.OrderBy(p => p.Hcp).AsQueryable<RosterEntry>();
 }

@@ -13,13 +13,6 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://localhost:7243/api/") });
 
-//builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
-//builder.Services.AddScoped(sp =>
-//    new HttpClient
-//    {
-//        BaseAddress = new Uri(builder.Configuration["ApiUrl"] ?? throw new ArgumentException("ApiUrl must be set"))
-//    });
-
 builder.Services.AddScoped<IJsonDocumentService, JsonDocumentService>();
 builder.Services.AddScoped<IDataService, DataService>();
 builder.Services.AddScoped<IVersioningService, VersioningService>();

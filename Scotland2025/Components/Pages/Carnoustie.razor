@@ -1,0 +1,30 @@
+﻿@page "/carnoustie"
+
+<PageTitle>Carnoustie</PageTitle>
+
+<IndividualResults title="Carnoustie Daily Individual" results="@indResults" />
+<ClosestToHoleResults title="Carnoustie Closest to Hole" results="@closestToHoleResults" />
+<MatchPlayResults title="Carnoustie Match Play" results="@matches" />
+<ScatsResults title="Carnoustie Scats" results="@scatsResults" />
+
+
+@code {
+
+    [Inject]
+    public IDataService dataService { get; set; } = default!;
+
+    private IList<DailyIndividualEntry>? indResults { get; set; } = new List<DailyIndividualEntry>();
+    private IList<ClosestToHoleEntry>? closestToHoleResults { get; set; } = new List<ClosestToHoleEntry>();
+    private IList<MatchPlayMatch>? matches { get; set; } = new List<MatchPlayMatch>();
+    private IList<DailyScatsEntry>? scatsResults { get; set; } = new List<DailyScatsEntry>();
+
+    private string key = "carnoustie";
+
+    protected override async Task OnInitializedAsync()
+    {
+        indResults = await dataService.GetDailyIndividualAsync(key);
+        closestToHoleResults = await dataService.GetClosestToHoleAsync(key);
+        matches = await dataService.GetMatchPlayAsync(key);
+        scatsResults = await dataService.GetDailyScatsAsync(key);
+    }
+}

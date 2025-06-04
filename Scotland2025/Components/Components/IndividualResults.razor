@@ -1,0 +1,44 @@
+﻿
+<PageHeader>@title</PageHeader>
+@if (results == null || !ResultsPosted)
+{
+    <ResultsNotPosted />
+}
+else
+{
+    <MudSimpleTable Dense="true" Bordered="true" Striped="true" Style="width:32rem">
+        <thead>
+            <tr>
+                <th class="posCol">Pos</th>
+                <th class="nameCol">Name</th>
+                <th class="hcpCol">Hcp</th>
+                <th class="grossCol">Score</th>
+                <th class="netCol">Net</th>
+                <th class="moneyCol">$</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var result in results.OrderBy(r => r.Pos))
+            {
+                <tr>
+                    <td class="posCol">@result.Pos</td>
+                    <td class="nameCol">@result.Name</td>
+                    <td class="hcpCol">@result.Hcp</td>
+                    <td class="grossCol">@Utilities.DisplayGross(result.Pos, result.Gross)</td>
+                    <td class="netCol @Utilities.NetClass(result.Net)">@Utilities.DisplayNet(result.Pos, result.Net)</td>
+                    <td class="moneyCol">@Utilities.DisplayWinnings(result.Winnings)</td>
+                </tr>
+            }
+        </tbody>
+
+    </MudSimpleTable>
+}
+
+@code {
+    [Parameter, EditorRequired] public IList<DailyIndividualEntry>? results { get; set; } = new List<DailyIndividualEntry>();
+    [Parameter] public string title { get; set; } = string.Empty;
+
+
+    private bool ResultsPosted => results != null && results.Sum(r => r.Pos) > 0;
+
+}

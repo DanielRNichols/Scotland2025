@@ -1,0 +1,45 @@
+﻿@page "/roster"
+
+<PageTitle>Roster</PageTitle>
+
+<h3>Roster</h3>
+
+@if(roster == null)
+{
+    <MudProgressCircular Color="Color.Default" Indeterminate="true" />
+}
+else
+{
+    <MudSimpleTable Dense="@true" Bordered="@true" Style="width:20rem">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Hcp</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var player in roster)
+            {
+                <tr>
+                    <td>@player.Name</td>
+                    <td>@player.Hcp</td>
+                </tr>
+            }
+        </tbody>
+    </MudSimpleTable>
+
+}
+
+@code {
+    [Inject]
+    public IDataService dataService { get; set; } = default!;
+
+
+    private IList<RosterEntry>? roster;
+
+    protected override async Task OnInitializedAsync()
+    {
+        roster = await dataService.GetRosterAsync();
+    }
+
+}

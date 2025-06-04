@@ -1,7 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Scotland2025.Application.Abstractions.JsonOptions;
+using Scotland2025.Application.Abstractions.Versioning;
+using Scotland2025.Application.Versioning;
 using System.Reflection;
-using System.Text.Json;
 
 namespace Scotland2025.Application;
 public static class DependencyInjection
@@ -16,6 +17,7 @@ public static class DependencyInjection
         //services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
         services.AddSingleton<IJsonDocumentOptions, JsonDocuments.JsonDocumentOptions>();
+        services.AddScoped<IVersioningService, VersioningService>();
 
         return services;
     }

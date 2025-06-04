@@ -1,0 +1,56 @@
+﻿@page "/moneytotals"
+
+<PageTitle>Money Totals</PageTitle>
+
+<h3>Money Totals</h3>
+
+@if (moneyTotals == null)
+{
+    <MudProgressCircular Color="Color.Default" Indeterminate="true" />
+}
+else
+{
+    <MudSimpleTable Dense="@true" Bordered="@true" Style="width:60rem">
+        <thead>
+            <tr>
+                <th class="nameCol">Name</th>
+                <th class="moneyCol">Ind</th>
+                <th class="moneyCol">Team</th>
+                <th class="moneyCol">Scats</th>
+                <th class="moneyCol">Closest</th>
+                <th class="moneyCol">Champ</th>
+                <th class="moneyCol">Lottery</th>
+                <th class="moneyCol">Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var entry in moneyTotals.OrderByDescending(e => e.Total))
+            {
+                <tr>
+                    <td class="nameCol">@entry.Name</td>
+                    <td class="moneyCol">@Utilities.DisplayWinnings(entry.TotalIndividual)</td>
+                    <td class="moneyCol">@Utilities.DisplayWinnings(entry.TotalTeam)</td>
+                    <td class="moneyCol">@Utilities.DisplayWinnings(entry.TotalScats)</td>
+                    <td class="moneyCol">@Utilities.DisplayWinnings(entry.TotalClosest)</td>
+                    <td class="moneyCol">@Utilities.DisplayWinnings(entry.IndividualChampionship)</td>
+                    <td class="moneyCol">@Utilities.DisplayWinnings(entry.Lottery)</td>
+                    <td class="moneyCol">@Utilities.DisplayWinnings(entry.Total)</td>
+                </tr>
+            }
+        </tbody>
+
+    </MudSimpleTable>
+}
+
+@code {
+    [Inject]
+    public IDataService dataService { get; set; } = default!;
+
+    private IList<MoneyTotalEntry>? moneyTotals;
+
+    protected override async Task OnInitializedAsync()
+    {
+        moneyTotals = await dataService.GetMoneyTotalsAsync();
+    }
+
+}

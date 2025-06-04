@@ -1,0 +1,30 @@
+﻿@page "/dumbarnie"
+
+<PageTitle>Dumbarnie</PageTitle>
+
+<IndividualResults title="Dumbarnie Daily Individual" results="@indResults" />
+<ClosestToHoleResults title="Dumbarnie Closest to Hole" results="@closestToHoleResults" />
+<MatchPlayResults title="Dumbarnie Match Play" results="@matches" />
+<ScatsResults title="Dumbarnie Scats" results="@scatsResults" />
+
+
+@code {
+
+    [Inject]
+    public IDataService dataService { get; set; } = default!;
+
+    private IList<DailyIndividualEntry>? indResults { get; set; } = new List<DailyIndividualEntry>();
+    private IList<ClosestToHoleEntry>? closestToHoleResults { get; set; } = new List<ClosestToHoleEntry>();
+    private IList<MatchPlayMatch>? matches { get; set; } = new List<MatchPlayMatch>();
+    private IList<DailyScatsEntry>? scatsResults { get; set; } = new List<DailyScatsEntry>();
+
+    private string key = "dumbarnie";
+
+    protected override async Task OnInitializedAsync()
+    {
+        indResults = await dataService.GetDailyIndividualAsync(key);
+        closestToHoleResults = await dataService.GetClosestToHoleAsync(key);
+        matches = await dataService.GetMatchPlayAsync(key);
+        scatsResults = await dataService.GetDailyScatsAsync(key);
+    }
+}

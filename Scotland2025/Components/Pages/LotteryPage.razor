@@ -1,0 +1,52 @@
+﻿@page "/lottery"
+@using Scotland2025.Models
+
+<PageTitle>Lottery</PageTitle>
+
+<h3>Lottery</h3>
+
+@if (lotteryEntries == null)
+{
+    <MudProgressCircular Color="Color.Default" Indeterminate="true" />
+}
+else
+{
+    <MudSimpleTable Dense="@true" Bordered="@true" Style="width:20rem">
+        <thead>
+            <tr>
+                <th class="name">Name</th>
+                <th class="name">Pick</th>
+                <th>Pos</th>
+                <th>$</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var entry in lotteryEntries)
+            {
+                <tr>
+                    <td class="name">@entry.Name</td>
+                    <td class="name">@entry.Pick</td>
+                    <td>@entry.Pos</td>
+                    <td>@Utilities.DisplayWinnings(entry.Money)</td>
+                </tr>
+            }
+        </tbody>
+
+    </MudSimpleTable>
+}
+
+@code {
+    [Inject]
+    public IDataService dataService { get; set; } = default!;
+
+    private IList<LotteryEntry>? lotteryEntries;
+
+    //PaginationState pagination = new PaginationState() { ItemsPerPage = 2 };
+
+    //private RenderFragment template = @<span />;
+
+    protected override async Task OnInitializedAsync()
+    {
+        lotteryEntries = await dataService.GetLotteryAsync();
+    }
+}

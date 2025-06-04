@@ -1,6 +1,6 @@
 ﻿using Scotland2025.Application.Abstractions.Versioning;
 
-namespace Scotland2025.Services.Versioning
+namespace Scotland2025.Application.Versioning
 {
     public class VersioningService : IVersioningService
     {

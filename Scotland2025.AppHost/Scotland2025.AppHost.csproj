@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Scotland2025\Scotland2025\Scotland2025.csproj" />
+    <ProjectReference Include="..\Scotland2025\Scotland2025.csproj" />
   </ItemGroup>
 
 </Project>

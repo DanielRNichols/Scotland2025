@@ -1,0 +1,31 @@
+﻿@page "/kingsbarn"
+
+<PageTitle>Kingsbarn</PageTitle>
+
+<IndividualResults title="Kingsbarn Daily Individual" results="@indResults" />
+<ClosestToHoleResults title="Kingsbarn Closest to Hole" results="@closestToHoleResults" />
+<BestBallNetResults title="Kingsbarn Best Ball Net" results="@bestBallNetResults" />
+<ScatsResults title="Kingsbarn Scats" results="@scatsResults" />
+
+
+@code {
+
+    [Inject]
+    public IDataService dataService { get; set; } = default!;
+
+    private IList<DailyIndividualEntry>? indResults { get; set; } = new List<DailyIndividualEntry>();
+    private IList<ClosestToHoleEntry>? closestToHoleResults { get; set; } = new List<ClosestToHoleEntry>();
+    private IList<BestBallNetTeam>? bestBallNetResults { get; set; } = new List<BestBallNetTeam>();
+    private IList<DailyScatsEntry>? scatsResults { get; set; } = new List<DailyScatsEntry>();
+
+    private string key = "kingsbarn";
+
+    protected override async Task OnInitializedAsync()
+    {
+        indResults = await dataService.GetDailyIndividualAsync(key);
+        closestToHoleResults = await dataService.GetClosestToHoleAsync(key);
+        bestBallNetResults = await dataService.GetBestBallNetTeamsAsync(key);
+        scatsResults = await dataService.GetDailyScatsAsync(key);
+    }
+}
+        

@@ -1,0 +1,49 @@
+﻿
+<PageHeader>@title</PageHeader>
+@if (results == null || !ResultsPosted)
+{
+    <ResultsNotPosted />
+}
+else
+{
+    <MudSimpleTable Dense="true" Bordered="true" Striped="true" Style="width:25rem">
+        <thead>
+            <tr>
+                <th class="posCol">Pos</th>
+                <th class="nameCol">Players</th>
+                <th class="hcpCol">Hcp</th>
+                <th class="grossCol">Score</th>
+                <th class="netCol">Net</th>
+                <th class="moneyCol">$</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var result in results.OrderBy(r => r.Team.Pos))
+            {
+                <tr>
+                    <td class="posCol" rowspan="2">@result.Team.Pos</td>
+                    <td class="nameCol">@result.Player1.Name</td>
+                    <td class="hcpCol">@result.Player1.Hcp</td>
+                    <td class="grossCol" rowspan="2">@Utilities.DisplayGross(result.Team.Pos, result.Team.Total)</td>
+                    <td class="netCol @Utilities.NetClass(result.Team.Net)" rowspan="2">@Utilities.DisplayNet(result.Team.Pos, result.Team.Net)</td>
+                    <td class="moneyCol" rowspan="2">@Utilities.DisplayWinnings(result.Team.Winnings)</td>
+                </tr>
+                <tr>
+                    <td class="nameCol">@result.Player2.Name</td>
+                    <td class="hcpCol">@result.Player2.Hcp</td>
+                </tr>
+            }
+        </tbody>
+
+    </MudSimpleTable>
+}
+
+@code {
+    [Parameter, EditorRequired] public string title { get; set; } = string.Empty;
+    [Parameter, EditorRequired] public IList<BestBallNetTeam>? results { get; set; } = new List<BestBallNetTeam>();
+
+
+
+    private bool ResultsPosted => results != null && results.Sum(r => r.Team.Pos) > 0;
+
+}

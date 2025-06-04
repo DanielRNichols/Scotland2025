@@ -3,9 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.13.35931.197
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scotland2025", "Scotland2025\Scotland2025\Scotland2025.csproj", "{4BD1470B-B6B5-F0B1-3432-61F5E5E6BE50}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scotland2025.Client", "Scotland2025\Scotland2025.Client\Scotland2025.Client.csproj", "{321D9EB1-FAF0-C35E-AFC0-CBBB837DEC7C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scotland2025", "Scotland2025\Scotland2025.csproj", "{4BD1470B-B6B5-F0B1-3432-61F5E5E6BE50}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scotland2025.AppHost", "Scotland2025.AppHost\Scotland2025.AppHost.csproj", "{906666ED-5F0E-46EB-AF03-42F0F3B77E5E}"
 EndProject
@@ -27,10 +25,6 @@ Global
 		{4BD1470B-B6B5-F0B1-3432-61F5E5E6BE50}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4BD1470B-B6B5-F0B1-3432-61F5E5E6BE50}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4BD1470B-B6B5-F0B1-3432-61F5E5E6BE50}.Release|Any CPU.Build.0 = Release|Any CPU
-		{321D9EB1-FAF0-C35E-AFC0-CBBB837DEC7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{321D9EB1-FAF0-C35E-AFC0-CBBB837DEC7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{321D9EB1-FAF0-C35E-AFC0-CBBB837DEC7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{321D9EB1-FAF0-C35E-AFC0-CBBB837DEC7C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{906666ED-5F0E-46EB-AF03-42F0F3B77E5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{906666ED-5F0E-46EB-AF03-42F0F3B77E5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{906666ED-5F0E-46EB-AF03-42F0F3B77E5E}.Release|Any CPU.ActiveCfg = Release|Any CPU

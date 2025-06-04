@@ -1,0 +1,13 @@
+﻿@* @if(MarkdownText is not null)
+{
+    @((MarkupString)(ToHtml(MarkdownText)));
+}
+
+@code {
+    [Parameter]
+    public string? MarkdownText { get; set; }
+
+    private string ToHtml(string markdown) => Markdown.ToHtml(markdown);
+
+}
+ *@

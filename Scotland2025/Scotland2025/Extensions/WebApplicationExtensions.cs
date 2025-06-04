@@ -1,7 +1,7 @@
 ﻿using Scotland2025.Application.Common.Exceptions;
 using Microsoft.AspNetCore.Diagnostics;
 
-namespace Scotland2025.Api.Extensions;
+namespace Scotland2025.Extensions;
 
 public static class WebApplicationExtensions
 {

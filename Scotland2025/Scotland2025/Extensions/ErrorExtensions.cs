@@ -1,7 +1,7 @@
 ﻿using ErrorOr;
 using Microsoft.AspNetCore.Http.HttpResults;
 
-namespace Scotland2025.Api.Extensions;
+namespace Scotland2025.Extensions;
 
 public static class ErrorExtensions
 {

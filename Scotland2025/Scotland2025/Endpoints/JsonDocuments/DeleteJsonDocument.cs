@@ -1,9 +1,9 @@
 ﻿using FluentValidation;
-using Scotland2025.Api.Extensions;
 using Scotland2025.Application.JsonDocuments;
 using MediatR;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Scotland2025.Filters;
+using Scotland2025.Extensions;
 
 namespace Scotland2025.Endpoints.JsonDocuments;
 

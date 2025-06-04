@@ -1,6 +1,6 @@
 ﻿using Scotland2025.Application.Common.Exceptions;
 using Microsoft.AspNetCore.Diagnostics;
-using Scotland2025.Api.Extensions;
+using Scotland2025.Extensions;
 
 namespace Scotland2025.Errors;
 

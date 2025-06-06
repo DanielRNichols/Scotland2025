@@ -1,4 +1,4 @@
-﻿namespace Scotland2025.Extensions;
+﻿namespace Scotland2025.Api.Extensions;
 
 public static class ServicesExtensions
 {

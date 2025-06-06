@@ -1,11 +1,12 @@
 ﻿using FluentValidation;
+using Scotland2025.Api.Extensions;
 using Scotland2025.Application.JsonDocuments;
 using MediatR;
 using Microsoft.AspNetCore.Http.HttpResults;
-using Scotland2025.Filters;
-using Scotland2025.Extensions;
+using Scotland2025.Api.Filters;
+using Scotland2025.Api.Endpoints;
 
-namespace Scotland2025.Endpoints.JsonDocuments;
+namespace Scotland2025.Api.Endpoints.JsonDocuments;
 
 public static class DeleteJsonDocument
 {

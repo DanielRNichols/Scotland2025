@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace Scotland2025.Filters;
+namespace Scotland2025.Api.Filters;
 
 public class RequestValidationFilter<T> : IEndpointFilter
 {

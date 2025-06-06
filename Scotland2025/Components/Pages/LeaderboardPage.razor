@@ -32,12 +32,12 @@ else
                     <td class="posCol">@Utilities.DisplayPos(entry.Pos)</td>
                     <td class="nameCol">@entry.Name</td>
                     <td class="hcpCol">@entry.Hcp</td>
-                    <td class="totalCol @Utilities.NetClass(entry.Total)">@Utilities.DisplayNet(entry.Pos, entry.Total)</td>
-                    <td class="netCol @Utilities.NetClass(entry.Round1)">@Utilities.DisplayNet(entry.Pos, entry.Round1)</td>
-                    <td class="netCol @Utilities.NetClass(entry.Round2)">@Utilities.DisplayNet(entry.Pos, entry.Round2)</td>
-                    <td class="netCol @Utilities.NetClass(entry.Round3)">@Utilities.DisplayNet(entry.Pos, entry.Round3)</td>
-                    <td class="netCol @Utilities.NetClass(entry.Round4)">@Utilities.DisplayNet(entry.Pos, entry.Round4)</td>
-                    <td class="netCol @Utilities.NetClass(entry.Round5)">@Utilities.DisplayNet(entry.Pos, entry.Round5)</td>
+                    <td class="totalCol @Utilities.NetClass(entry.Total)">@(leaderboard.RoundsCompleted > 0 ? Utilities.DisplayNet(entry.Pos, entry.Total) : "-")</td>
+                    <td class="netCol @Utilities.NetClass(entry.Round1)">@(leaderboard.RoundsCompleted > 0 ? Utilities.DisplayNet(entry.Pos, entry.Round1) : "-")</td>
+                    <td class="netCol @Utilities.NetClass(entry.Round2)">@(leaderboard.RoundsCompleted > 1 ? Utilities.DisplayNet(entry.Pos, entry.Round2) : "-")</td>
+                    <td class="netCol @Utilities.NetClass(entry.Round3)">@(leaderboard.RoundsCompleted > 2 ? Utilities.DisplayNet(entry.Pos, entry.Round3) : "-")</td>
+                    <td class="netCol @Utilities.NetClass(entry.Round4)">@(leaderboard.RoundsCompleted > 3 ? Utilities.DisplayNet(entry.Pos, entry.Round4) : "-")</td>
+                    <td class="netCol @Utilities.NetClass(entry.Round5)">@(leaderboard.RoundsCompleted > 4 ? Utilities.DisplayNet(entry.Pos, entry.Round5) : "-")</td>
                     <td class="moneyCol">@Utilities.DisplayWinnings(entry.Winnings)</td>
                 </tr>
             }

@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection.Extensions;
 using System.Reflection;
 
-namespace Scotland2025.Endpoints;
+namespace Scotland2025.Api.Endpoints;
 
 public interface IApiEndpoint
 {

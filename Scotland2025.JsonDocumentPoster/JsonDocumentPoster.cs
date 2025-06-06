@@ -1,13 +1,12 @@
 ﻿
+using Scotland2025.Contracts.JsonDocuments;
 using System.Net.Http.Json;
-using System.Text.Json.Nodes;
-using Scotland2025.Endpoints.JsonDocuments;
 
 namespace DataUploader
 {
     public class JsonDocumentPoster
     {
-        public async Task UploadJsonDocuments(string dataFolder)
+        public async Task PostJsonDocuments(string dataFolder)
         {
             string[] files = Directory.GetFiles(dataFolder, "*.json");
             foreach(string file in files)
@@ -23,7 +22,7 @@ namespace DataUploader
         {
             var jsonDocumentPutRequest = new UpdateJsonDocument.Request(jsonValue);
 
-            string url = $"https://localhost:7085/api/jsondocuments/{documentName}";
+            string url = $"https://localhost:7243/api/jsondocuments/{documentName}";
             //string url = $"http://danielrnichols-001-site5.ftempurl.com/api/jsondocuments/{documentName}";
 
             using var httpClient = new HttpClient();

@@ -1,8 +1,8 @@
 ﻿using Scotland2025.Application.Common.Exceptions;
 using Microsoft.AspNetCore.Diagnostics;
-using Scotland2025.Extensions;
+using Scotland2025.Api.Extensions;
 
-namespace Scotland2025.Errors;
+namespace Scotland2025.Api.Errors;
 
 public static class ErrorsEndpoints
 {

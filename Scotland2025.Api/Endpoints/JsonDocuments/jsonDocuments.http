@@ -1,4 +1,4 @@
-@Scotland2025.Api_HostAddress = https://localhost:7085/api
+@Scotland2025.Api_HostAddress = https://localhost:7243/api
 
 GET {{Scotland2025.Api_HostAddress}}/test/
 Accept: application/json
@@ -9,7 +9,11 @@ GET {{Scotland2025.Api_HostAddress}}/jsonDocuments/
 Accept: application/json
 
 ###
-GET {{Scotland2025.Api_HostAddress}}/jsonDocuments/testdocument
+GET {{Scotland2025.Api_HostAddress}}/jsonDocuments/75
+Accept: application/json
+
+###
+GET {{Scotland2025.Api_HostAddress}}/jsonDocuments/find/2025-scotland-roster
 Accept: application/json
 
 ###

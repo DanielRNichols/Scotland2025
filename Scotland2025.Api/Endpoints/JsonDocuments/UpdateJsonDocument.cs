@@ -1,29 +1,30 @@
 ﻿using FluentValidation;
+using Scotland2025.Api.Extensions;
 using MediatR;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Scotland2025.Application.JsonDocuments;
-using Scotland2025.Endpoints.JsonDocuments;
-using Scotland2025.Filters;
-using Scotland2025.Extensions;
+using Scotland2025.Api.Filters;
+using Scotland2025.Api.Endpoints;
+using Scotland2025.Api.Endpoints.JsonDocuments;
 
-namespace Scotland2025.Endpoints.JsonDocuments;
+namespace Scotland2025.Api.Endpoints.JsonDocuments;
 
 public static class UpdateJsonDocument
 {
-    public record Request(string JsonValue);
+    //public record Request(string JsonValue);
 
-    public record Response(int Id, string DocumentName, string JsonValue, DateTime LastModified);
+    //public record Response(int Id, string DocumentName, string JsonValue, DateTime LastModified);
 
-    public static UpdateJsonDocumentCommand ToUpdateJsonDocumentCommand(this Request req, string documentName)
+    public static UpdateJsonDocumentCommand ToUpdateJsonDocumentCommand(this Contracts.JsonDocuments.UpdateJsonDocument.Request req, string documentName)
     {
         return new UpdateJsonDocumentCommand(documentName, req.JsonValue);
     }
-    public static Response ToUpdateJsonDocumentResponse(this JsonDocument result)
+    public static Contracts.JsonDocuments.UpdateJsonDocument.Response ToUpdateJsonDocumentResponse(this JsonDocument result)
     {
-        return new Response(result.Id, result.DocumentName, result.JsonValue, result.LastModified);
+        return new Contracts.JsonDocuments.UpdateJsonDocument.Response(result.Id, result.DocumentName, result.JsonValue, result.LastModified);
     }
 
-    public class UpdateJsonDocumentRequestValidator : AbstractValidator<Request>
+    public class UpdateJsonDocumentRequestValidator : AbstractValidator<Contracts.JsonDocuments.UpdateJsonDocument.Request>
     {
         public UpdateJsonDocumentRequestValidator()
         {
@@ -43,11 +44,11 @@ public static class UpdateJsonDocument
         }
     }
 
-    public static async Task<Results<Ok<Response>, ProblemHttpResult>> HandleUpdateJsonDocument(string documentName, Request req, ISender sender)
+    public static async Task<Results<Ok<Contracts.JsonDocuments.UpdateJsonDocument.Response>, ProblemHttpResult>> HandleUpdateJsonDocument(string documentName, Contracts.JsonDocuments.UpdateJsonDocument.Request req, ISender sender)
     {
         var updateJsonDocumentCommand = req.ToUpdateJsonDocumentCommand(documentName);
         var result = await sender.Send(updateJsonDocumentCommand);
-        return result.Match<Results<Ok<Response>, ProblemHttpResult>>(
+        return result.Match<Results<Ok<Contracts.JsonDocuments.UpdateJsonDocument.Response>, ProblemHttpResult>>(
             jsonDocument => TypedResults.Ok(jsonDocument.ToUpdateJsonDocumentResponse()), //return the updated jsonDocument
             errors => errors.ToProblemHttpResult()
         );

@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>Scotland2025.Api</RootNamespace>
+    <UserSecretsId>40e41275-3083-486f-8fe9-859626471577</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="12.0.0" />
+    <PackageReference Include="MediatR" Version="12.5.0" />
+      <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Scotland2025.Application\Scotland2025.Application.csproj" />
+    <ProjectReference Include="..\Scotland2025.Contracts\Scotland2025.Contracts.csproj" />
+    <ProjectReference Include="..\Scotland2025.Infrastructure\Scotland2025.Infrastructure.csproj" />
+    <ProjectReference Include="..\Scotland2025.ServiceDefaults\Scotland2025.ServiceDefaults.csproj" />
+  </ItemGroup>
+
+</Project>

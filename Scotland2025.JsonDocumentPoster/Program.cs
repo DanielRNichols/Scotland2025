@@ -7,7 +7,7 @@
             try
             {
                 var uploader = new JsonDocumentPoster();
-                await uploader.UploadJsonDocuments(@"C:\Users\danie\OneDrive\Documents\Scotland Trip\json");
+                await uploader.PostJsonDocuments(@"C:\Users\danie\OneDrive\Documents\Scotland Trip\json");
             }
             catch (Exception ex)
             {

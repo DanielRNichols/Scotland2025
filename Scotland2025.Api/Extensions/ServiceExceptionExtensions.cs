@@ -1,6 +1,6 @@
 ﻿using Scotland2025.Application.Common.Exceptions;
 
-namespace Scotland2025.Extensions;
+namespace Scotland2025.Api.Extensions;
 
 public static class ServiceExceptionExtensions
 {

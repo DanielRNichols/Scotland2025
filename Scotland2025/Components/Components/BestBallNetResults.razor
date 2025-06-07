@@ -6,7 +6,7 @@
 }
 else
 {
-    <MudSimpleTable Dense="true" Bordered="true" Striped="true" Style="width:25rem">
+    <MudSimpleTable Dense="true" Bordered="true" Style="width:25rem">
         <thead>
             <tr>
                 <th class="posCol">Pos</th>
@@ -20,7 +20,7 @@ else
         <tbody>
             @foreach (var result in results.OrderBy(r => r.Team.Pos))
             {
-                <tr>
+                <tr class="bestball">
                     <td class="posCol" rowspan="2">@result.Team.Pos</td>
                     <td class="nameCol">@result.Player1.Name</td>
                     <td class="hcpCol">@result.Player1.Hcp</td>
@@ -28,7 +28,7 @@ else
                     <td class="netCol @Utilities.NetClass(result.Team.Net)" rowspan="2">@Utilities.DisplayNet(result.Team.Pos, result.Team.Net)</td>
                     <td class="moneyCol" rowspan="2">@Utilities.DisplayWinnings(result.Team.Winnings)</td>
                 </tr>
-                <tr>
+                <tr class="bestball">
                     <td class="nameCol">@result.Player2.Name</td>
                     <td class="hcpCol">@result.Player2.Hcp</td>
                 </tr>

@@ -6,7 +6,7 @@
 }
 else
 {
-    <MudSimpleTable Dense="true" Bordered="true" Striped="true" Style="width:20rem">
+    <MudSimpleTable Dense="true" Bordered="true" Style="width:20rem">
         <thead>
             <tr>
                 <th class="nameCol">Hole</th>
@@ -17,7 +17,7 @@ else
         <tbody>
             @foreach (var result in results)
             {
-                <tr>
+                <tr class="closesttohole">
                     <td class="nameCol">@result.Hole</td>
                     <td class="nameCol">@result.Winner</td>
                     <td class="moneyCol">@Utilities.DisplayWinnings(result.Payout)</td>

@@ -6,7 +6,7 @@
 }
 else
 {
-    <MudSimpleTable Dense="true" Bordered="true" Striped="true" Style="width:50rem">
+    <MudSimpleTable Dense="true" Bordered="true" Style="width:50rem">
         <thead>
             <tr>
                 <th colspan="3">Matches</th>
@@ -31,7 +31,7 @@ else
         <tbody>
             @foreach (var match in results)
             {
-                <tr>
+                <tr class="matchplay">
                     <td rowspan="4">@match.MatchNumber</td>
                     <td class="nameCol">@match.Team1.Player1.Name</td>
                     <td class="hcpCol">@match.Team1.Player1.Hcp</td>
@@ -45,12 +45,12 @@ else
                     <td class="moneyCol" rowspan="2">@Utilities.DisplayWinnings(match.Team1.Player1.MoneyTeam)</td>
                     <td class="moneyCol" rowspan="2">@Utilities.DisplayWinnings(match.Team1.Player1.MoneyTotal)</td>
                 </tr>
-                <tr>
+                <tr class="matchplay">
                     <td class="nameCol">@match.Team1.Player2.Name</td>
                     <td class="hcpCol">@match.Team1.Player2.Hcp</td>
                 </tr>
 
-                <tr>
+                <tr class="matchplay">
                     <td class="nameCol">@match.Team2.Player1.Name</td>
                     <td class="hcpCol">@match.Team2.Player1.Hcp</td>
                     <td rowspan="2">@match.Team2.Points.Front</td>
@@ -63,7 +63,7 @@ else
                     <td class="moneyCol" rowspan="2">@Utilities.DisplayWinnings(match.Team2.Player1.MoneyTeam)</td>
                     <td class="moneyCol" rowspan="2">@Utilities.DisplayWinnings(match.Team2.Player1.MoneyTotal)</td>
                 </tr>
-                <tr>
+                <tr class="matchplay">
                     <td class="nameCol">@match.Team2.Player2.Name</td>
                     <td class="hcpCol">@match.Team2.Player2.Hcp</td>
                 </tr>

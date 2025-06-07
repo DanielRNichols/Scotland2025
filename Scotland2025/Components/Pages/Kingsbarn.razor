@@ -2,10 +2,14 @@
 
 <PageTitle>Kingsbarn</PageTitle>
 
-<IndividualResults title="Kingsbarn Daily Individual" results="@indResults" />
-<ClosestToHoleResults title="Kingsbarn Closest to Hole" results="@closestToHoleResults" />
-<BestBallNetResults title="Kingsbarn Best Ball Net" results="@bestBallNetResults" />
 <CourseScorecard title="Kingsbarn Scores" round="Round 1" scorecard="@scorecard" individualScores="@indScores" />
+<MudDivider class="mt-10 mb-5"/>
+<IndividualResults title="Kingsbarn Daily Individual" results="@indResults" />
+<MudDivider class="mt-10 mb-5" />
+<ClosestToHoleResults title="Kingsbarn Closest to Hole" results="@closestToHoleResults" />
+<MudDivider class="mt-10 mb-5" />
+<BestBallNetResults title="Kingsbarn Best Ball Net" results="@bestBallNetResults" />
+<MudDivider class="mt-10 mb-5" />
 <Scats title="Kingsbarn Scats" round="Round 1" scorecard="@scorecard" scats="@scats" scatCalcs="@scatCalculations" />
 
 @code {

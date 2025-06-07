@@ -33,7 +33,7 @@ else
         <tbody>
             @foreach (var match in results)
             {
-                <tr>
+                <tr class="chicagopts">
                     <td rowspan="4">@match.MatchNumber</td>
                     <td class="nameCol">@match.Team1.Player1.Name</td>
                     <td class="hcpCol">@match.Team1.Player1.Hcp</td>
@@ -49,12 +49,12 @@ else
                     <td class="moneyCol" rowspan="2">@Utilities.DisplayWinnings(match.Team1.Player1.MoneyTeam)</td>
                     <td class="moneyCol" rowspan="2">@Utilities.DisplayWinnings(match.Team1.Player1.MoneyTotal)</td>
                 </tr>
-                <tr>
+                <tr class="chicagopts">
                     <td class="nameCol">@match.Team1.Player2.Name</td>
                     <td class="hcpCol">@match.Team1.Player2.Hcp</td>
                 </tr>
 
-                <tr>
+                <tr class="chicagopts">
                     <td class="nameCol">@match.Team2.Player1.Name</td>
                     <td class="hcpCol">@match.Team2.Player1.Hcp</td>
                     <td rowspan="2">@match.Team2.Team.Front</td>
@@ -69,7 +69,7 @@ else
                     <td class="moneyCol" rowspan="2">@Utilities.DisplayWinnings(match.Team2.Player1.MoneyTeam)</td>
                     <td class="moneyCol" rowspan="2">@Utilities.DisplayWinnings(match.Team2.Player1.MoneyTotal)</td>
                 </tr>
-                <tr>
+                <tr class="chicagopts">
                     <td class="nameCol">@match.Team2.Player2.Name</td>
                     <td class="hcpCol">@match.Team2.Player2.Hcp</td>
                 </tr>

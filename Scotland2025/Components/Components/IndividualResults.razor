@@ -6,7 +6,7 @@
 }
 else
 {
-    <MudSimpleTable Dense="true" Bordered="true" Striped="true" Style="width:32rem">
+    <MudSimpleTable Dense="true" Bordered="true" Style="width:32rem">
         <thead>
             <tr>
                 <th class="posCol">Pos</th>
@@ -20,7 +20,7 @@ else
         <tbody>
             @foreach (var result in results.OrderBy(r => r.Pos))
             {
-                <tr>
+                <tr class="dailyind">
                     <td class="posCol">@result.Pos</td>
                     <td class="nameCol">@result.Name</td>
                     <td class="hcpCol">@result.Hcp</td>

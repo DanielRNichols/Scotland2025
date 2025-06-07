@@ -59,19 +59,27 @@ h1:focus {
     text-align: start;
 }
 
+.mud-simple-table.mud-table-bordered .mud-table-container table tbody,
+.mud-simple-table.mud-table-bordered .mud-table-container table tbody tr th,
+.mud-simple-table.mud-table-bordered .mud-table-container table tbody tr td {
+    border: 1px solid #929292;
+}
 
 /* Table elements */
 .mud-simple-table table tr td,
 .mud-simple-table table tr th {
-    font-family: Roboto Condensed, sans-serif;
+    font-family: "Roboto Condensed", sans-serif;
+    font-optical-sizing: auto;
     text-align: center;
     color: black;
-    font-weight: 400;
+    font-weight: 500;
+    font-style: normal;
 }
 
 /* Table headers */
 .mud-simple-table table tr th {
-    font-family: 'Roboto Condensed', sans-serif;
+    font-family: "Roboto Condensed", sans-serif;
+    font-weight: 700;
     background-color: #1b6ac1;
     color: white;
 }
@@ -118,7 +126,54 @@ h1:focus {
 }
 
 .mud-simple-table table tr td.scatWinner {
-    background-color: #71e79a;
+    background-color: #fbf57f;
+}
+
+/* scorecards */
+.mud-simple-table table tr.scorecardholes {
+    background-color: #f6e16e;
+}
+
+.mud-simple-table table tr.scorecardhcps {
+    background-color: #b7faef;
+}
+
+.mud-simple-table table tr.scorecardpars {
+    background-color: #75e78f;
+}
+
+.mud-simple-table table tr td.scorecardheader {
+    text-align: left;
+}
+
+.mud-simple-table table tr td.scorecardplayername {
+    background-color: #a9ddec;
+    text-align: left;
+}
+
+.mud-simple-table table tr td.scorecardplayerhcp {
+    background-color: #a9ddec;
+}
+
+.mud-simple-table table tr.scorecardscores {
+    background-color: #f5f6ed;
+}
+
+.mud-simple-table table tr td.scorecardfrontscores,
+.mud-simple-table table tr td.scorecardbackscores,
+.mud-simple-table table tr td.scorecardtotalscores,
+.mud-simple-table table tr td.scorecardnetscores {
+    background-color: #f8f6dc;
+}
+
+
+
+.mud-simple-table table tr.dailyind td,
+.mud-simple-table table tr.bestball td,
+.mud-simple-table table tr.matchplay td,
+.mud-simple-table table tr.chicagopts td,
+.mud-simple-table table tr.closesttohole td {
+    background-color: #f5f6ed;
 }
 
 /* Footer */

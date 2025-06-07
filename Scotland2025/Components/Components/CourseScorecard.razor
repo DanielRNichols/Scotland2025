@@ -1,10 +1,10 @@
 ﻿<PageHeader>@title</PageHeader>
-@if(scorecard != null && individualScores != null)
+@if(ResultsPosted())
 {
-    <MudSimpleTable class="mb-3" Dense="@true" Bordered="@true" Outlined="@true">
+    <MudSimpleTable class="scorecard mb-3" Dense="@true" Bordered="@true" Outlined="@true">
         <tbody>
             <tr class="scorecardholes">
-                <td colspan="2">Hole</td>
+                <td class="scorecardheader" colspan="2">Hole</td>
                 <td>1</td>
                 <td>2</td>
                 <td>3</td>
@@ -29,7 +29,7 @@
                 <td>Net</td>
             </tr>
             <tr class="scorecardhcps">
-                <td colspan="2">Hcp</td>
+                <td class="scorecardheader" colspan="2">Hcp</td>
                 <td>@scorecard.Hcp1</td>
                 <td>@scorecard.Hcp2</td>
                 <td>@scorecard.Hcp3</td>
@@ -53,8 +53,8 @@
                 <td></td>
                 <td></td>
             </tr>
-            <tr>
-                <td colspan="2">Par</td>
+            <tr class="scorecardpars">
+                <td class="scorecardheader" colspan="2">Par</td>
                 <td>@scorecard.Par1</td>
                 <td>@scorecard.Par2</td>
                 <td>@scorecard.Par3</td>
@@ -78,11 +78,11 @@
                 <td>@scorecard.ParTotal</td>
                 <td></td>
            </tr>
-            @foreach(var scores in individualScores)
+            @foreach(var scores in individualScores!)
             {
-                <tr>
-                    <td>@scores.Name</td>
-                    <td>@scores.Hcp</td>
+                <tr class="scorecardscores">
+                    <td class="scorecardplayername">@scores.Name</td>
+                    <td class="scorecardplayerhcp">@scores.Hcp</td>
                     <td class="@ScoreClass(scores.Hole1, scorecard.Par1)">@scores.Hole1</td>
                     <td class="@ScoreClass(scores.Hole2, scorecard.Par2)">@scores.Hole2</td>
                     <td class="@ScoreClass(scores.Hole3, scorecard.Par3)">@scores.Hole3</td>
@@ -92,7 +92,7 @@
                     <td class="@ScoreClass(scores.Hole7, scorecard.Par7)">@scores.Hole7</td>
                     <td class="@ScoreClass(scores.Hole8, scorecard.Par8)">@scores.Hole8</td>
                     <td class="@ScoreClass(scores.Hole9, scorecard.Par9)">@scores.Hole9</td>
-                    <td>@scores.Front</td>
+                    <td class="scorecardfrontscores">@scores.Front</td>
                     <td class="@ScoreClass(scores.Hole10, scorecard.Par10)">@scores.Hole10</td>
                     <td class="@ScoreClass(scores.Hole11, scorecard.Par11)">@scores.Hole11</td>
                     <td class="@ScoreClass(scores.Hole12, scorecard.Par12)">@scores.Hole12</td>
@@ -102,9 +102,9 @@
                     <td class="@ScoreClass(scores.Hole16, scorecard.Par16)">@scores.Hole16</td>
                     <td class="@ScoreClass(scores.Hole17, scorecard.Par17)">@scores.Hole17</td>
                     <td class="@ScoreClass(scores.Hole18, scorecard.Par18)">@scores.Hole18</td>
-                    <td>@scores.Back</td>
-                    <td>@scores.Total</td>
-                    <td>@scores.Net</td>
+                    <td class="scorecardbackscores">@scores.Back</td>
+                    <td class="scorecardtotalscores">@scores.Total</td>
+                    <td class="scorecardnetscores @Utilities.NetClass(scores.Net)">@Utilities.NetDisplay(scores.Net)</td>
                 </tr>
             }
         </tbody>
@@ -131,5 +131,7 @@ else
         -2 => "eagle",
         <= -3 => "unknown"
     };
+
+    private bool ResultsPosted() => scorecard != null && individualScores != null && individualScores.Any();
 
 }

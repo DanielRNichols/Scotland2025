@@ -4,7 +4,7 @@
     <MudSimpleTable class="mb-3" Dense="@true" Bordered="@true" Outlined="@true">
         <tbody>
             <tr class="scorecardholes">
-                <td colspan="2">Hole</td>
+                <td class="scorecardheader" colspan="2">Hole</td>
                 <td>1</td>
                 <td>2</td>
                 <td>3</td>
@@ -27,7 +27,7 @@
                 <td></td>
             </tr>
             <tr class="scorecardhcps">
-                <td colspan="2">Hcp</td>
+                <td class="scorecardheader" colspan="2">Hcp</td>
                 <td>@scorecard.Hcp1</td>
                 <td>@scorecard.Hcp2</td>
                 <td>@scorecard.Hcp3</td>
@@ -49,8 +49,8 @@
                 <td></td>
                 <td></td>
             </tr>
-            <tr>
-                <td colspan="2">Par</td>
+            <tr class="scorecardpars">
+                <td class="scorecardheader" colspan="2">Par</td>
                 <td>@scorecard.Par1</td>
                 <td>@scorecard.Par2</td>
                 <td>@scorecard.Par3</td>
@@ -77,9 +77,9 @@
             }
             @foreach(var scat in scats)
             {
-                <tr>
-                    <td>@scat.Name</td>
-                    <td>@scat.Hcp</td>
+                <tr class="scorecardscores">
+                    <td class ="scorecardplayername">@scat.Name</td>
+                    <td class="scorecardplayerhcp">@scat.Hcp</td>
                     <td class="@ScatClass(lowIndexes.Hole1, index)">@scat.Hole1</td>
                     <td class="@ScatClass(lowIndexes.Hole2, index)">@scat.Hole2</td>
                     <td class="@ScatClass(lowIndexes.Hole3, index)">@scat.Hole3</td>

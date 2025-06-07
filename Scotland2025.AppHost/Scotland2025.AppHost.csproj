@@ -16,6 +16,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Scotland2025.Api\Scotland2025.Api.csproj" />
+    <ProjectReference Include="..\Scotland2025.JsonDocumentPoster\Scotland2025.JsonDocumentPoster.csproj" />
     <ProjectReference Include="..\Scotland2025\Scotland2025.csproj" />
   </ItemGroup>
 

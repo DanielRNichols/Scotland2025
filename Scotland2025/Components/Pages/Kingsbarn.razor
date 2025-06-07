@@ -5,8 +5,8 @@
 <IndividualResults title="Kingsbarn Daily Individual" results="@indResults" />
 <ClosestToHoleResults title="Kingsbarn Closest to Hole" results="@closestToHoleResults" />
 <BestBallNetResults title="Kingsbarn Best Ball Net" results="@bestBallNetResults" />
-<ScatsResults title="Kingsbarn Scats" results="@scatsResults" />
-
+<CourseScorecard title="Kingsbarn Scores" round="Round 1" scorecard="@scorecard" individualScores="@indScores" />
+<Scats title="Kingsbarn Scats" round="Round 1" scorecard="@scorecard" scats="@scats" scatCalcs="@scatCalculations" />
 
 @code {
 
@@ -16,7 +16,10 @@
     private IList<DailyIndividualEntry>? indResults { get; set; } = new List<DailyIndividualEntry>();
     private IList<ClosestToHoleEntry>? closestToHoleResults { get; set; } = new List<ClosestToHoleEntry>();
     private IList<BestBallNetTeam>? bestBallNetResults { get; set; } = new List<BestBallNetTeam>();
-    private IList<DailyScatsEntry>? scatsResults { get; set; } = new List<DailyScatsEntry>();
+    private IList<DailyScatsEntry>? scats { get; set; } = new List<DailyScatsEntry>();
+    private IList<DailyScatCalculationEntry>? scatCalculations { get; set; } = new List<DailyScatCalculationEntry>();
+    private Scorecard scorecard { get; set; } = new Scorecard();
+    private IList<IndividualScores> indScores {get ;set; } = new List<IndividualScores>();
 
     private string key = "kingsbarn";
 
@@ -25,7 +28,10 @@
         indResults = await dataService.GetDailyIndividualAsync(key);
         closestToHoleResults = await dataService.GetClosestToHoleAsync(key);
         bestBallNetResults = await dataService.GetBestBallNetTeamsAsync(key);
-        scatsResults = await dataService.GetDailyScatsAsync(key);
+        scats = await dataService.GetDailyScatsAsync(key);
+        scatCalculations = await dataService.GetDailyScatCalculationsAsync(key);
+        scorecard = await dataService.GetScorecardAsync(key);
+        indScores = await dataService.GetIndividualScoresAsync(key);
     }
 }
         

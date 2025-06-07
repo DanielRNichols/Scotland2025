@@ -1,0 +1,155 @@
+﻿<PageHeader>@title</PageHeader>
+@if(scorecard != null && scats != null)
+{
+    <MudSimpleTable class="mb-3" Dense="@true" Bordered="@true" Outlined="@true">
+        <tbody>
+            <tr class="scorecardholes">
+                <td colspan="2">Hole</td>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+                <td>10</td>
+                <td>11</td>
+                <td>12</td>
+                <td>13</td>
+                <td>14</td>
+                <td>15</td>
+                <td>16</td>
+                <td>17</td>
+                <td>18</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr class="scorecardhcps">
+                <td colspan="2">Hcp</td>
+                <td>@scorecard.Hcp1</td>
+                <td>@scorecard.Hcp2</td>
+                <td>@scorecard.Hcp3</td>
+                <td>@scorecard.Hcp4</td>
+                <td>@scorecard.Hcp5</td>
+                <td>@scorecard.Hcp6</td>
+                <td>@scorecard.Hcp7</td>
+                <td>@scorecard.Hcp8</td>
+                <td>@scorecard.Hcp9</td>
+                <td>@scorecard.Hcp10</td>
+                <td>@scorecard.Hcp11</td>
+                <td>@scorecard.Hcp12</td>
+                <td>@scorecard.Hcp13</td>
+                <td>@scorecard.Hcp14</td>
+                <td>@scorecard.Hcp15</td>
+                <td>@scorecard.Hcp16</td>
+                <td>@scorecard.Hcp17</td>
+                <td>@scorecard.Hcp18</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td colspan="2">Par</td>
+                <td>@scorecard.Par1</td>
+                <td>@scorecard.Par2</td>
+                <td>@scorecard.Par3</td>
+                <td>@scorecard.Par4</td>
+                <td>@scorecard.Par5</td>
+                <td>@scorecard.Par6</td>
+                <td>@scorecard.Par7</td>
+                <td>@scorecard.Par8</td>
+                <td>@scorecard.Par9</td>
+                <td>@scorecard.Par10</td>
+                <td>@scorecard.Par11</td>
+                <td>@scorecard.Par12</td>
+                <td>@scorecard.Par13</td>
+                <td>@scorecard.Par14</td>
+                <td>@scorecard.Par15</td>
+                <td>@scorecard.Par16</td>
+                <td>@scorecard.Par17</td>
+                <td>@scorecard.Par18</td>
+                <td>#</td>
+                <td>$</td>
+           </tr>
+            @{
+                index = 1;
+            }
+            @foreach(var scat in scats)
+            {
+                <tr>
+                    <td>@scat.Name</td>
+                    <td>@scat.Hcp</td>
+                    <td class="@ScatClass(lowIndexes.Hole1, index)">@scat.Hole1</td>
+                    <td class="@ScatClass(lowIndexes.Hole2, index)">@scat.Hole2</td>
+                    <td class="@ScatClass(lowIndexes.Hole3, index)">@scat.Hole3</td>
+                    <td class="@ScatClass(lowIndexes.Hole4, index)">@scat.Hole4</td>
+                    <td class="@ScatClass(lowIndexes.Hole5, index)">@scat.Hole5</td>
+                    <td class="@ScatClass(lowIndexes.Hole6, index)">@scat.Hole6</td>
+                    <td class="@ScatClass(lowIndexes.Hole7, index)">@scat.Hole7</td>
+                    <td class="@ScatClass(lowIndexes.Hole8, index)">@scat.Hole8</td>
+                    <td class="@ScatClass(lowIndexes.Hole9, index)">@scat.Hole9</td>
+                    <td class="@ScatClass(lowIndexes.Hole10, index)">@scat.Hole10</td>
+                    <td class="@ScatClass(lowIndexes.Hole11, index)">@scat.Hole11</td>
+                    <td class="@ScatClass(lowIndexes.Hole12, index)">@scat.Hole12</td>
+                    <td class="@ScatClass(lowIndexes.Hole13, index)">@scat.Hole13</td>
+                    <td class="@ScatClass(lowIndexes.Hole14, index)">@scat.Hole14</td>
+                    <td class="@ScatClass(lowIndexes.Hole15, index)">@scat.Hole15</td>
+                    <td class="@ScatClass(lowIndexes.Hole16, index)">@scat.Hole16</td>
+                    <td class="@ScatClass(lowIndexes.Hole17, index)">@scat.Hole17</td>
+                    <td class="@ScatClass(lowIndexes.Hole18, index)">@scat.Hole18</td>
+                    <td>@scat.Count</td>
+                    <td>@Utilities.DisplayWinnings(scat.Winnings)</td>
+                </tr>
+
+                index++;
+            }
+        </tbody>
+    </MudSimpleTable>
+}
+else
+{
+    <ResultsNotPosted />
+}
+
+@code {
+    [Parameter] public string title { get; set; } = string.Empty;
+    [Parameter] public string round { get; set; } = string.Empty;
+    [Parameter] public Scorecard? scorecard { get; set; }
+    [Parameter] public IList<DailyScatsEntry>? scats { get; set; }
+    [Parameter] public IList<DailyScatCalculationEntry>? scatCalcs { get; set; }
+
+    private DailyScatCalculationEntry lowIndexes = new DailyScatCalculationEntry();
+
+    private int index = 0;
+
+    protected override void OnParametersSet()
+    {
+        if(scatCalcs != null)
+        {
+            var result = scatCalcs.Where(e => e.Name == "LowScoreIndex").FirstOrDefault();
+            if(result is not null)
+                lowIndexes = result;
+        }
+    }
+
+    private string ScatClass(double lowIndex, int index)
+    {
+        if ((int)lowIndex == index)
+            return "scatWinner";
+
+        return "";
+    }
+
+    private string ScoreClass(int score, int par) => (score - par) switch
+    {
+        >= 3 => "maxi",
+        2 => "double",
+        1 => "bogey",
+        0 => "par",
+        -1 => "birdie",
+        -2 => "eagle",
+        <= -3 => "unknown"
+    };
+
+}

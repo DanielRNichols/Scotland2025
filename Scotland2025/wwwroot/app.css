@@ -117,6 +117,9 @@ h1:focus {
     color: red;
 }
 
+.mud-simple-table table tr td.scatWinner {
+    background-color: #71e79a;
+}
 
 /* Footer */
 .footer {

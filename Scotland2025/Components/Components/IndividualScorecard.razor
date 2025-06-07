@@ -1,0 +1,148 @@
+﻿
+@if(scorecard != null && scores != null)
+{
+    <MudSimpleTable class="mb-3" Dense="@true" Bordered="@true" Outlined="@true">
+        <tbody>
+            <tr class="scorecardheader">
+                <th class="scorecardplayername" colspan="1">@scores.Name</th>
+                <th class="scorecardround" colspan="3">@round</th>
+                <th class="scorecardtitle" colspan="8">@scorecard.CourseName</th>
+            </tr>
+            <tr class="scorecardholes">
+                <td>Hole</td>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+                <td>Front</td>
+                <td></td>
+            </tr>
+            <tr class="scorecardhcps">
+                <td>Hcp</td>
+                <td>@scorecard.Hcp1</td>
+                <td>@scorecard.Hcp2</td>
+                <td>@scorecard.Hcp3</td>
+                <td>@scorecard.Hcp4</td>
+                <td>@scorecard.Hcp5</td>
+                <td>@scorecard.Hcp6</td>
+                <td>@scorecard.Hcp7</td>
+                <td>@scorecard.Hcp8</td>
+                <td>@scorecard.Hcp9</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr class ="scorecardpars">
+                <td>Par</td>
+                <td>@scorecard.Par1</td>
+                <td>@scorecard.Par2</td>
+                <td>@scorecard.Par3</td>
+                <td>@scorecard.Par4</td>
+                <td>@scorecard.Par5</td>
+                <td>@scorecard.Par6</td>
+                <td>@scorecard.Par7</td>
+                <td>@scorecard.Par8</td>
+                <td>@scorecard.Par9</td>
+                <td>@scorecard.ParFront</td>
+                <td></td>
+            </tr>
+            <tr class="scorecardscores">
+                <td>Score</td>
+                <td class="@ScoreClass(scores.Hole1, scorecard.Par1)">@scores.Hole1</td>
+                <td class="@ScoreClass(scores.Hole2, scorecard.Par2)">@scores.Hole2</td>
+                <td class="@ScoreClass(scores.Hole3, scorecard.Par3)">@scores.Hole3</td>
+                <td class="@ScoreClass(scores.Hole4, scorecard.Par4)">@scores.Hole4</td>
+                <td class="@ScoreClass(scores.Hole5, scorecard.Par5)">@scores.Hole5</td>
+                <td class="@ScoreClass(scores.Hole6, scorecard.Par6)">@scores.Hole6</td>
+                <td class="@ScoreClass(scores.Hole7, scorecard.Par7)">@scores.Hole7</td>
+                <td class="@ScoreClass(scores.Hole8, scorecard.Par8)">@scores.Hole8</td>
+                <td class="@ScoreClass(scores.Hole9, scorecard.Par9)">@scores.Hole9</td>
+                <td>@scores.Front</td>
+                <td></td>
+            </tr>
+            <tr class="scorecarddivider">
+                <td colspan="12"></td>
+            </tr>
+            <tr class="scorecardholes">
+                <td>Hole</td>
+                <td>10</td>
+                <td>11</td>
+                <td>12</td>
+                <td>13</td>
+                <td>14</td>
+                <td>15</td>
+                <td>16</td>
+                <td>17</td>
+                <td>18</td>
+                <td>Back</td>
+                <td>Total</td>
+            </tr>
+            <tr class="scorecardhcps">
+                <td>Hcp</td>
+                <td>@scorecard.Hcp10</td>
+                <td>@scorecard.Hcp11</td>
+                <td>@scorecard.Hcp12</td>
+                <td>@scorecard.Hcp13</td>
+                <td>@scorecard.Hcp14</td>
+                <td>@scorecard.Hcp15</td>
+                <td>@scorecard.Hcp16</td>
+                <td>@scorecard.Hcp17</td>
+                <td>@scorecard.Hcp18</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr class="scorecardpars">
+                <td>Par</td>
+                <td>@scorecard.Par10</td>
+                <td>@scorecard.Par11</td>
+                <td>@scorecard.Par12</td>
+                <td>@scorecard.Par13</td>
+                <td>@scorecard.Par14</td>
+                <td>@scorecard.Par15</td>
+                <td>@scorecard.Par16</td>
+                <td>@scorecard.Par17</td>
+                <td>@scorecard.Par18</td>
+                <td>@scorecard.ParBack</td>
+                <td>@scorecard.ParTotal</td>
+            </tr>
+            <tr class="scorecardscores">
+                <td>Score</td>
+                <td class="@ScoreClass(scores.Hole10, scorecard.Par10)">@scores.Hole10</td>
+                <td class="@ScoreClass(scores.Hole11, scorecard.Par11)">@scores.Hole11</td>
+                <td class="@ScoreClass(scores.Hole12, scorecard.Par12)">@scores.Hole12</td>
+                <td class="@ScoreClass(scores.Hole13, scorecard.Par13)">@scores.Hole13</td>
+                <td class="@ScoreClass(scores.Hole14, scorecard.Par14)">@scores.Hole14</td>
+                <td class="@ScoreClass(scores.Hole15, scorecard.Par15)">@scores.Hole15</td>
+                <td class="@ScoreClass(scores.Hole16, scorecard.Par16)">@scores.Hole16</td>
+                <td class="@ScoreClass(scores.Hole17, scorecard.Par17)">@scores.Hole17</td>
+                <td class="@ScoreClass(scores.Hole18, scorecard.Par18)">@scores.Hole18</td>
+                <td>@scores.Back</td>
+                <td>@scores.Total</td>
+            </tr>
+            <tr class="scorecarddivider">
+                <td colspan="12"></td>
+            </tr>
+        </tbody>
+    </MudSimpleTable>
+}
+
+@code {
+    [Parameter] public string round { get; set; } = string.Empty;
+    [Parameter] public Scorecard? scorecard { get; set; }
+    [Parameter] public IndividualScores? scores { get; set; }
+
+    private string ScoreClass(int score, int par) => (score - par) switch
+        {
+            >= 3 => "maxi",
+            2 => "double",
+            1 => "bogey",
+            0 => "par",
+            -1 => "birdie",
+            -2 => "eagle",
+            <= -3 => "unknown"
+        };
+}

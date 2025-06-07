@@ -62,9 +62,21 @@ public class DataService : IDataService
         return result ?? new List<DailyScatsEntry>();
     }
 
+    public async Task<IList<DailyScatCalculationEntry>> GetDailyScatCalculationsAsync(string name, CancellationToken cancellationToken = default)
+    {
+        var result = await GetAsync<IList<DailyScatCalculationEntry>>($"2025-scotland-{name}scatcalculations", cancellationToken);
+        return result ?? new List<DailyScatCalculationEntry>();
+    }
+
+    public async Task<IList<IndividualScores>> GetIndividualScoresAsync(string name, CancellationToken cancellationToken = default)
+    {
+        var result = await GetAsync<IList<IndividualScores>>($"2025-scotland-{name}scores", cancellationToken);
+        return result ?? new List<IndividualScores>();
+    }
+
     public async Task<Leaderboard> GetLeaderboardAsync(CancellationToken cancellationToken = default)
     {
-        var result = await GetAsync< Leaderboard> ("2025-scotland-leaderboard", cancellationToken);
+        var result = await GetAsync<Leaderboard>("2025-scotland-leaderboard", cancellationToken);
         return result ?? new Leaderboard();
     }
 
@@ -92,4 +104,10 @@ public class DataService : IDataService
         return result ?? new List<RosterEntry>();
     }
 
+    public async Task<Scorecard> GetScorecardAsync(string name, CancellationToken cancellationToken = default)
+    {
+        var result = await GetAsync<Scorecard>($"2025-scotland-{name}scorecard", cancellationToken);
+        return result ?? new Scorecard();
+    }
 }
+

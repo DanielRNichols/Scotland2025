@@ -1,0 +1,22 @@
+﻿<PageHeader>@title</PageHeader>
+@if(scorecard != null && individualScores != null)
+{
+    <MudSimpleTable Bordered="false" Outlined="false" Style="width:40rem">
+        @foreach (var playerScores in individualScores)
+        {
+            <IndividualScorecard round="@round" scoreCard="@scorecard" scores="@playerScores" />
+        }
+    </MudSimpleTable>
+
+}
+else
+{
+    <ResultsNotPosted />
+}
+
+@code {
+    [Parameter] public string title { get; set; } = string.Empty;
+    [Parameter] public string round { get; set; } = string.Empty;
+    [Parameter] public Scorecard? scorecard { get; set; }
+    [Parameter] public IList<IndividualScores>? individualScores { get; set; }
+}

@@ -5,7 +5,8 @@
 <IndividualResults title="Carnoustie Daily Individual" results="@indResults" />
 <ClosestToHoleResults title="Carnoustie Closest to Hole" results="@closestToHoleResults" />
 <MatchPlayResults title="Carnoustie Match Play" results="@matches" />
-<ScatsResults title="Carnoustie Scats" results="@scatsResults" />
+<CourseScorecard title="Carnoustie Scores" round="Round 5" scorecard="@scorecard" individualScores="@indScores" />
+<Scats title="Carnoustie Scats" round="Round 5" scorecard="@scorecard" scats="@scats" scatCalcs="@scatCalculations" />
 
 
 @code {
@@ -16,7 +17,10 @@
     private IList<DailyIndividualEntry>? indResults { get; set; } = new List<DailyIndividualEntry>();
     private IList<ClosestToHoleEntry>? closestToHoleResults { get; set; } = new List<ClosestToHoleEntry>();
     private IList<MatchPlayMatch>? matches { get; set; } = new List<MatchPlayMatch>();
-    private IList<DailyScatsEntry>? scatsResults { get; set; } = new List<DailyScatsEntry>();
+    private IList<DailyScatsEntry>? scats { get; set; } = new List<DailyScatsEntry>();
+    private IList<DailyScatCalculationEntry>? scatCalculations { get; set; } = new List<DailyScatCalculationEntry>();
+    private Scorecard scorecard { get; set; } = new Scorecard();
+    private IList<IndividualScores> indScores { get; set; } = new List<IndividualScores>();
 
     private string key = "carnoustie";
 
@@ -25,6 +29,9 @@
         indResults = await dataService.GetDailyIndividualAsync(key);
         closestToHoleResults = await dataService.GetClosestToHoleAsync(key);
         matches = await dataService.GetMatchPlayAsync(key);
-        scatsResults = await dataService.GetDailyScatsAsync(key);
+        scats = await dataService.GetDailyScatsAsync(key);
+        scatCalculations = await dataService.GetDailyScatCalculationsAsync(key);
+        scorecard = await dataService.GetScorecardAsync(key);
+        indScores = await dataService.GetIndividualScoresAsync(key);
     }
 }

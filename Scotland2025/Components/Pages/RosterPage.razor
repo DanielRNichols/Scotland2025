@@ -10,11 +10,15 @@
 }
 else
 {
-    <MudSimpleTable Dense="@true" Bordered="@true" Style="width:20rem">
+    <MudSimpleTable Dense="@true" Bordered="@true" Style="width:40rem">
         <thead>
             <tr>
                 <th>Name</th>
-                <th>Hcp</th>
+                <th>Day 1 Hcp</th>
+                <th>Day 2 Hcp</th>
+                <th>Day 3 Hcp</th>
+                <th>Day 4 Hcp</th>
+                <th>Day 5 Hcp</th>
             </tr>
         </thead>
         <tbody>
@@ -23,6 +27,10 @@ else
                 <tr>
                     <td>@player.Name</td>
                     <td>@player.Hcp</td>
+                    <td>@(player.Day2Hcp > 0 ? player.Day2Hcp : "")</td>
+                    <td>@(player.Day3Hcp > 0 ? player.Day3Hcp : "")</td>
+                    <td>@(player.Day4Hcp > 0 ? player.Day4Hcp : "")</td>
+                    <td>@(player.Day5Hcp > 0 ? player.Day5Hcp : "")</td>
                 </tr>
             }
         </tbody>

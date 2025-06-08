@@ -60,12 +60,16 @@ h1:focus {
 }
 
 .mud-simple-table.mud-table-bordered .mud-table-container table tbody,
-.mud-simple-table.mud-table-bordered .mud-table-container table tbody tr th,
+.mud-simple-table.mud-table-bordered .mud-table-container table thead tr th,
 .mud-simple-table.mud-table-bordered .mud-table-container table tbody tr td {
-    border: 1px solid #929292;
+    border: 1px solid #0e0e10;
 }
 
 /* Table elements */
+.mud-simple-table table tr {
+    background-color: #f5f5f5;
+}
+
 .mud-simple-table table tr td,
 .mud-simple-table table tr th {
     font-family: "Roboto Condensed", sans-serif;
@@ -77,16 +81,21 @@ h1:focus {
 }
 
 /* Table headers */
-.mud-simple-table table tr th {
-    font-family: "Roboto Condensed", sans-serif;
-    font-weight: 700;
-    background-color: #1b6ac1;
-    color: white;
+    .mud-simple-table table tr th {
+        font-family: "Roboto Condensed", sans-serif;
+        font-weight: 600;
+        background-color: #81d5f3;
+    }
+
+.mud-simple-table table tr th.tableheader {
+    background-color: #0b61b8;
+    font-size: 1.2rem;
+    text-align: left;
+    color: white
 }
 
 /* Table Columns */
-.mud-simple-table table td.posCol,
-.mud-simple-table table th.posCol {
+.mud-simple-table table td.posCol, .mud-simple-table table th.posCol {
     column-width: 2rem;
 }
 
@@ -130,15 +139,15 @@ h1:focus {
 }
 
 /* scorecards */
-.mud-simple-table table tr.scorecardholes {
+.mud-simple-table table tr.scorecardholes td {
     background-color: #f6e16e;
 }
 
-.mud-simple-table table tr.scorecardhcps {
+.mud-simple-table table tr.scorecardhcps td {
     background-color: #b7faef;
 }
 
-.mud-simple-table table tr.scorecardpars {
+.mud-simple-table table tr.scorecardpars td {
     background-color: #75e78f;
 }
 
@@ -155,9 +164,6 @@ h1:focus {
     background-color: #a9ddec;
 }
 
-.mud-simple-table table tr.scorecardscores {
-    background-color: #f5f6ed;
-}
 
 .mud-simple-table table tr td.scorecardfrontscores,
 .mud-simple-table table tr td.scorecardbackscores,
@@ -168,13 +174,6 @@ h1:focus {
 
 
 
-.mud-simple-table table tr.dailyind td,
-.mud-simple-table table tr.bestball td,
-.mud-simple-table table tr.matchplay td,
-.mud-simple-table table tr.chicagopts td,
-.mud-simple-table table tr.closesttohole td {
-    background-color: #f5f6ed;
-}
 
 /* Footer */
 .footer {

@@ -10,8 +10,10 @@
         <MudText Typo="Typo.h5" Class="ml-3">Scotland 2025</MudText>
         <MudSpacer />
         <MudIconButton Icon="@(DarkLightModeButtonIcon)" Color="Color.Inherit" OnClick="@DarkModeToggle" />
+@*         
         <MudIconButton Icon="@Icons.Material.Filled.MoreVert" Color="Color.Inherit" Edge="Edge.End" />
-    </MudAppBar>
+*@    
+        </MudAppBar>
     <MudDrawer id="nav-drawer" @bind-Open="_drawerOpen" ClipMode="DrawerClipMode.Always" Elevation="2">
         <NavMenu />
     </MudDrawer>
@@ -56,10 +58,11 @@
 
     private readonly PaletteLight _lightPalette = new()
     {
+        Background = "#f9f9f9",
         Black = "#110e2d",
         AppbarText = "#f9f9f9",
         AppbarBackground = "#0b61b8",
-        DrawerBackground = "#ffffff",
+        DrawerBackground = "#f9f9f9",
         GrayLight = "#e8e8e8",
         GrayLighter = "#f9f9f9",
     };
@@ -70,8 +73,8 @@
         Surface = "#1e1e2d",
         Background = "#1a1a27",
         BackgroundGray = "#151521",
-        AppbarText = "#92929f",
-        AppbarBackground = "rgba(26,26,39,1)",
+        AppbarText = "#f9f9f9",
+        AppbarBackground = "#0b61b8",
         DrawerBackground = "#1a1a27",
         ActionDefault = "#74718e",
         ActionDisabled = "#9999994d",
@@ -95,8 +98,8 @@
 
     public string DarkLightModeButtonIcon => _isDarkMode switch
     {
-        true => Icons.Material.Rounded.AutoMode,
-        false => Icons.Material.Outlined.DarkMode,
+        true => Icons.Material.Filled.Lightbulb,
+        false => Icons.Material.Filled.DarkMode,
     };
 }
 

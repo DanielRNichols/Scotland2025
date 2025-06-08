@@ -62,6 +62,12 @@ public class DataService : IDataService
         return result ?? new List<DailyScatsEntry>();
     }
 
+    public async Task<DailyScatStats> GetDailyScatStatsAsync(string name, CancellationToken cancellationToken = default)
+    {
+        var result = await GetAsync<DailyScatStats>($"2025-scotland-{name}scatstats", cancellationToken);
+        return result ?? new DailyScatStats();
+    }
+
     public async Task<IList<DailyScatCalculationEntry>> GetDailyScatCalculationsAsync(string name, CancellationToken cancellationToken = default)
     {
         var result = await GetAsync<IList<DailyScatCalculationEntry>>($"2025-scotland-{name}scatcalculations", cancellationToken);

@@ -1,7 +1,11 @@
-﻿<PageHeader>@title</PageHeader>
-@if(scorecard != null && scats != null)
+﻿@if(scorecard != null && scats != null)
 {
     <MudSimpleTable class="mb-3" Dense="@true" Bordered="@true" Outlined="@true">
+        <thead>
+            <tr>
+                <th class="tableheader" colspan="22">@ScatsHeader()</th>
+            </tr>
+        </thead>
         <tbody>
             <tr class="scorecardholes">
                 <td class="scorecardheader" colspan="2">Hole</td>
@@ -118,6 +122,7 @@ else
     [Parameter] public Scorecard? scorecard { get; set; }
     [Parameter] public IList<DailyScatsEntry>? scats { get; set; }
     [Parameter] public IList<DailyScatCalculationEntry>? scatCalcs { get; set; }
+    [Parameter] public DailyScatStats? scatStats { get; set; }
 
     private DailyScatCalculationEntry lowIndexes = new DailyScatCalculationEntry();
 
@@ -140,6 +145,22 @@ else
 
         return "";
     }
+
+    private string ScatsHeader()
+    {
+        if (scatStats is null)
+            return title;
+
+        return $"{title} ({ScatTypeDesc}) - Scats Won {scatStats?.ScatsWon} - Payout Per Scat {Utilities.DisplayWinnings(scatStats?.ScatPayout)}";
+    }
+
+    private string ScatTypeDesc => scatStats?.ScatType switch
+    {
+        0 => "Gross",
+        1 => "Net",
+        2 => "Half Net",
+        _ => ""
+    };
 
     private string ScoreClass(int score, int par) => (score - par) switch
     {

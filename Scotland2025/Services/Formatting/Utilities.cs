@@ -20,8 +20,8 @@ public static class Utilities
         return score.ToString();
     }
 
-    public static string DisplayWinnings(double winnings) => 
-        winnings < 0.01 ? "" : winnings.ToString("C2");
+    public static string DisplayWinnings(double? winnings) => 
+        (winnings == null || winnings < 0.01) ? "" : winnings.Value.ToString("C2");
 
     public static string DisplayNetScore(bool posted, int pos, double netScore) => 
         pos > 0 && posted ? DisplayNet(pos, netScore) : "";

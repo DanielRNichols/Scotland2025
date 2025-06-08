@@ -1,5 +1,4 @@
 ﻿
-<PageHeader>@title</PageHeader>
 @if (results == null || !ResultsPosted)
 {
     <ResultsNotPosted />
@@ -8,6 +7,9 @@ else
 {
     <MudSimpleTable Dense="true" Bordered="true" Style="width:25rem">
         <thead>
+            <tr>
+                <th class="tableheader" colspan="6">@title</th>
+            </tr>
             <tr>
                 <th class="posCol">Pos</th>
                 <th class="nameCol">Players</th>

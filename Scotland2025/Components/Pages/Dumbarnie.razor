@@ -2,15 +2,16 @@
 
 <PageTitle>Dumbarnie</PageTitle>
 
+<div class="mt-5"></div>
 <CourseScorecard title="Dumbarnie Scores" round="Round 2" scorecard="@scorecard" individualScores="@indScores" />
-<MudDivider class="mt-10 mb-5" />
+<Divider />
 <IndividualResults title="Dumbarnie Daily Individual" results="@indResults" />
-<MudDivider class="mt-10 mb-5" />
+<Divider />
 <ClosestToHoleResults title="Dumbarnie Closest to Hole" results="@closestToHoleResults" />
-<MudDivider class="mt-10 mb-5" />
+<Divider />
 <MatchPlayResults title="Dumbarnie Match Play" results="@matches" />
-<MudDivider class="mt-10 mb-5" />
-<Scats title="Dumbarnie Scats" round="Round 2" scorecard="@scorecard" scats="@scats" scatCalcs="@scatCalculations" />
+<Divider />
+<Scats title="Dumbarnie Scats" round="Round 2" scorecard="@scorecard" scats="@scats" scatCalcs="@scatCalculations" scatStats="@scatStats"/>
 
 
 @code {
@@ -23,6 +24,7 @@
     private IList<MatchPlayMatch>? matches { get; set; } = new List<MatchPlayMatch>();
     private IList<DailyScatsEntry>? scats { get; set; } = new List<DailyScatsEntry>();
     private IList<DailyScatCalculationEntry>? scatCalculations { get; set; } = new List<DailyScatCalculationEntry>();
+    private DailyScatStats? scatStats { get; set; } = new DailyScatStats();
     private Scorecard scorecard { get; set; } = new Scorecard();
     private IList<IndividualScores> indScores { get; set; } = new List<IndividualScores>();
 
@@ -34,6 +36,7 @@
         closestToHoleResults = await dataService.GetClosestToHoleAsync(key);
         matches = await dataService.GetMatchPlayAsync(key);
         scats = await dataService.GetDailyScatsAsync(key);
+        scatStats = await dataService.GetDailyScatStatsAsync(key);
         scatCalculations = await dataService.GetDailyScatCalculationsAsync(key);
         scorecard = await dataService.GetScorecardAsync(key);
         indScores = await dataService.GetIndividualScoresAsync(key);

@@ -1,7 +1,11 @@
-﻿<PageHeader>@title</PageHeader>
-@if(ResultsPosted())
+﻿@if(ResultsPosted())
 {
     <MudSimpleTable class="scorecard mb-3" Dense="@true" Bordered="@true" Outlined="@true">
+        <thead>
+            <tr>
+                <th class="tableheader" colspan="24">@title</th>
+            </tr>
+        </thead>
         <tbody>
             <tr class="scorecardholes">
                 <td class="scorecardheader" colspan="2">Hole</td>

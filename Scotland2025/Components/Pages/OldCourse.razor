@@ -2,11 +2,16 @@
 
 <PageTitle>Old Course</PageTitle>
 
-<IndividualResults title="Old Course Daily Individual" results="@indResults" />
-<ClosestToHoleResults title="Old Course Closest to Hole" results="@closestToHoleResults" />
-<BestBallNetResults title="Old Course Best Ball Net" results="@bestBallNetResults" />
+<div class="mt-5"></div>
 <CourseScorecard title="Old Course Scores" round="Round 4" scorecard="@scorecard" individualScores="@indScores" />
-<Scats title="Old Course Scats" round="Round 4" scorecard="@scorecard" scats="@scats" scatCalcs="@scatCalculations" />
+<Divider />
+<IndividualResults title="Old Course Daily Individual" results="@indResults" />
+<Divider />
+<ClosestToHoleResults title="Old Course Closest to Hole" results="@closestToHoleResults" />
+<Divider />
+<BestBallNetResults title="Old Course Best Ball Net" results="@bestBallNetResults" />
+<Divider />
+<Scats title="Old Course Scats" round="Round 4" scorecard="@scorecard" scats="@scats" scatCalcs="@scatCalculations" scatStats="@scatStats" />
 
 
 @code {
@@ -18,6 +23,7 @@
     private IList<ClosestToHoleEntry>? closestToHoleResults { get; set; } = new List<ClosestToHoleEntry>();
     private IList<BestBallNetTeam>? bestBallNetResults { get; set; } = new List<BestBallNetTeam>();
     private IList<DailyScatsEntry>? scats { get; set; } = new List<DailyScatsEntry>();
+    private DailyScatStats? scatStats { get; set; } = new DailyScatStats();
     private IList<DailyScatCalculationEntry>? scatCalculations { get; set; } = new List<DailyScatCalculationEntry>();
     private Scorecard scorecard { get; set; } = new Scorecard();
     private IList<IndividualScores> indScores { get; set; } = new List<IndividualScores>();
@@ -30,6 +36,7 @@
         closestToHoleResults = await dataService.GetClosestToHoleAsync(key);
         bestBallNetResults = await dataService.GetBestBallNetTeamsAsync(key);
         scats = await dataService.GetDailyScatsAsync(key);
+        scatStats = await dataService.GetDailyScatStatsAsync(key);
         scatCalculations = await dataService.GetDailyScatCalculationsAsync(key);
         scorecard = await dataService.GetScorecardAsync(key);
         indScores = await dataService.GetIndividualScoresAsync(key);

@@ -11,7 +11,7 @@
 <Divider />
 <MatchPlayResults title="Dumbarnie Match Play" results="@matches" />
 <Divider />
-<Scats title="Dumbarnie Scats" round="Round 2" scorecard="@scorecard" scats="@scats" scatCalcs="@scatCalculations" scatStats="@scatStats"/>
+<Scats title="Dumbarnie Scats" round="Round 2" scorecard="@scorecard" scats="@scats" scatStats="@scatStats"/>
 
 
 @code {
@@ -23,7 +23,6 @@
     private IList<ClosestToHoleEntry>? closestToHoleResults { get; set; } = new List<ClosestToHoleEntry>();
     private IList<MatchPlayMatch>? matches { get; set; } = new List<MatchPlayMatch>();
     private IList<DailyScatsEntry>? scats { get; set; } = new List<DailyScatsEntry>();
-    private IList<DailyScatCalculationEntry>? scatCalculations { get; set; } = new List<DailyScatCalculationEntry>();
     private DailyScatStats? scatStats { get; set; } = new DailyScatStats();
     private Scorecard scorecard { get; set; } = new Scorecard();
     private IList<IndividualScores> indScores { get; set; } = new List<IndividualScores>();
@@ -37,7 +36,6 @@
         matches = await dataService.GetMatchPlayAsync(key);
         scats = await dataService.GetDailyScatsAsync(key);
         scatStats = await dataService.GetDailyScatStatsAsync(key);
-        scatCalculations = await dataService.GetDailyScatCalculationsAsync(key);
         scorecard = await dataService.GetScorecardAsync(key);
         indScores = await dataService.GetIndividualScoresAsync(key);
     }

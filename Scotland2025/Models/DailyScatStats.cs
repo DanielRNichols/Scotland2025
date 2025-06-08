@@ -16,6 +16,6 @@ public class DailyScatStats
     public int ScatType { get; set; }
     public int ScatsWon { get; set; }
     public double ScatPayout { get; set; }
-    public IList<ScatHoleStats> HoleCalcs { get; set; } = new List<ScatHoleStats>();
+    public IList<ScatHoleStats> Holes { get; set; } = new List<ScatHoleStats>();
 
 }

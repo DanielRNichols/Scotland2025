@@ -11,7 +11,7 @@
 <Divider />
 <BestBallNetResults title="Old Course Best Ball Net" results="@bestBallNetResults" />
 <Divider />
-<Scats title="Old Course Scats" round="Round 4" scorecard="@scorecard" scats="@scats" scatCalcs="@scatCalculations" scatStats="@scatStats" />
+<Scats title="Old Course Scats" round="Round 4" scorecard="@scorecard" scats="@scats" scatStats="@scatStats" />
 
 
 @code {
@@ -24,7 +24,6 @@
     private IList<BestBallNetTeam>? bestBallNetResults { get; set; } = new List<BestBallNetTeam>();
     private IList<DailyScatsEntry>? scats { get; set; } = new List<DailyScatsEntry>();
     private DailyScatStats? scatStats { get; set; } = new DailyScatStats();
-    private IList<DailyScatCalculationEntry>? scatCalculations { get; set; } = new List<DailyScatCalculationEntry>();
     private Scorecard scorecard { get; set; } = new Scorecard();
     private IList<IndividualScores> indScores { get; set; } = new List<IndividualScores>();
 
@@ -37,7 +36,6 @@
         bestBallNetResults = await dataService.GetBestBallNetTeamsAsync(key);
         scats = await dataService.GetDailyScatsAsync(key);
         scatStats = await dataService.GetDailyScatStatsAsync(key);
-        scatCalculations = await dataService.GetDailyScatCalculationsAsync(key);
         scorecard = await dataService.GetScorecardAsync(key);
         indScores = await dataService.GetIndividualScoresAsync(key);
     }

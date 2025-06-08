@@ -84,24 +84,24 @@
                 <tr class="scorecardscores">
                     <td class ="scorecardplayername">@scat.Name</td>
                     <td class="scorecardplayerhcp">@scat.Hcp</td>
-                    <td class="@ScatClass(lowIndexes.Hole1, index)">@scat.Hole1</td>
-                    <td class="@ScatClass(lowIndexes.Hole2, index)">@scat.Hole2</td>
-                    <td class="@ScatClass(lowIndexes.Hole3, index)">@scat.Hole3</td>
-                    <td class="@ScatClass(lowIndexes.Hole4, index)">@scat.Hole4</td>
-                    <td class="@ScatClass(lowIndexes.Hole5, index)">@scat.Hole5</td>
-                    <td class="@ScatClass(lowIndexes.Hole6, index)">@scat.Hole6</td>
-                    <td class="@ScatClass(lowIndexes.Hole7, index)">@scat.Hole7</td>
-                    <td class="@ScatClass(lowIndexes.Hole8, index)">@scat.Hole8</td>
-                    <td class="@ScatClass(lowIndexes.Hole9, index)">@scat.Hole9</td>
-                    <td class="@ScatClass(lowIndexes.Hole10, index)">@scat.Hole10</td>
-                    <td class="@ScatClass(lowIndexes.Hole11, index)">@scat.Hole11</td>
-                    <td class="@ScatClass(lowIndexes.Hole12, index)">@scat.Hole12</td>
-                    <td class="@ScatClass(lowIndexes.Hole13, index)">@scat.Hole13</td>
-                    <td class="@ScatClass(lowIndexes.Hole14, index)">@scat.Hole14</td>
-                    <td class="@ScatClass(lowIndexes.Hole15, index)">@scat.Hole15</td>
-                    <td class="@ScatClass(lowIndexes.Hole16, index)">@scat.Hole16</td>
-                    <td class="@ScatClass(lowIndexes.Hole17, index)">@scat.Hole17</td>
-                    <td class="@ScatClass(lowIndexes.Hole18, index)">@scat.Hole18</td>
+                    <td class="@ScatClass(1, index)">@scat.Hole1</td>
+                    <td class="@ScatClass(2, index)">@scat.Hole2</td>
+                    <td class="@ScatClass(3, index)">@scat.Hole3</td>
+                    <td class="@ScatClass(4, index)">@scat.Hole4</td>
+                    <td class="@ScatClass(5, index)">@scat.Hole5</td>
+                    <td class="@ScatClass(6, index)">@scat.Hole6</td>
+                    <td class="@ScatClass(7, index)">@scat.Hole7</td>
+                    <td class="@ScatClass(8, index)">@scat.Hole8</td>
+                    <td class="@ScatClass(9, index)">@scat.Hole9</td>
+                    <td class="@ScatClass(10, index)">@scat.Hole10</td>
+                    <td class="@ScatClass(11, index)">@scat.Hole11</td>
+                    <td class="@ScatClass(12, index)">@scat.Hole12</td>
+                    <td class="@ScatClass(13, index)">@scat.Hole13</td>
+                    <td class="@ScatClass(14, index)">@scat.Hole14</td>
+                    <td class="@ScatClass(15, index)">@scat.Hole15</td>
+                    <td class="@ScatClass(16, index)">@scat.Hole16</td>
+                    <td class="@ScatClass(17, index)">@scat.Hole17</td>
+                    <td class="@ScatClass(18, index)">@scat.Hole18</td>
                     <td>@scat.Count</td>
                     <td>@Utilities.DisplayWinnings(scat.Winnings)</td>
                 </tr>
@@ -121,31 +121,18 @@ else
     [Parameter] public string round { get; set; } = string.Empty;
     [Parameter] public Scorecard? scorecard { get; set; }
     [Parameter] public IList<DailyScatsEntry>? scats { get; set; }
-    [Parameter] public IList<DailyScatCalculationEntry>? scatCalcs { get; set; }
     [Parameter] public DailyScatStats? scatStats { get; set; }
-
-    private DailyScatCalculationEntry lowIndexes = new DailyScatCalculationEntry();
 
     private int index = 0;
 
-    protected override void OnParametersSet()
+    private string ScatClass(int holeNum, int index)
     {
-        if(scatCalcs != null)
-        {
-            var result = scatCalcs.Where(e => e.Name == "LowScoreIndex").FirstOrDefault();
-            if(result is not null)
-                lowIndexes = result;
-        }
+        var holeInfo = scatStats?.Holes?.FirstOrDefault(h => h.HoleNumber == holeNum);
+
+        return holeInfo != null && holeInfo.LowIndex == index ? "scatWinner" : "";
     }
 
-    private string ScatClass(double lowIndex, int index)
-    {
-        if ((int)lowIndex == index)
-            return "scatWinner";
-
-        return "";
-    }
-
+    
     private string ScatsHeader()
     {
         if (scatStats is null)

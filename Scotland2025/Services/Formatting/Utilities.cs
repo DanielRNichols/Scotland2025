@@ -9,6 +9,9 @@ public static class Utilities
         _ => pos.ToString()
     };
 
+    public static string DisplayGross(int score) => score == 0 ? "" : score.ToString();
+    public static string DisplayGross(double score) => score == 0 ? "" : score.ToString();
+
     public static string DisplayGross(int pos, int score)
     {
         if (pos == 0)

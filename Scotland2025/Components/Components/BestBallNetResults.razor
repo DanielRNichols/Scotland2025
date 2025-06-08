@@ -1,5 +1,5 @@
 ﻿
-@if (results == null || !ResultsPosted)
+@if (results == null)
 {
     <ResultsNotPosted />
 }
@@ -23,7 +23,7 @@ else
             @foreach (var result in results.OrderBy(r => r.Team.Pos))
             {
                 <tr class="bestball">
-                    <td class="posCol" rowspan="2">@result.Team.Pos</td>
+                    <td class="posCol" rowspan="2">@Utilities.DisplayPos(result.Team.Pos)</td>
                     <td class="nameCol">@result.Player1.Name</td>
                     <td class="hcpCol">@result.Player1.Hcp</td>
                     <td class="grossCol" rowspan="2">@Utilities.DisplayGross(result.Team.Pos, result.Team.Total)</td>

@@ -1,5 +1,5 @@
 ﻿
-@if (results == null || !ResultsPosted)
+@if (results == null)
 {
     <ResultsNotPosted />
 }
@@ -23,7 +23,7 @@ else
             @foreach (var result in results.OrderBy(r => r.Pos))
             {
                 <tr class="dailyind">
-                    <td class="posCol">@result.Pos</td>
+                    <td class="posCol">@Utilities.DisplayPos(result.Pos)</td>
                     <td class="nameCol">@result.Name</td>
                     <td class="hcpCol">@result.Hcp</td>
                     <td class="grossCol">@Utilities.DisplayGross(result.Pos, result.Gross)</td>

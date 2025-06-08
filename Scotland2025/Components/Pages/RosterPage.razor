@@ -2,16 +2,18 @@
 
 <PageTitle>Roster</PageTitle>
 
-<h3>Roster</h3>
-
 @if(roster == null)
 {
     <MudProgressCircular Color="Color.Default" Indeterminate="true" />
 }
 else
 {
+    <div class="mt-5"></div>
     <MudSimpleTable Dense="@true" Bordered="@true" Style="width:40rem">
         <thead>
+            <tr>
+                <th class="tableheader" colspan="6">Roster</th>
+            </tr>
             <tr>
                 <th>Name</th>
                 <th>Day 1 Hcp</th>

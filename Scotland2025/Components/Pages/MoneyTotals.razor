@@ -2,16 +2,18 @@
 
 <PageTitle>Money Totals</PageTitle>
 
-<h3>Money Totals</h3>
-
 @if (moneyTotals == null)
 {
     <MudProgressCircular Color="Color.Default" Indeterminate="true" />
 }
 else
 {
+    <div class="mt-5"></div>
     <MudSimpleTable Dense="@true" Bordered="@true" Style="width:60rem">
         <thead>
+            <tr>
+                <th class="tableheader" colspan="8">Money Totals</th>
+            </tr>
             <tr>
                 <th class="nameCol">Name</th>
                 <th class="moneyCol">Ind</th>

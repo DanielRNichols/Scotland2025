@@ -3,16 +3,18 @@
 
 <PageTitle>Lottery</PageTitle>
 
-<h3>Lottery</h3>
-
 @if (lotteryEntries == null)
 {
     <MudProgressCircular Color="Color.Default" Indeterminate="true" />
 }
 else
 {
+    <div class="mt-5"></div>
     <MudSimpleTable Dense="@true" Bordered="@true" Style="width:20rem">
         <thead>
+            <tr>
+                <th class="tableheader" colspan="4">Lottery</th>
+            </tr>
             <tr>
                 <th class="name">Name</th>
                 <th class="name">Pick</th>
@@ -26,7 +28,7 @@ else
                 <tr>
                     <td class="name">@entry.Name</td>
                     <td class="name">@entry.Pick</td>
-                    <td>@entry.Pos</td>
+                    <td>@Utilities.DisplayPos(entry.Pos)</td>
                     <td>@Utilities.DisplayWinnings(entry.Money)</td>
                 </tr>
             }

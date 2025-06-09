@@ -4,6 +4,7 @@ public class MatchPlayTeamEntry
 {
     public string Name { get; set; } = string.Empty;
     public double Hcp { get; set; }
+    public double Strokes { get; set; }
     public double Hole1 { get; set; }
     public double Hole2 { get; set; }
     public double Hole3 { get; set; }

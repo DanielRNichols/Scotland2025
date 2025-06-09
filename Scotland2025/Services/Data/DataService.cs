@@ -32,6 +32,12 @@ public class DataService : IDataService
         return data;
     }
 
+    public async Task<Info> GetInfoAsync(CancellationToken cancellationToken = default)
+    {
+        var result = await GetAsync<Info>("2025-scotland-info", cancellationToken);
+        return result ?? new Info();
+    }
+
     public async Task<IList<BestBallNetTeam>> GetBestBallNetTeamsAsync(string name, CancellationToken cancellationToken = default)
     {
         var result = await GetAsync<IList<BestBallNetTeam>>($"2025-scotland-{name}bestballnet", cancellationToken);

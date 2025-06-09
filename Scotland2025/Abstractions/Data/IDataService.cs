@@ -6,6 +6,7 @@ public interface IDataService
 {
     Task<T?> GetAsync<T>(string documentName, CancellationToken cancellationToken = default) where T : class;
 
+    Task<Info> GetInfoAsync(CancellationToken cancellationToken = default);
     Task<IList<BestBallNetTeam>> GetBestBallNetTeamsAsync(string name, CancellationToken cancellationToken = default);
     Task<IList<ChicagoPtsMatch>> GetChicagoPtsAsync(string name, CancellationToken cancellationToken = default);
     Task<IList<ClosestToHoleEntry>> GetClosestToHoleAsync(string name, CancellationToken cancellationToken = default);

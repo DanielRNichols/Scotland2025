@@ -1,5 +1,5 @@
 ﻿
-@if (results == null || !ResultsPosted)
+@if (results == null)
 {
     <ResultsNotPosted />
 }
@@ -39,14 +39,14 @@ else
                     <td rowspan="4">@match.MatchNumber</td>
                     <td class="nameCol">@match.Team1.Player1.Name</td>
                     <td class="hcpCol">@match.Team1.Player1.Hcp</td>
-                    <td rowspan="2">@match.Team1.Team.Front</td>
-                    <td rowspan="2">@match.Team1.Team.Back</td>
-                    <td rowspan="2">@match.Team1.Team.Total</td>
+                    <td rowspan="2">@DisplayPts(match.Team1.Team.Front)</td>
+                    <td rowspan="2">@DisplayPts(match.Team1.Team.Back)</td>
+                    <td rowspan="2">@DisplayPts(match.Team1.Team.Total)</td>
                     <td rowspan="2">@match.Team1.Team.Goal</td>
-                    <td rowspan="2">@match.Team1.Team.Net</td>
-                    <td rowspan="2">@TotalTeamPoints(1)</td>
+                    <td rowspan="2">@DisplayPts(match.Team1.Team.Net)</td>
+                    <td rowspan="2">@DisplayPts(TotalTeamPoints(1))</td>
                     <td rowspan="2">@TotalTeamGoal(1)</td>
-                    <td rowspan="2">@TotalTeamNet(1)</td>
+                    <td rowspan="2">@DisplayPts(TotalTeamNet(1))</td>
                     <td class="moneyCol" rowspan="2">@Utilities.DisplayWinnings(match.Team1.Player1.Money18)</td>
                     <td class="moneyCol" rowspan="2">@Utilities.DisplayWinnings(match.Team1.Player1.MoneyTeam)</td>
                     <td class="moneyCol" rowspan="2">@Utilities.DisplayWinnings(match.Team1.Player1.MoneyTotal)</td>
@@ -59,14 +59,14 @@ else
                 <tr class="chicagopts">
                     <td class="nameCol">@match.Team2.Player1.Name</td>
                     <td class="hcpCol">@match.Team2.Player1.Hcp</td>
-                    <td rowspan="2">@match.Team2.Team.Front</td>
-                    <td rowspan="2">@match.Team2.Team.Back</td>
-                    <td rowspan="2">@match.Team2.Team.Total</td>
+                    <td rowspan="2">@DisplayPts(match.Team2.Team.Front)</td>
+                    <td rowspan="2">@DisplayPts(match.Team2.Team.Back)</td>
+                    <td rowspan="2">@DisplayPts(match.Team2.Team.Total)</td>
                     <td rowspan="2">@match.Team2.Team.Goal</td>
-                    <td rowspan="2">@match.Team2.Team.Net</td>
-                    <td rowspan="2">@TotalTeamPoints(2)</td>
+                    <td rowspan="2">@DisplayPts(match.Team2.Team.Net)</td>
+                    <td rowspan="2">@DisplayPts(TotalTeamPoints(2))</td>
                     <td rowspan="2">@TotalTeamGoal(2)</td>
-                    <td rowspan="2">@TotalTeamNet(2)</td>
+                    <td rowspan="2">@DisplayPts(TotalTeamNet(2))</td>
                     <td class="moneyCol" rowspan="2">@Utilities.DisplayWinnings(match.Team2.Player1.Money18)</td>
                     <td class="moneyCol" rowspan="2">@Utilities.DisplayWinnings(match.Team2.Player1.MoneyTeam)</td>
                     <td class="moneyCol" rowspan="2">@Utilities.DisplayWinnings(match.Team2.Player1.MoneyTotal)</td>
@@ -84,7 +84,8 @@ else
 @code {
     [Parameter, EditorRequired] public string title { get; set; } = string.Empty;
     [Parameter, EditorRequired] public IList<ChicagoPtsMatch>? results { get; set; } = new List<ChicagoPtsMatch>();
-    
+    [Parameter, EditorRequired] public bool roundCompleted { get; set; } 
+
 
     private double TotalTeamPoints(int teamNumber) => teamNumber switch
     {
@@ -106,6 +107,8 @@ else
         2 => results?.Sum(m => m.Team2.Team.Net) ?? 0,
         _ => 0
     };
+
+    private string DisplayPts(double pts) => roundCompleted ? pts.ToString() : "";
 
     private bool ResultsPosted => results != null;
 

@@ -3,15 +3,18 @@
 <PageTitle>Dumbarnie</PageTitle>
 
 <div class="mt-5"></div>
-<CourseScorecard title="Dumbarnie Scores" round="Round 2" scorecard="@scorecard" individualScores="@indScores" />
-<Divider />
-<IndividualResults title="Dumbarnie Daily Individual" results="@indResults" />
-<Divider />
-<ClosestToHoleResults title="Dumbarnie Closest to Hole" results="@closestToHoleResults" />
-<Divider />
-<MatchPlayResults title="Dumbarnie Match Play" results="@matches" />
-<Divider />
-<Scats title="Dumbarnie Scats" round="Round 2" scorecard="@scorecard" scats="@scats" scatStats="@scatStats"/>
+<MatchPlayResults title="Dumbarnie Match Play" results="@matches" roundCompleted="@RoundCompleted"/>
+@if(RoundCompleted)
+{
+    <Divider />
+    <IndividualResults title="Dumbarnie Daily Individual" results="@indResults" />
+    <Divider />
+    <ClosestToHoleResults title="Dumbarnie Closest to Hole" results="@closestToHoleResults" />
+    <Divider />
+    <CourseScorecard title="Dumbarnie Scores" round="Round 2" scorecard="@scorecard" individualScores="@indScores" />
+    <Divider />
+    <Scats title="Dumbarnie Scats" round="Round 2" scorecard="@scorecard" scats="@scats" scatStats="@scatStats" />
+}
 
 
 @code {
@@ -19,6 +22,7 @@
     [Inject]
     public IDataService dataService { get; set; } = default!;
 
+    private Info info { get; set; } = new Info();
     private IList<DailyIndividualEntry>? indResults { get; set; } = new List<DailyIndividualEntry>();
     private IList<ClosestToHoleEntry>? closestToHoleResults { get; set; } = new List<ClosestToHoleEntry>();
     private IList<MatchPlayMatch>? matches { get; set; } = new List<MatchPlayMatch>();
@@ -28,9 +32,11 @@
     private IList<IndividualScores> indScores { get; set; } = new List<IndividualScores>();
 
     private string key = "dumbarnie";
+    private int roundNumber = 2;
 
     protected override async Task OnInitializedAsync()
     {
+        info = await dataService.GetInfoAsync();
         indResults = await dataService.GetDailyIndividualAsync(key);
         closestToHoleResults = await dataService.GetClosestToHoleAsync(key);
         matches = await dataService.GetMatchPlayAsync(key);
@@ -39,4 +45,6 @@
         scorecard = await dataService.GetScorecardAsync(key);
         indScores = await dataService.GetIndividualScoresAsync(key);
     }
+
+    private bool RoundCompleted => info.RoundsCompleted >= roundNumber;
 }

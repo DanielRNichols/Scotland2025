@@ -3,22 +3,25 @@
 <PageTitle>Old Course</PageTitle>
 
 <div class="mt-5"></div>
-<CourseScorecard title="Old Course Scores" round="Round 4" scorecard="@scorecard" individualScores="@indScores" />
-<Divider />
-<IndividualResults title="Old Course Daily Individual" results="@indResults" />
-<Divider />
-<ClosestToHoleResults title="Old Course Closest to Hole" results="@closestToHoleResults" />
-<Divider />
-<BestBallNetResults title="Old Course Best Ball Net" results="@bestBallNetResults" />
-<Divider />
-<Scats title="Old Course Scats" round="Round 4" scorecard="@scorecard" scats="@scats" scatStats="@scatStats" />
-
+<BestBallNetResults title="Old Course Best Ball Net" results="@bestBallNetResults" roundCompleted="@RoundCompleted" />
+@if (info.RoundsCompleted >= 4)
+{
+    <Divider />
+    <IndividualResults title="Old Course Daily Individual" results="@indResults" />
+    <Divider />
+    <ClosestToHoleResults title="Old Course Closest to Hole" results="@closestToHoleResults" />
+    <Divider />
+    <CourseScorecard title="Old Course Scores" round="Round 4" scorecard="@scorecard" individualScores="@indScores" />
+    <Divider />
+    <Scats title="Old Course Scats" round="Round 4" scorecard="@scorecard" scats="@scats" scatStats="@scatStats" />
+}
 
 @code {
 
     [Inject]
     public IDataService dataService { get; set; } = default!;
 
+    private Info info { get; set; } = new Info();
     private IList<DailyIndividualEntry>? indResults { get; set; } = new List<DailyIndividualEntry>();
     private IList<ClosestToHoleEntry>? closestToHoleResults { get; set; } = new List<ClosestToHoleEntry>();
     private IList<BestBallNetTeam>? bestBallNetResults { get; set; } = new List<BestBallNetTeam>();
@@ -28,9 +31,12 @@
     private IList<IndividualScores> indScores { get; set; } = new List<IndividualScores>();
 
     private string key = "oldcourse";
+    private int roundNumber = 4;
+
 
     protected override async Task OnInitializedAsync()
     {
+        info = await dataService.GetInfoAsync();
         indResults = await dataService.GetDailyIndividualAsync(key);
         closestToHoleResults = await dataService.GetClosestToHoleAsync(key);
         bestBallNetResults = await dataService.GetBestBallNetTeamsAsync(key);
@@ -39,4 +45,7 @@
         scorecard = await dataService.GetScorecardAsync(key);
         indScores = await dataService.GetIndividualScoresAsync(key);
     }
+
+    private bool RoundCompleted => info.RoundsCompleted >= roundNumber;
+
 }

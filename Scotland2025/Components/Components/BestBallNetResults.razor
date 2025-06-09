@@ -43,8 +43,7 @@ else
 @code {
     [Parameter, EditorRequired] public string title { get; set; } = string.Empty;
     [Parameter, EditorRequired] public IList<BestBallNetTeam>? results { get; set; } = new List<BestBallNetTeam>();
-
-
+    [Parameter, EditorRequired] public bool roundCompleted { get; set; }
 
     private bool ResultsPosted => results != null && results.Sum(r => r.Team.Pos) > 0;
 

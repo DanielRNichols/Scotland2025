@@ -20,7 +20,7 @@ else
             </tr>
         </thead>
         <tbody>
-            @foreach (var result in results.OrderBy(r => r.Pos))
+            @foreach (var result in SortedResults())
             {
                 <tr class="dailyind">
                     <td class="posCol">@Utilities.DisplayPos(result.Pos)</td>
@@ -39,8 +39,17 @@ else
 @code {
     [Parameter, EditorRequired] public IList<DailyIndividualEntry>? results { get; set; } = new List<DailyIndividualEntry>();
     [Parameter] public string title { get; set; } = string.Empty;
+    [Parameter] public bool roundCompleted { get; set; }
 
 
     private bool ResultsPosted => results != null && results.Sum(r => r.Pos) > 0;
+
+    private IList<DailyIndividualEntry> SortedResults()
+    {
+        if(results == null)
+            return new List<DailyIndividualEntry>();
+        
+        return roundCompleted ? results.OrderBy(r => r.Pos).ToList() : results.OrderBy(r => r.TeeSlot).ToList();
+    }
 
 }

@@ -3,18 +3,15 @@
 <PageTitle>Kingsbarn</PageTitle>
 
 <div class="mt-5"></div>
+<CourseScorecard title="Kingsbarn Scorecards" round="Round 1" scorecard="@scorecard" individualScores="@indScores" />
+<Divider />
 <BestBallNetResults title="Kingsbarn Best Ball Net" results="@bestBallNetResults" roundCompleted="@RoundCompleted" />
-@if(RoundCompleted)
-{
-    <Divider />
-    <IndividualResults title="Kingsbarn Daily Individual" results="@indResults" />
-    <Divider />
-    <ClosestToHoleResults title="Kingsbarn Closest to Hole" results="@closestToHoleResults" />
-    <Divider />
-    <CourseScorecard title="Kingsbarn Scores" round="Round 1" scorecard="@scorecard" individualScores="@indScores" />
-    <Divider />
-    <Scats title="Kingsbarn Scats" round="Round 1" scorecard="@scorecard" scats="@scats" scatStats="@scatStats" />
-}
+<Divider />
+<IndividualResults title="Kingsbarn Daily Individual" results="@indResults" roundCompleted="@RoundCompleted" />
+<Divider />
+<ClosestToHoleResults title="Kingsbarn Closest to Hole" results="@closestToHoleResults" />
+<Divider />
+<Scats title="Kingsbarn Scats" round="Round 1" scorecard="@scorecard" scats="@scats" scatStats="@scatStats" />
 
 @code {
 

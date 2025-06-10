@@ -82,34 +82,48 @@
                 <td>@scorecard.ParTotal</td>
                 <td></td>
            </tr>
-            @foreach(var scores in individualScores!)
+           <tr class="scorecardgroups">
+                <td colspan="24">Group 1</td>
+           </tr>
+            @{
+                index = 0;
+            }
+            @foreach(var scores in individualScores!.OrderBy(x => x.TeeSlot))
             {
                 <tr class="scorecardscores">
-                    <td class="scorecardplayername">@scores.Name</td>
-                    <td class="scorecardplayerhcp">@scores.Hcp</td>
-                    <td class="@ScoreClass(scores.Hole1, scorecard.Par1)">@Utilities.DisplayGross(scores.Hole1)</td>
-                    <td class="@ScoreClass(scores.Hole2, scorecard.Par2)">@Utilities.DisplayGross(scores.Hole2)</td>
-                    <td class="@ScoreClass(scores.Hole3, scorecard.Par3)">@Utilities.DisplayGross(scores.Hole3)</td>
-                    <td class="@ScoreClass(scores.Hole4, scorecard.Par4)">@Utilities.DisplayGross(scores.Hole4)</td>
-                    <td class="@ScoreClass(scores.Hole5, scorecard.Par5)">@Utilities.DisplayGross(scores.Hole5)</td>
-                    <td class="@ScoreClass(scores.Hole6, scorecard.Par6)">@Utilities.DisplayGross(scores.Hole6)</td>
-                    <td class="@ScoreClass(scores.Hole7, scorecard.Par7)">@Utilities.DisplayGross(scores.Hole7)</td>
-                    <td class="@ScoreClass(scores.Hole8, scorecard.Par8)">@Utilities.DisplayGross(scores.Hole8)</td>
-                    <td class="@ScoreClass(scores.Hole9, scorecard.Par9)">@Utilities.DisplayGross(scores.Hole9)</td>
+                    <td class=@($"team{scores.Team} scorecardplayername")>@scores.Name</td>
+                    <td class=@($"team{scores.Team} scorecardplayerhcp")>@scores.Hcp</td>
+                    <td class=@ScoreClass(scores.Hole1, scorecard.Par1)>@Utilities.DisplayGross(scores.Hole1)</td>
+                    <td class=@ScoreClass(scores.Hole2, scorecard.Par2)>@Utilities.DisplayGross(scores.Hole2)</td>
+                    <td class=@ScoreClass(scores.Hole3, scorecard.Par3)>@Utilities.DisplayGross(scores.Hole3)</td>
+                    <td class=@ScoreClass(scores.Hole4, scorecard.Par4)>@Utilities.DisplayGross(scores.Hole4)</td>
+                    <td class=@ScoreClass(scores.Hole5, scorecard.Par5)>@Utilities.DisplayGross(scores.Hole5)</td>
+                    <td class=@ScoreClass(scores.Hole6, scorecard.Par6)>@Utilities.DisplayGross(scores.Hole6)</td>
+                    <td class=@ScoreClass(scores.Hole7, scorecard.Par7)>@Utilities.DisplayGross(scores.Hole7)</td>
+                    <td class=@ScoreClass(scores.Hole8, scorecard.Par8)>@Utilities.DisplayGross(scores.Hole8)</td>
+                    <td class=@ScoreClass(scores.Hole9, scorecard.Par9)>@Utilities.DisplayGross(scores.Hole9)</td>
                     <td class="scorecardfrontscores">@Utilities.DisplayGross(scores.Front)</td>
-                    <td class="@ScoreClass(scores.Hole10, scorecard.Par10)">@Utilities.DisplayGross(scores.Hole10)</td>
-                    <td class="@ScoreClass(scores.Hole11, scorecard.Par11)">@Utilities.DisplayGross(scores.Hole11)</td>
-                    <td class="@ScoreClass(scores.Hole12, scorecard.Par12)">@Utilities.DisplayGross(scores.Hole12)</td>
-                    <td class="@ScoreClass(scores.Hole13, scorecard.Par13)">@Utilities.DisplayGross(scores.Hole13)</td>
-                    <td class="@ScoreClass(scores.Hole14, scorecard.Par14)">@Utilities.DisplayGross(scores.Hole14)</td>
-                    <td class="@ScoreClass(scores.Hole15, scorecard.Par15)">@Utilities.DisplayGross(scores.Hole15)</td>
-                    <td class="@ScoreClass(scores.Hole16, scorecard.Par16)">@Utilities.DisplayGross(scores.Hole16)</td>
-                    <td class="@ScoreClass(scores.Hole17, scorecard.Par17)">@Utilities.DisplayGross(scores.Hole17)</td>
-                    <td class="@ScoreClass(scores.Hole18, scorecard.Par18)">@Utilities.DisplayGross(scores.Hole18)</td>
+                    <td class=@ScoreClass(scores.Hole10, scorecard.Par10)>@Utilities.DisplayGross(scores.Hole10)</td>
+                    <td class=@ScoreClass(scores.Hole11, scorecard.Par11)>@Utilities.DisplayGross(scores.Hole11)</td>
+                    <td class=@ScoreClass(scores.Hole12, scorecard.Par12)>@Utilities.DisplayGross(scores.Hole12)</td>
+                    <td class=@ScoreClass(scores.Hole13, scorecard.Par13)>@Utilities.DisplayGross(scores.Hole13)</td>
+                    <td class=@ScoreClass(scores.Hole14, scorecard.Par14)>@Utilities.DisplayGross(scores.Hole14)</td>
+                    <td class=@ScoreClass(scores.Hole15, scorecard.Par15)>@Utilities.DisplayGross(scores.Hole15)</td>
+                    <td class=@ScoreClass(scores.Hole16, scorecard.Par16)>@Utilities.DisplayGross(scores.Hole16)</td>
+                    <td class=@ScoreClass(scores.Hole17, scorecard.Par17)>@Utilities.DisplayGross(scores.Hole17)</td>
+                    <td class=@ScoreClass(scores.Hole18, scorecard.Par18)>@Utilities.DisplayGross(scores.Hole18)</td>
                     <td class="scorecardbackscores">@Utilities.DisplayGross(scores.Back)</td>
                     <td class="scorecardtotalscores">@Utilities.DisplayGross(scores.Total)</td>
                     <td class="scorecardnetscores @Utilities.NetClass(scores.Net)">@Utilities.NetDisplay(scores.Net)</td>
                 </tr>
+                if(index == 3)
+                {
+                    <tr class="scorecardgroups">
+                        <td colspan="24">Group 2</td>
+                    </tr>
+                }
+
+                index++;
             }
         </tbody>
     </MudSimpleTable>
@@ -124,6 +138,8 @@ else
     [Parameter] public string round { get; set; } = string.Empty;
     [Parameter] public Scorecard? scorecard { get; set; }
     [Parameter] public IList<IndividualScores>? individualScores { get; set; }
+
+    private int index = 0;
 
     private string ScoreClass(int score, int par) => (score - par) switch
     {

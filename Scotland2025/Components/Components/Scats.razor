@@ -79,7 +79,7 @@
             @{
                 index = 1;
             }
-            @foreach(var scat in scats)
+            @foreach(var scat in scats.OrderBy(x => x.TeeSlot))
             {
                 <tr class="scorecardscores">
                     <td class ="scorecardplayername">@scat.Name</td>

@@ -2,6 +2,8 @@
 {
     public class IndividualScores
     {
+        public string TeeSlot { get; set; } = string.Empty;
+        public string Team { get; set; } = string.Empty;
         public string Name { get; set; } = string.Empty;
         public double Hcp { get; set; }
         public int Hole1 { get; set; }

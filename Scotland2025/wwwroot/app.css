@@ -144,11 +144,17 @@ h1:focus {
 }
 
 .mud-simple-table table tr.scorecardhcps td {
-    background-color: #b7faef;
+    background-color: #40baf7;
 }
 
 .mud-simple-table table tr.scorecardpars td {
-    background-color: #75e78f;
+    background-color: #b7faef;
+}
+
+.mud-simple-table table tr.scorecardgroups td {
+    background-color: #1861ac;
+    color: lightgray;
+    text-align: left
 }
 
 .mud-simple-table table tr td.scorecardheader {
@@ -164,6 +170,21 @@ h1:focus {
     background-color: #a9ddec;
 }
 
+.mud-simple-table table tr td.team1 {
+    background-color: #e9cf4e;
+}
+
+.mud-simple-table table tr td.team2 {
+    background-color: #61dd87;
+}
+
+.mud-simple-table table tr td.team3 {
+    background-color: #cf76ec;
+}
+
+.mud-simple-table table tr td.team4 {
+    background-color: #ee7e7e;
+}
 
 .mud-simple-table table tr td.scorecardfrontscores,
 .mud-simple-table table tr td.scorecardbackscores,

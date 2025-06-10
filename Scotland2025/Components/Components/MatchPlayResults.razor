@@ -15,7 +15,7 @@ else
                 <th colspan="2">Front</th>
                 <th colspan="2">Back</th>
                 <th colspan="2">18</th>
-                <th colspan="2">Team</th>
+                <th colspan="2">4-Man Team</th>
                 <th></th>
             </tr>
             <tr>
@@ -39,9 +39,9 @@ else
             {
                 <tr class="matchplay">
                     <td rowspan="4">@match.MatchNumber</td>
-                    <td class="nameCol">@match.Team1.Player1.Name</td>
-                    <td class="hcpCol">@match.Team1.Player1.Hcp</td>
-                    <td class="hcpCol">@match.Team1.Player1.Strokes</td>
+                    <td class="team1 nameCol">@match.Team1.Player1.Name</td>
+                    <td class="team1 hcpCol">@match.Team1.Player1.Hcp</td>
+                    <td class="team1 hcpCol">@match.Team1.Player1.Strokes</td>
                     <td rowspan="2">@DisplayPts(match.Team1.Points.Front)</td>
                     <td class="moneyCol" rowspan="2">@Utilities.DisplayWinnings(match.Team1.Player1.MoneyFront)</td>
                     <td rowspan="2">@DisplayPts(match.Team1.Points.Back)</td>
@@ -53,15 +53,15 @@ else
                     <td class="moneyCol" rowspan="2">@Utilities.DisplayWinnings(match.Team1.Player1.MoneyTotal)</td>
                 </tr>
                 <tr class="matchplay">
-                    <td class="nameCol">@match.Team1.Player2.Name</td>
-                    <td class="hcpCol">@match.Team1.Player2.Hcp</td>
-                    <td class="hcpCol">@match.Team1.Player2.Strokes</td>
+                    <td class="team1 nameCol">@match.Team1.Player2.Name</td>
+                    <td class="team1 hcpCol">@match.Team1.Player2.Hcp</td>
+                    <td class="team1 hcpCol">@match.Team1.Player2.Strokes</td>
                 </tr>
 
                 <tr class="matchplay">
-                    <td class="nameCol">@match.Team2.Player1.Name</td>
-                    <td class="hcpCol">@match.Team2.Player1.Hcp</td>
-                    <td class="hcpCol">@match.Team2.Player1.Strokes</td>
+                    <td class="team2 nameCol">@match.Team2.Player1.Name</td>
+                    <td class="team2 hcpCol">@match.Team2.Player1.Hcp</td>
+                    <td class="team2 hcpCol">@match.Team2.Player1.Strokes</td>
                     <td rowspan="2">@DisplayPts(match.Team2.Points.Front)</td>
                     <td class="moneyCol" rowspan="2">@Utilities.DisplayWinnings(match.Team2.Player1.MoneyFront)</td>
                     <td rowspan="2">@DisplayPts(match.Team2.Points.Back)</td>
@@ -73,9 +73,9 @@ else
                     <td class="moneyCol" rowspan="2">@Utilities.DisplayWinnings(match.Team2.Player1.MoneyTotal)</td>
                 </tr>
                 <tr class="matchplay">
-                    <td class="nameCol">@match.Team2.Player2.Name</td>
-                    <td class="hcpCol">@match.Team2.Player2.Hcp</td>
-                    <td class="hcpCol">@match.Team2.Player2.Strokes</td>
+                    <td class="team2 nameCol">@match.Team2.Player2.Name</td>
+                    <td class="team2 hcpCol">@match.Team2.Player2.Hcp</td>
+                    <td class="team2 hcpCol">@match.Team2.Player2.Strokes</td>
                 </tr>
             }
         </tbody>

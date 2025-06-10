@@ -3,18 +3,15 @@
 <PageTitle>Castle Course</PageTitle>
 
 <div class="mt-5"></div>
+<CourseScorecard title="Castle Scorecards" round="Round 3" scorecard="@scorecard" individualScores="@indScores" />
+<Divider />
 <ChicagoPtsResults title="Castle Chicago Points" results="@matches" roundCompleted="@RoundCompleted" />
-@if (info.RoundsCompleted >= 3)
-{
-    <Divider />
-    <IndividualResults title="Castle Daily Individual" results="@indResults" />
-    <Divider />
-    <ClosestToHoleResults title="Castle Closest to Hole" results="@closestToHoleResults" />
-    <Divider />
-    <CourseScorecard title="Castle Scores" round="Round 3" scorecard="@scorecard" individualScores="@indScores" />
-    <Divider />
-    <Scats title="Castle Scats" round="Round 3" scorecard="@scorecard" scats="@scats" scatStats="@scatStats" />
-}
+<Divider />
+<IndividualResults title="Castle Daily Individual" results="@indResults" roundCompleted="@RoundCompleted" />
+<Divider />
+<ClosestToHoleResults title="Castle Closest to Hole" results="@closestToHoleResults" />
+<Divider />
+<Scats title="Castle Scats" round="Round 3" scorecard="@scorecard" scats="@scats" scatStats="@scatStats" />
 
 @code {
 

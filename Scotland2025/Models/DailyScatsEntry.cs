@@ -2,6 +2,7 @@
 
 public class DailyScatsEntry
 {
+    public string TeeSlot { get; set; } = string.Empty;
     public string Name { get; set; } = string.Empty;
     public double Hcp { get; set; }
     public double Hole1 { get; set; }

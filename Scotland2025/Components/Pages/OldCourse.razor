@@ -3,18 +3,15 @@
 <PageTitle>Old Course</PageTitle>
 
 <div class="mt-5"></div>
+<CourseScorecard title="Old Course Scorecards" round="Round 4" scorecard="@scorecard" individualScores="@indScores" />
+<Divider />
 <BestBallNetResults title="Old Course Best Ball Net" results="@bestBallNetResults" roundCompleted="@RoundCompleted" />
-@if (info.RoundsCompleted >= 4)
-{
-    <Divider />
-    <IndividualResults title="Old Course Daily Individual" results="@indResults" />
-    <Divider />
-    <ClosestToHoleResults title="Old Course Closest to Hole" results="@closestToHoleResults" />
-    <Divider />
-    <CourseScorecard title="Old Course Scores" round="Round 4" scorecard="@scorecard" individualScores="@indScores" />
-    <Divider />
-    <Scats title="Old Course Scats" round="Round 4" scorecard="@scorecard" scats="@scats" scatStats="@scatStats" />
-}
+<Divider />
+<IndividualResults title="Old Course Daily Individual" results="@indResults" roundCompleted="@RoundCompleted" />
+<Divider />
+<ClosestToHoleResults title="Old Course Closest to Hole" results="@closestToHoleResults" />
+<Divider />
+<Scats title="Old Course Scats" round="Round 4" scorecard="@scorecard" scats="@scats" scatStats="@scatStats" />
 
 @code {
 

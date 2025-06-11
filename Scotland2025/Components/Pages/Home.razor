@@ -1,8 +1,18 @@
 ﻿@page "/"
 
 <PageTitle>Scotland 2025</PageTitle>
-
+@* 
 <MudText Typo="Typo.h3" GutterBottom="true">Scotland 2025</MudText>
 <MudText Class="mb-8">Home of the Scotand 2025 Golf Trip!</MudText>
+ *@
+
+
+<div class="homepage markdown">
+    <Md MarkdownText="@mdText" />
+</div>
+
+@code {
+    private string mdText = File.ReadAllText("wwwroot/Assets/Markdown/Homepage.md");
+}
 
 

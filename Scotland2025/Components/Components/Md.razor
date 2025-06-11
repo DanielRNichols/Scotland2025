@@ -1,13 +1,12 @@
-﻿@* @if(MarkdownText is not null)
+﻿@using Markdig
+
+@if(MarkdownText is not null)
 {
-    @((MarkupString)(ToHtml(MarkdownText)));
+    @((MarkupString)Markdown.ToHtml(MarkdownText));
 }
 
 @code {
     [Parameter]
     public string? MarkdownText { get; set; }
 
-    private string ToHtml(string markdown) => Markdown.ToHtml(markdown);
-
 }
- *@

@@ -13,6 +13,7 @@ public class BestBallNetTeamEntry
     public double Hole7 { get; set; }
     public double Hole8 { get; set; }
     public double Hole9 { get; set; }
+    public double Front { get; set; }
     public double Hole10 { get; set; }
     public double Hole11 { get; set; }
     public double Hole12 { get; set; }
@@ -22,6 +23,7 @@ public class BestBallNetTeamEntry
     public double Hole16 { get; set; }
     public double Hole17 { get; set; }
     public double Hole18 { get; set; }
+    public double Back { get; set; }
     public int Total { get; set; }
     public double Net { get; set; }
     public int Pos { get; set; }

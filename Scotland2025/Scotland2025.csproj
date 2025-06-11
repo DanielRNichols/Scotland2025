@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Markdig" Version="0.41.2" />
     <PackageReference Include="MudBlazor" Version="8.*" />
     <ProjectReference Include="..\Scotland2025.Application\Scotland2025.Application.csproj" />
     <ProjectReference Include="..\Scotland2025.Infrastructure\Scotland2025.Infrastructure.csproj" />

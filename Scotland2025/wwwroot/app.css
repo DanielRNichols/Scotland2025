@@ -170,20 +170,24 @@ h1:focus {
     background-color: #a9ddec;
 }
 
-.mud-simple-table table tr td.team1 {
-    background-color: #e9cf4e;
+.mud-simple-table table tr td.team1,
+.mud-simple-table table tr.team1 td {
+    background-color: #f3e992;
 }
 
-.mud-simple-table table tr td.team2 {
-    background-color: #61dd87;
+.mud-simple-table table tr td.team2,
+.mud-simple-table table tr.team2 td {
+    background-color: #bae6ae;
 }
 
-.mud-simple-table table tr td.team3 {
-    background-color: #cf76ec;
+.mud-simple-table table tr td.team3,
+.mud-simple-table table tr.team3 td {
+    background-color: #e6cbec;
 }
 
-.mud-simple-table table tr td.team4 {
-    background-color: #ee7e7e;
+.mud-simple-table table tr td.team4,
+.mud-simple-table table tr.team4 td {
+    background-color: #afdae0;
 }
 
 .mud-simple-table table tr td.scorecardfrontscores,
@@ -217,4 +221,22 @@ h1:focus {
 
 .footer .copyright {
     font-style: italic;
+}
+
+.markdown {
+    font-family: "Roboto", sans-serif;
+    font-size: 1rem;
+}
+
+.markdown hr {
+    padding: 0.5rem;
+}
+
+.markdown p {
+    margin-left: 25px;
+}
+
+.markdown li {
+    list-style-type: disc;
+    margin-left: 25px;
 }

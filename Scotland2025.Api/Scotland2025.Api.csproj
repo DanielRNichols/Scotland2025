@@ -21,4 +21,8 @@
     <ProjectReference Include="..\Scotland2025.ServiceDefaults\Scotland2025.ServiceDefaults.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Endpoints\Images\" />
+  </ItemGroup>
+
 </Project>

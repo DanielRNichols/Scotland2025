@@ -68,10 +68,22 @@ h1:focus {
     border: 1px solid #0e0e10;
 }
 
-.mud-simple-table.scorecard {
+.mud-simple-table.scorecard,
+.mud-simple-table.scats,
+.mud-simple-table.chicagoPts,
+.mud-simple-table.matchPlay,
+.mud-simple-table.bestBallNetExpanded,
+.mud-simple-table.bestBallNetCompressed,
+.mud-simple-table.dailyIndResults,
+.mud-simple-table.roster,
+.mud-simple-table.leaderboard,
+.mud-simple-table.moneyTotals {
     width: 100%;
 }
 
+.mud-simple-table.closestToHole {
+    width: 300px;
+}
 
 /* Table elements */
 .mud-simple-table table tr {
@@ -275,11 +287,23 @@ font-size: 1rem;
     .imageCarousel {
         height: 24rem;
     }
+
+    .mud-simple-table.bestBallNetCompressed,
+    .mud-simple-table.dailyIndResults {
+        width: 380px;
+    }
+
+
+
 }
 
 @media only screen and (min-width: 600px) {
     .imageCarousel {
         height: 28rem;
+    }
+
+    .mud-simple-table.roster {
+        width: 480px;
     }
 
     .footer {
@@ -298,6 +322,15 @@ font-size: 1rem;
 @media only screen and (min-width: 960px) {
     .imageCarousel {
         height: 36rem;
+    }
+
+    .mud-simple-table.leaderboard,
+    .mud-simple-table.moneyTotals {
+        width: 750px;
+    }
+
+    .mud-simple-table.matchPlay {
+        width: 900px;
     }
 }
 

@@ -9,7 +9,7 @@
 else
 {
     <div class="mt-5"></div>
-    <MudSimpleTable Dense="@true" Bordered="@true" Style="width:40rem">
+    <MudSimpleTable Class="leaderboard" Dense="@true" Bordered="@true">
         <thead>
             <tr>
                 <th class="tableheader" colspan="10">Leaderboard</th>
@@ -35,9 +35,9 @@ else
                     <td class="nameCol">@entry.Name</td>
                     <td class="hcpCol">@entry.Hcp</td>
                     <td class="totalCol @Utilities.NetClass(entry.Total)">@(leaderboard.RoundsCompleted > 0 ? Utilities.DisplayNet(entry.Pos, entry.Total) : "")</td>
-                    <td class="netCol @Utilities.NetClass(entry.Round1)">@(leaderboard.RoundsCompleted > 0 ? Utilities.DisplayNet(entry.Pos, entry.Round1) : "")</td>
-                    <td class="netCol @Utilities.NetClass(entry.Round2)">@(leaderboard.RoundsCompleted > 1 ? Utilities.DisplayNet(entry.Pos, entry.Round2) : "")</td>
-                    <td class="netCol @Utilities.NetClass(entry.Round3)">@(leaderboard.RoundsCompleted > 2 ? Utilities.DisplayNet(entry.Pos, entry.Round3) : "")</td>
+                    <td class="netCol @Utilities.NetClass(entry.Round1) @Drop(entry, 1)">@(leaderboard.RoundsCompleted > 0 ? Utilities.DisplayNet(entry.Pos, entry.Round1) : "")</td>
+                    <td class="netCol @Utilities.NetClass(entry.Round2) @Drop(entry, 2)">@(leaderboard.RoundsCompleted > 1 ? Utilities.DisplayNet(entry.Pos, entry.Round2) : "")</td>
+                    <td class="netCol @Utilities.NetClass(entry.Round3) @Drop(entry, 3)">@(leaderboard.RoundsCompleted > 2 ? Utilities.DisplayNet(entry.Pos, entry.Round3) : "")</td>
                     <td class="netCol @Utilities.NetClass(entry.Round4)">@(leaderboard.RoundsCompleted > 3 ? Utilities.DisplayNet(entry.Pos, entry.Round4) : "")</td>
                     <td class="netCol @Utilities.NetClass(entry.Round5)">@(leaderboard.RoundsCompleted > 4 ? Utilities.DisplayNet(entry.Pos, entry.Round5) : "")</td>
                     <td class="moneyCol">@Utilities.DisplayWinnings(entry.Winnings)</td>
@@ -57,6 +57,36 @@ else
     protected override async Task OnInitializedAsync()
     {
         leaderboard = await dataService.GetLeaderboardAsync();
+    }
+
+    private string Drop(LeaderboardEntry entry, int round)
+    {
+        if(leaderboard is null || leaderboard.RoundsCompleted < 3 || round > 3)
+            return string.Empty;
+
+        var droppedRound = GetDroppedRound(entry);
+        return round == droppedRound ? "droppedScore" : string.Empty;
+    }
+
+    private int GetDroppedRound(LeaderboardEntry entry)
+    {
+        if (leaderboard is null || leaderboard.RoundsCompleted < 3)
+            return 0;
+
+        var rounds = new List<double>
+        {
+            entry.Round1,
+            entry.Round2,
+            entry.Round3
+        };
+
+        var maxScore = rounds.Max();
+        if(entry.Round1 == maxScore)
+            return 1;
+        if(entry.Round2 == maxScore)
+            return 2;
+
+        return 3;
     }
 
 }

@@ -1,4 +1,6 @@
-@Scotland2025.Api_HostAddress = https://localhost:7243/api
+### @Scotland2025.Api_HostAddress = https://localhost:7243/api
+@Scotland2025.Api_HostAddress = https://localhost:7244/api
+
 
 GET {{Scotland2025.Api_HostAddress}}/test/
 Accept: application/json
@@ -9,7 +11,7 @@ GET {{Scotland2025.Api_HostAddress}}/jsonDocuments/
 Accept: application/json
 
 ###
-GET {{Scotland2025.Api_HostAddress}}/jsonDocuments/75
+GET {{Scotland2025.Api_HostAddress}}/jsonDocuments/1
 Accept: application/json
 
 ###

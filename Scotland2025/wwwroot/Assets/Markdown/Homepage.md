@@ -62,17 +62,16 @@
 ---
 
 - ### Match Play (Dumbarnie and Carnoustie)
-  - Each hole is worth 1 pt
-  - Team with lowest net score on each hole wins 1 pt
   - Two members of each team in each foursome
-  - Triple bogey max on all holes
-  - If the hole is tied, each teams gets 1/2 point 
+  - Each hole is worth 1 pt
+  - Team with lowest net score on each hole wins 1 pt, if the hole is tied, each teams gets 1/2 point
   - Bonus point for winning front, back and total
   - Total points for match = 21
   - Team total is the total points of the two teams
+  - Triple bogey max on all holes
   - Payout
     - $5/$5/$5 for front/back/18 against the other team in your foursome
-    - $25 per member of four-man team
+    - $25 per member of winning four-man team
 
 ---
 

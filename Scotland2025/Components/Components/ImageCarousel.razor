@@ -1,0 +1,52 @@
+﻿<MudCarousel Class="imageCarousel" @ref="_carousel" 
+             ItemsSource="@images" 
+             @bind-SelectedIndex="selectedIndex" 
+             AutoCycle="@autoCycle" ShowArrows="false" ShowBullets="false">
+    <ItemTemplate>
+            <div class="d-flex flex-column flex-column justify-center">
+            <MudImage Class="responsive-image" Src="@context" />
+
+            </div>
+    </ItemTemplate>
+</MudCarousel> 
+
+
+<MudButtonGroup Class="mt-2" Variant="Variant.Outlined">
+    <MudIconButton Icon="@Icons.Material.Filled.SkipPrevious" aria-label="previous" OnClick="PreviousImage"></MudIconButton>
+     <MudIconButton Icon="@playPauseIcon" aria-label="play" OnClick="PlayPause"></MudIconButton>
+    <MudIconButton Icon="@Icons.Material.Filled.SkipNext" aria-label="next" OnClick="NextImage"></MudIconButton>
+</MudButtonGroup>
+
+@code {
+    [Parameter] public string[] images { get; set; } = Array.Empty<string>();
+
+    private MudCarousel<string>? _carousel;
+    private int selectedIndex = 0;
+    private bool autoCycle = false;
+
+    private string playPauseIcon => autoCycle ? Icons.Material.Filled.Pause : Icons.Material.Filled.PlayArrow;
+
+    private string CurrentImage(string image) => image;
+
+    private string SelectedImage() => images[selectedIndex];
+
+    private void PreviousImage()
+    {
+        if(_carousel is not null)
+            _carousel.Previous();
+
+    }
+
+    private void NextImage()
+    {
+        if(_carousel is not null)
+            _carousel.Next();
+    }
+
+    private void PlayPause()
+    {
+        autoCycle = !autoCycle;
+        if (autoCycle)
+            NextImage();
+    }
+}

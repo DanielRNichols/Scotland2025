@@ -1,6 +1,7 @@
 ﻿using Scotland2025.Application.Abstractions.Data;
 using Scotland2025.Application.JsonDocuments;
 using Microsoft.EntityFrameworkCore;
+using Scotland2025.Application.Images;
 
 namespace Scotland2025.Infrastructure.Data.DbContexts
 {
@@ -12,6 +13,7 @@ namespace Scotland2025.Infrastructure.Data.DbContexts
         }
 
         public DbSet<JsonDocument> JsonDocuments => Set<JsonDocument>();
+        public DbSet<Image> Images => Set<Image>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -7,12 +7,12 @@ using Scotland2025.Models;
 using System.Text.Json;
 
 namespace Scotland2025.Services.Data;
-public class DataService : IDataService
+public class JsonDocumentsDataService : IJsonDocumentsDataService
 {
     private readonly ISender _sender;
     private readonly IJsonDocumentOptions _jsonDocumentOptions;
 
-    public DataService(ISender sender, IJsonDocumentOptions jsonDocumentOptions)
+    public JsonDocumentsDataService(ISender sender, IJsonDocumentOptions jsonDocumentOptions)
     {
         _sender = sender;
         _jsonDocumentOptions = jsonDocumentOptions;

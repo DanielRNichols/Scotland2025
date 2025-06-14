@@ -2,7 +2,7 @@
 using Scotland2025.Models;
 
 namespace Scotland2025.Abstractions.Data;
-public interface IDataService
+public interface IJsonDocumentsDataService
 {
     Task<T?> GetAsync<T>(string documentName, CancellationToken cancellationToken = default) where T : class;
 
@@ -21,5 +21,8 @@ public interface IDataService
     Task<IList<MoneyTotalEntry>> GetMoneyTotalsAsync(CancellationToken cancellationToken = default);
     Task<IList<RosterEntry>> GetRosterAsync(CancellationToken cancellationToken = default);
     Task<Scorecard> GetScorecardAsync(string name, CancellationToken cancellationToken = default);
+
+
+
 
 }

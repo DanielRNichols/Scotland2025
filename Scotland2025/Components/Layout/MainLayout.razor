@@ -59,6 +59,7 @@
 
     private readonly PaletteLight _lightPalette = new()
     {
+        Primary = "#1565C0",
         Background = "#f9f9f9",
         Black = "#110e2d",
         AppbarText = "#f9f9f9",
@@ -66,11 +67,12 @@
         DrawerBackground = "#f9f9f9",
         GrayLight = "#e8e8e8",
         GrayLighter = "#f9f9f9",
+
     };
 
     private readonly PaletteDark _darkPalette = new()
     {
-        Primary = "#7e6fff",
+        Primary = "#1565C0",
         Surface = "#1e1e2d",
         Background = "#1a1a27",
         BackgroundGray = "#151521",
@@ -99,7 +101,7 @@
 
     public string DarkLightModeButtonIcon => _isDarkMode switch
     {
-        true => Icons.Material.Filled.Lightbulb,
+        true => Icons.Material.Filled.LightMode,
         false => Icons.Material.Filled.DarkMode,
     };
 }

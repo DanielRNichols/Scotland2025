@@ -18,7 +18,8 @@ builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
 
-builder.Services.AddScoped<IDataService, DataService>();
+builder.Services.AddScoped<IJsonDocumentsDataService, JsonDocumentsDataService>();
+builder.Services.AddScoped<IImagesDataService, ImagesDataService>();
 
 
 builder.Services.AddInfrastructure(builder.Configuration);

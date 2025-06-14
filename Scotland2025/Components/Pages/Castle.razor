@@ -16,7 +16,7 @@
 @code {
 
     [Inject]
-    public IDataService dataService { get; set; } = default!;
+    public IJsonDocumentsDataService dataService { get; set; } = default!;
 
     private Info info { get; set; } = new Info();
     private IList<DailyIndividualEntry>? indResults { get; set; } = new List<DailyIndividualEntry>();

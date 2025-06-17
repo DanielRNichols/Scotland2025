@@ -1,0 +1,13 @@
+﻿@page "/rules"
+
+<PageTitle>Scotland 2025</PageTitle>
+
+<div class="rules markdown">
+    <Md MarkdownText="@mdText" />
+</div>
+
+@code {
+    private string mdText = File.ReadAllText("wwwroot/Assets/Markdown/Rules.md");
+}
+
+

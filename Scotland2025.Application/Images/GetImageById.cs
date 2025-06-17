@@ -1,18 +1,18 @@
 ﻿using ErrorOr;
-using Scotland2025.Application.Abstractions.Data;
 using Scotland2025.Application.Abstractions.Queries;
 using Microsoft.EntityFrameworkCore;
+using Scotland2025.Application.DbContexts;
 
 namespace Scotland2025.Application.Images;
 public record GetImageByIdQuery(int Id) : IQuery<ErrorOr<Image>>;
 
 public class GetImageByIdQueryHandler : IQueryHandler<GetImageByIdQuery, ErrorOr<Image>>
 {
-    private readonly IScotland2025DbContext _dbContext;
+    private readonly Scotland2025DbContext _dbContext;
 
-    public GetImageByIdQueryHandler(IScotland2025DbContext dbContext)
+    public GetImageByIdQueryHandler(IDbContextFactory<Scotland2025DbContext> dbContextFactory)
     {
-        _dbContext = dbContext;
+        _dbContext = dbContextFactory.CreateDbContext();
     }
 
     public async Task<ErrorOr<Image>> Handle(GetImageByIdQuery query, CancellationToken cancellationToken)

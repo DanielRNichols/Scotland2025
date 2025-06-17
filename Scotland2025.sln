@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scotland2025.ServiceDefault
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scotland2025.Application", "Scotland2025.Application\Scotland2025.Application.csproj", "{AA0D9DD1-F5F3-4854-B38D-E7BE9E9BC6B4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scotland2025.Infrastructure", "Scotland2025.Infrastructure\Scotland2025.Infrastructure.csproj", "{5AD98987-9BEF-4987-AE19-FE08DA55FBAD}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scotland2025.JsonDocumentPoster", "Scotland2025.JsonDocumentPoster\Scotland2025.JsonDocumentPoster.csproj", "{D38C2787-A4F6-4987-BA73-F381CF2E5C1E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scotland2025.Api", "Scotland2025.Api\Scotland2025.Api.csproj", "{E8A4AD55-EFC6-5947-8332-A4D91926681A}"
@@ -41,10 +39,6 @@ Global
 		{AA0D9DD1-F5F3-4854-B38D-E7BE9E9BC6B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AA0D9DD1-F5F3-4854-B38D-E7BE9E9BC6B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AA0D9DD1-F5F3-4854-B38D-E7BE9E9BC6B4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5AD98987-9BEF-4987-AE19-FE08DA55FBAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5AD98987-9BEF-4987-AE19-FE08DA55FBAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5AD98987-9BEF-4987-AE19-FE08DA55FBAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5AD98987-9BEF-4987-AE19-FE08DA55FBAD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D38C2787-A4F6-4987-BA73-F381CF2E5C1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D38C2787-A4F6-4987-BA73-F381CF2E5C1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D38C2787-A4F6-4987-BA73-F381CF2E5C1E}.Release|Any CPU.ActiveCfg = Release|Any CPU

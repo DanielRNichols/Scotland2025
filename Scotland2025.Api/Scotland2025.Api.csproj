@@ -17,7 +17,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Scotland2025.Application\Scotland2025.Application.csproj" />
     <ProjectReference Include="..\Scotland2025.Contracts\Scotland2025.Contracts.csproj" />
-    <ProjectReference Include="..\Scotland2025.Infrastructure\Scotland2025.Infrastructure.csproj" />
     <ProjectReference Include="..\Scotland2025.ServiceDefaults\Scotland2025.ServiceDefaults.csproj" />
   </ItemGroup>
 

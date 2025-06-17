@@ -8,7 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Scotland2025.Api\Scotland2025.Api.csproj" />
     <ProjectReference Include="..\Scotland2025.Contracts\Scotland2025.Contracts.csproj" />
   </ItemGroup>
 

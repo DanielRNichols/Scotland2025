@@ -22,9 +22,16 @@ namespace DataUploader
         {
             var jsonDocumentPutRequest = new UpdateJsonDocument.Request(jsonValue);
 
-            //string url = $"https://localhost:7243/api/jsondocuments/{documentName}";
-            string url = $"https://localhost:7244/api/jsondocuments/{documentName}";
-            //string url = $"http://danielrnichols-001-site5.ftempurl.com/api/jsondocuments/{documentName}";
+            // local
+            string url = $"https://localhost:7243/api/jsondocuments/{documentName}";
+
+            // test
+            //string url = $"https://localhost:7244/api/jsondocuments/{documentName}";
+            //string url = $"http://scotland2025.api.test.nichols-br.net/api/jsondocuments/{documentName}";
+
+            // prod
+            //string url = $"http://scotland2025.api.nichols-br.net/api/jsondocuments/{documentName}";
+            //string url = $"https://localhost:7245/api/jsondocuments/{documentName}";
 
             using var httpClient = new HttpClient();
             Console.WriteLine(url);

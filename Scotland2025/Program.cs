@@ -1,9 +1,10 @@
 using MudBlazor.Services;
 using Scotland2025.Abstractions.Data;
 using Scotland2025.Application;
+using Scotland2025.Abstractions.Versioning;
 using Scotland2025.Components;
-using Scotland2025.Infrastructure;
 using Scotland2025.Services.Data;
+using Scotland2025.Versioning;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,10 +21,11 @@ builder.Services.AddRazorComponents()
 
 builder.Services.AddScoped<IJsonDocumentsDataService, JsonDocumentsDataService>();
 builder.Services.AddScoped<IImagesDataService, ImagesDataService>();
+builder.Services.AddScoped<IVersioningService, VersioningService>();
 
 
-builder.Services.AddInfrastructure(builder.Configuration);
-builder.Services.AddApplication();
+//builder.Services.AddInfrastructure(builder.Configuration);
+builder.Services.AddApplication(builder.Configuration);
 
 
 var app = builder.Build();

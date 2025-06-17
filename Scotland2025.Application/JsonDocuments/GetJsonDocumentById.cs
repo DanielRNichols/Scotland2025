@@ -1,18 +1,18 @@
 ﻿using ErrorOr;
-using Scotland2025.Application.Abstractions.Data;
 using Scotland2025.Application.Abstractions.Queries;
 using Microsoft.EntityFrameworkCore;
+using Scotland2025.Application.DbContexts;
 
 namespace Scotland2025.Application.JsonDocuments;
 public record GetJsonDocumentByIdQuery(int Id) : IQuery<ErrorOr<JsonDocument>>;
 
 public class GetJsonDocumentByIdQueryHandler : IQueryHandler<GetJsonDocumentByIdQuery, ErrorOr<JsonDocument>>
 {
-    private readonly IScotland2025DbContext _dbContext;
+    private readonly Scotland2025DbContext _dbContext;
 
-    public GetJsonDocumentByIdQueryHandler(IScotland2025DbContext dbContext)
+    public GetJsonDocumentByIdQueryHandler(IDbContextFactory<Scotland2025DbContext> dbContextFactory)
     {
-        _dbContext = dbContext;
+        _dbContext = dbContextFactory.CreateDbContext();
     }
 
     public async Task<ErrorOr<JsonDocument>> Handle(GetJsonDocumentByIdQuery query, CancellationToken cancellationToken)

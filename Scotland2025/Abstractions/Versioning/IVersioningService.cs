@@ -1,4 +1,4 @@
-﻿namespace Scotland2025.Application.Abstractions.Versioning
+﻿namespace Scotland2025.Abstractions.Versioning
 {
     public interface IVersioningService
     {

@@ -1,17 +1,17 @@
 ﻿using ErrorOr;
 using Scotland2025.Application.Abstractions.Commands;
-using Scotland2025.Application.Abstractions.Data;
 using Microsoft.EntityFrameworkCore;
+using Scotland2025.Application.DbContexts;
 
 namespace Scotland2025.Application.JsonDocuments;
 public record DeleteJsonDocumentCommand(string DocumentName) : ICommand<ErrorOr<Success>>;
 public class DeleteJsonDocumentCommandHandler : ICommandHandler<DeleteJsonDocumentCommand, ErrorOr<Success>>
 {
-    private readonly IScotland2025DbContext _dbContext;
+    private readonly Scotland2025DbContext _dbContext;
 
-    public DeleteJsonDocumentCommandHandler(IScotland2025DbContext dbContext)
+    public DeleteJsonDocumentCommandHandler(IDbContextFactory<Scotland2025DbContext> dbContextFactory)
     {
-        _dbContext = dbContext;
+        _dbContext = dbContextFactory.CreateDbContext();
     }
 
     public async Task<ErrorOr<Success>> Handle(DeleteJsonDocumentCommand req, CancellationToken cancellationToken)

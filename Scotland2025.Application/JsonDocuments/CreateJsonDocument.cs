@@ -1,9 +1,9 @@
 ﻿using ErrorOr;
 using Microsoft.EntityFrameworkCore;
 using Scotland2025.Application.Abstractions.Commands;
-using Scotland2025.Application.Abstractions.Data;
 using Scotland2025.Application.Abstractions.DatesAndTime;
 using Scotland2025.Application.Common.Errors;
+using Scotland2025.Application.DbContexts;
 
 namespace Scotland2025.Application.JsonDocuments;
 
@@ -11,12 +11,12 @@ public record CreateJsonDocumentCommand(string DocumentName, string JsonValue) :
 
 public class CreateJsonDocumentCommandHandler : ICommandHandler<CreateJsonDocumentCommand, ErrorOr<JsonDocument>>
 {
-    private readonly IScotland2025DbContext _dbContext;
+    private readonly Scotland2025DbContext _dbContext;
     private readonly IDateTimeProvider _dateTimeProvider;
 
-    public CreateJsonDocumentCommandHandler(IScotland2025DbContext dbContext, IDateTimeProvider dateTimeProvider)
+    public CreateJsonDocumentCommandHandler(IDbContextFactory<Scotland2025DbContext> dbContextFactory, IDateTimeProvider dateTimeProvider)
     {
-        _dbContext = dbContext;
+        _dbContext = dbContextFactory.CreateDbContext();
         _dateTimeProvider = dateTimeProvider;
     }
 

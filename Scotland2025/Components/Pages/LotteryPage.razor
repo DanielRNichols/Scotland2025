@@ -23,7 +23,7 @@ else
             </tr>
         </thead>
         <tbody>
-            @foreach (var entry in lotteryEntries)
+            @foreach (var entry in lotteryEntries.OrderBy(e => e.Pos))
             {
                 <tr>
                     <td class="name">@entry.Name</td>

@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Scotland2025.Application.Abstractions.Data;
 using Scotland2025.Application.Abstractions.DatesAndTime;
+using Scotland2025.Application.DbContexts;
 using Scotland2025.Infrastructure.Data.DbContexts;
 using Scotland2025.Infrastructure.DatesAndTime;
 
@@ -29,8 +29,6 @@ namespace Scotland2025.Infrastructure
 
             services.AddDbContext<Scotland2025DbContext>(options =>
                 options.UseSqlServer(connectionString));
-
-            services.AddScoped<IScotland2025DbContext, Scotland2025DbContext>();
 
             return services;
         }

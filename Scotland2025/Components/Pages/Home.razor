@@ -1,18 +1,37 @@
 ﻿@page "/"
+@using Scotland2025.Application.Images
 
 <PageTitle>Scotland 2025</PageTitle>
-@* 
-<MudText Typo="Typo.h3" GutterBottom="true">Scotland 2025</MudText>
-<MudText Class="mb-8">Home of the Scotand 2025 Golf Trip!</MudText>
- *@
 
-
-<div class="homepage markdown">
-    <Md MarkdownText="@mdText" />
+<div class="mt-2 mb-1">
+    <MudText Typo="Typo.h5" Align="Align.Center">Welcome to the</MudText>
+    <MudText Typo="Typo.h5" Align="Align.Center">Scotland 2025 Golf Trip!</MudText>
 </div>
 
-@code {
-    private string mdText = File.ReadAllText("wwwroot/Assets/Markdown/Homepage.md");
-}
+<div style="text-align:center">
+        <MudImage Class="responsive-image" Src="https://hosting.photobucket.com/71031e7a-93a0-48c1-8371-0e82ef5324a5/8cc988e1-d202-4f6a-bff9-0b7256151176.jpg?width=590&height=370&fit=bounds" Alt="Welcome to Scotland 2025" Width="380" />
+</div>
 
+<MudText Typo="Typo.body1" Align="Align.Center" GutterBottom="true">
+    *To view available options, click on the menu button in the upper left hand corner of the page
+    
+</MudText>
+
+@code {
+    [Inject]
+    public IImagesDataService imagesDataService { get; set; } = default!;
+
+    private IList<Image> images = new List<Image>();
+
+    private string mdText = File.ReadAllText("wwwroot/Assets/Markdown/Homepage.md");
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        images = await imagesDataService.GetAsync();
+
+    }
+
+    private string[] GetImageUrls() => images.Select(image => image.Url).ToArray();
+}
 

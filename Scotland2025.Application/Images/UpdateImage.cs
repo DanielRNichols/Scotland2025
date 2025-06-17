@@ -1,20 +1,20 @@
 ﻿using ErrorOr;
 using Scotland2025.Application.Abstractions.Commands;
-using Scotland2025.Application.Abstractions.Data;
 using Microsoft.EntityFrameworkCore;
 using Scotland2025.Application.Abstractions.DatesAndTime;
+using Scotland2025.Application.DbContexts;
 
 namespace Scotland2025.Application.Images;
 public record UpdateImageCommand(int Id, string Url, string? Description, DateTime? DateAdded, string? AddedBy) : ICommand<ErrorOr<Image>>;
 
 public class UpdateImageCommandHandler : ICommandHandler<UpdateImageCommand, ErrorOr<Image>>
 {
-    private readonly IScotland2025DbContext _dbContext;
+    private readonly Scotland2025DbContext _dbContext;
     private readonly IDateTimeProvider _dateTimeProvider;
 
-    public UpdateImageCommandHandler(IScotland2025DbContext dbContext, IDateTimeProvider dateTimeProvider)
+    public UpdateImageCommandHandler(IDbContextFactory<Scotland2025DbContext> dbContextFactory, IDateTimeProvider dateTimeProvider)
     {
-        _dbContext = dbContext;
+        _dbContext = dbContextFactory.CreateDbContext();
         _dateTimeProvider = dateTimeProvider;
     }
 

@@ -1,9 +1,8 @@
 ﻿using ErrorOr;
 using Microsoft.EntityFrameworkCore;
 using Scotland2025.Application.Abstractions.Commands;
-using Scotland2025.Application.Abstractions.Data;
 using Scotland2025.Application.Abstractions.DatesAndTime;
-using Scotland2025.Application.Common.Errors;
+using Scotland2025.Application.DbContexts;
 
 namespace Scotland2025.Application.Images;
 
@@ -11,12 +10,12 @@ public record CreateImageCommand(string Url, string? Description, string? AddedB
 
 public class CreateJsonDocumentCommandHandler : ICommandHandler<CreateImageCommand, ErrorOr<Image>>
 {
-    private readonly IScotland2025DbContext _dbContext;
+    private readonly Scotland2025DbContext _dbContext;
     private readonly IDateTimeProvider _dateTimeProvider;
 
-    public CreateJsonDocumentCommandHandler(IScotland2025DbContext dbContext, IDateTimeProvider dateTimeProvider)
+    public CreateJsonDocumentCommandHandler(IDbContextFactory<Scotland2025DbContext> dbContextFactory, IDateTimeProvider dateTimeProvider)
     {
-        _dbContext = dbContext;
+        _dbContext = dbContextFactory.CreateDbContext();
         _dateTimeProvider = dateTimeProvider;
     }
 

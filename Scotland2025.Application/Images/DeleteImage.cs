@@ -1,17 +1,17 @@
 ﻿using ErrorOr;
 using Scotland2025.Application.Abstractions.Commands;
-using Scotland2025.Application.Abstractions.Data;
 using Microsoft.EntityFrameworkCore;
+using Scotland2025.Application.DbContexts;
 
 namespace Scotland2025.Application.Images;
 public record DeleteImageCommand(int Id) : ICommand<ErrorOr<Success>>;
 public class DeleteImageCommandHandler : ICommandHandler<DeleteImageCommand, ErrorOr<Success>>
 {
-    private readonly IScotland2025DbContext _dbContext;
+    private readonly Scotland2025DbContext _dbContext;
 
-    public DeleteImageCommandHandler(IScotland2025DbContext dbContext)
+    public DeleteImageCommandHandler(IDbContextFactory<Scotland2025DbContext> dbContextFactory)
     {
-        _dbContext = dbContext;
+        _dbContext = dbContextFactory.CreateDbContext();
     }
 
     public async Task<ErrorOr<Success>> Handle(DeleteImageCommand req, CancellationToken cancellationToken)

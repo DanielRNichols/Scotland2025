@@ -1,11 +1,10 @@
-﻿using Scotland2025.Application.Abstractions.Data;
-using Scotland2025.Application.JsonDocuments;
+﻿using Scotland2025.Application.JsonDocuments;
 using Microsoft.EntityFrameworkCore;
 using Scotland2025.Application.Images;
 
-namespace Scotland2025.Infrastructure.Data.DbContexts
+namespace Scotland2025.Application.DbContexts
 {
-    public class Scotland2025DbContext : DbContext, IScotland2025DbContext
+    public class Scotland2025DbContext : DbContext
     {
         public Scotland2025DbContext(DbContextOptions options) : base(options)
         {

@@ -1,20 +1,20 @@
 ﻿using ErrorOr;
 using Scotland2025.Application.Abstractions.Commands;
-using Scotland2025.Application.Abstractions.Data;
 using Microsoft.EntityFrameworkCore;
 using Scotland2025.Application.Abstractions.DatesAndTime;
+using Scotland2025.Application.DbContexts;
 
 namespace Scotland2025.Application.JsonDocuments;
 public record UpdateJsonDocumentCommand(string DocumentName, string JsonValue) : ICommand<ErrorOr<JsonDocument>>;
 
 public class UpdateJsonDocumentCommandHandler : ICommandHandler<UpdateJsonDocumentCommand, ErrorOr<JsonDocument>>
 {
-    private readonly IScotland2025DbContext _dbContext;
+    private readonly Scotland2025DbContext _dbContext;
     private readonly IDateTimeProvider _dateTimeProvider;
 
-    public UpdateJsonDocumentCommandHandler(IScotland2025DbContext dbContext, IDateTimeProvider dateTimeProvider)
+    public UpdateJsonDocumentCommandHandler(IDbContextFactory<Scotland2025DbContext> dbContextFactory, IDateTimeProvider dateTimeProvider)
     {
-        _dbContext = dbContext;
+        _dbContext = dbContextFactory.CreateDbContext();
         _dateTimeProvider = dateTimeProvider;
     }
 

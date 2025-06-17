@@ -21,8 +21,7 @@ builder.Services.AddCors(options =>
 });
 
 builder.Services.AddGlobalErrorHandling();
-builder.Services.AddApplication();
-builder.Services.AddInfrastructure(builder.Configuration);
+builder.Services.AddApplication(builder.Configuration);
 
 builder.Services.AddApiEndpoints();
 

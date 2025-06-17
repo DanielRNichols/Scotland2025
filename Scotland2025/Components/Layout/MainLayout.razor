@@ -1,4 +1,5 @@
 ﻿@inherits LayoutComponentBase
+@inject IWebHostEnvironment Env
 
 <MudThemeProvider Theme="@_theme" IsDarkMode="_isDarkMode" />
 <MudPopoverProvider />
@@ -7,7 +8,7 @@
 <MudLayout>
     <MudAppBar Elevation="1">
         <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
-        <MudText Typo="Typo.h5" Class="ml-3">Scotland 2025</MudText>
+        <MudText Typo="Typo.h5" Class="ml-1">@AppTitle()</MudText>
         <MudSpacer />
         <MudIconButton Icon="@(DarkLightModeButtonIcon)" Color="Color.Inherit" OnClick="@DarkModeToggle" />
 @*         
@@ -45,6 +46,25 @@
             PaletteDark = _darkPalette,
             LayoutProperties = new LayoutProperties()
         };
+    }
+
+    private string AppTitle()
+    {
+        var suffix = "";
+        if(Env.IsProduction())
+        {
+            suffix = "";
+        }
+        else if (Env.IsDevelopment())
+        {
+            suffix = "-Dev";
+        }
+        else
+        {
+            suffix = $"-{Env.EnvironmentName}";
+        }
+
+        return $"Scotland 2025{suffix}";
     }
 
     private void DrawerToggle()

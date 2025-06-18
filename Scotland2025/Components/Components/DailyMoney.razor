@@ -1,0 +1,93 @@
+﻿<MudSimpleTable Class="moneyTotals" Dense="@true" Bordered="@true">
+    <thead>
+        <tr>
+            <th class="tableheader" colspan="8">@title</th>
+        </tr>
+        <tr>
+            <th class="nameCol">Name</th>
+            <th class="moneyCol">Ind</th>
+            <th class="moneyCol">Team</th>
+            <th class="moneyCol">Scats</th>
+            <th class="moneyCol">Closest</th>
+            <th class="moneyCol">Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var entry in entriesRoundMoney.OrderByDescending(e => EntryRoundTotal(e)))
+        {
+            <tr>
+                <td class="nameCol">@entry.Name</td>
+                <td class="moneyCol">@Utilities.DisplayWinnings(entry.Individual)</td>
+                <td class="moneyCol">@Utilities.DisplayWinnings(entry.Team)</td>
+                <td class="moneyCol">@Utilities.DisplayWinnings(entry.Scats)</td>
+                <td class="moneyCol">@Utilities.DisplayWinnings(entry.Closest)</td>
+                <td class="moneyCol">@Utilities.DisplayWinnings(EntryRoundTotal(entry))</td>
+            </tr>
+        }
+    </tbody>
+
+</MudSimpleTable>
+
+@code {
+        [Parameter] public string title { get; set; } = string.Empty;
+        [Parameter] public IList<MoneyTotalEntry> moneyTotals { get; set; } = new List<MoneyTotalEntry>();
+        [Parameter] public int round { get; set; } = 0;
+
+    private record EntryRoundMoney(string Name, double Individual, double Team, double Scats, double Closest);
+
+    private IList<EntryRoundMoney> entriesRoundMoney = new List<EntryRoundMoney>();
+   
+    override protected void OnParametersSet()
+    {
+        entriesRoundMoney = moneyTotals.Select(e => 
+            new EntryRoundMoney(e.Name, RoundIndividual(e, round), 
+                                        RoundTeam(e, round), 
+                                        RoundScats(e, round), 
+                                        RoundClosest(e, round))).ToList();
+    }
+
+
+
+    private double RoundIndividual(MoneyTotalEntry entry, int round) => round switch
+    {
+        1 => entry.Round1Individual,
+        2 => entry.Round2Individual,
+        3 => entry.Round3Individual,
+        4 => entry.Round4Individual,
+        5 => entry.Round5Individual,
+        _ => 0
+    };
+
+    private double RoundTeam(MoneyTotalEntry entry, int round) => round switch
+    {
+        1 => entry.Round1Team,
+        2 => entry.Round2Team,
+        3 => entry.Round3Team,
+        4 => entry.Round4Team,
+        5 => entry.Round5Team,
+        _ => 0
+    };
+
+    private double RoundScats(MoneyTotalEntry entry, int round) => round switch
+    {
+        1 => entry.Round1Scats,
+        2 => entry.Round2Scats,
+        3 => entry.Round3Scats,
+        4 => entry.Round4Scats,
+        5 => entry.Round5Scats,
+        _ => 0
+    };
+
+    private double RoundClosest(MoneyTotalEntry entry, int round) => round switch
+    {
+        1 => entry.Round1Closest,
+        2 => entry.Round2Closest,
+        3 => entry.Round3Closest,
+        4 => entry.Round4Closest,
+        5 => entry.Round5Closest,
+        _ => 0
+    };
+
+    private double EntryRoundTotal(EntryRoundMoney entry) => 
+        entry.Individual + entry.Team + entry.Scats + entry.Closest;
+}

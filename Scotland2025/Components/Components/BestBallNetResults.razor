@@ -8,13 +8,13 @@ else
     <MudSimpleTable Class="@TableClass" Dense="true" Bordered="true" Outlined="@true">
         <thead>
             <tr>
-                <th class="tableheader expandable" colspan="26" @onclick="(_ => expanded = !expanded)">
-                    @title 
-                    <MudIcon Icon="@ExpansionIcon" Size="Size.Medium"/>
+                <th class="tableheader expandable" colspan="@(expanded ? "26" : "6")" @onclick="(_ => expanded = !expanded)">
+                    @title
+                    <MudIcon Icon="@ExpansionIcon" Size="Size.Medium" />
                 </th>
             </tr>
-            <tr>
 
+            <tr>
                 <th class="posCol">Pos</th>
 
                 <th class="nameCol">Players</th>
@@ -157,6 +157,7 @@ else
     private bool expanded = false;
 
     private string TableClass => expanded ? "bestBallNetExpanded" : "bestBallNetCompressed";
+    private string TableStyle => expanded ? "width:100%" : "width: 25rem";
 
     private string ExpansionIcon => expanded ? Icons.Material.Filled.KeyboardDoubleArrowLeft : Icons.Material.Filled.KeyboardDoubleArrowRight;
 

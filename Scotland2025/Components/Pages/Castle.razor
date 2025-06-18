@@ -3,7 +3,7 @@
 <PageTitle>Castle Course</PageTitle>
 
 <div class="mt-5"></div>
-<CourseScorecard title="Castle Scorecards" round="Round 3" scorecard="@scorecard" individualScores="@indScores" />
+<CourseScorecard title="Castle Scorecards" scorecard="@scorecard" individualScores="@indScores" />
 <Divider />
 <ChicagoPtsResults title="Castle Chicago Points" results="@matches" roundCompleted="@RoundCompleted" />
 <Divider />
@@ -11,7 +11,9 @@
 <Divider />
 <ClosestToHoleResults title="Castle Closest to Hole" results="@closestToHoleResults" />
 <Divider />
-<Scats title="Castle Scats" round="Round 3" scorecard="@scorecard" scats="@scats" scatStats="@scatStats" />
+<Scats title="Castle Scats" scorecard="@scorecard" scats="@scats" scatStats="@scatStats" />
+<Divider />
+<DailyMoney title="Castle Money Totals" moneyTotals="@moneyTotals" round="3" />
 
 @code {
 
@@ -26,6 +28,7 @@
     private DailyScatStats? scatStats { get; set; } = new DailyScatStats();
     private Scorecard scorecard { get; set; } = new Scorecard();
     private IList<IndividualScores> indScores { get; set; } = new List<IndividualScores>();
+    private IList<MoneyTotalEntry>? moneyTotals = new List<MoneyTotalEntry>();
 
     private string key = "castle";
     private int roundNumber = 3;
@@ -40,6 +43,7 @@
         scatStats = await dataService.GetDailyScatStatsAsync(key);
         scorecard = await dataService.GetScorecardAsync(key);
         indScores = await dataService.GetIndividualScoresAsync(key);
+        moneyTotals = await dataService.GetMoneyTotalsAsync();
     }
 
     private bool RoundCompleted => info.RoundsCompleted >= roundNumber;

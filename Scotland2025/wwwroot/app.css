@@ -221,12 +221,12 @@ background-color: #a9ddec;
 
 .mud-simple-table table tr td.team2,
 .mud-simple-table table tr.team2 td {
-background-color: #bae6ae;
+    background-color: #e6cbec;
 }
 
 .mud-simple-table table tr td.team3,
 .mud-simple-table table tr.team3 td {
-background-color: #e6cbec;
+    background-color: #bae6ae;
 }
 
 .mud-simple-table table tr td.team4,

@@ -71,7 +71,8 @@ h1:focus {
 .mud-simple-table.scorecard,
 .mud-simple-table.scats,
 .mud-simple-table.chicagoPts,
-.mud-simple-table.matchPlay,
+.mud-simple-table.matchPlayExpanded,
+.mud-simple-table.matchPlayCompressed,
 .mud-simple-table.bestBallNetExpanded,
 .mud-simple-table.bestBallNetCompressed,
 .mud-simple-table.dailyIndResults,
@@ -107,12 +108,16 @@ h1:focus {
     background-color: #81d5f3;
 }
 
-    .mud-simple-table table tr th.tableheader {
-        background-color: #0b61b8;
-        font-size: 1.2rem;
-        text-align: left;
-        color: white
-    }
+.mud-simple-table table tr th.tableheader {
+    background-color: #0b61b8;
+    font-size: 1.2rem;
+    text-align: left;
+    color: white
+}
+
+:hover .mud-simple-table table tr th.expandable {
+    cursor: pointer;
+}
 
 /* Table Columns */
 .mud-simple-table table td.posCol, .mud-simple-table table th.posCol {
@@ -205,9 +210,13 @@ text-align: left;
 background-color: #a9ddec;
 }
 
+.mud-simple-table table tr.matchPlay td.matchNo {
+    background-color: white;
+}
+
 .mud-simple-table table tr td.team1,
 .mud-simple-table table tr.team1 td {
-background-color: #f3e992;
+    background-color: #f3e992;
 }
 
 .mud-simple-table table tr td.team2,
@@ -224,6 +233,8 @@ background-color: #e6cbec;
 .mud-simple-table table tr.team4 td {
 background-color: #afdae0;
 }
+
+
 
 .mud-simple-table table tr td.scorecardfrontscores,
 .mud-simple-table table tr td.scorecardbackscores,
@@ -304,6 +315,7 @@ font-size: 1rem;
     }
 
     .mud-simple-table.bestBallNetCompressed,
+    .mud-simple-table.matchPlayCompressed,
     .mud-simple-table.dailyIndResults {
         width: 380px;
     }
@@ -342,7 +354,7 @@ font-size: 1rem;
         width: 750px;
     }
 
-    .mud-simple-table.matchPlay {
+    .mud-simple-table.matchPlayCompressed {
         width: 900px;
     }
 }

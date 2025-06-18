@@ -5,15 +5,18 @@
 }
 else
 {
-    <MudSimpleTable Class="matchPlay" Dense="true" Bordered="true">
+    <MudSimpleTable Class="@TableClass" Dense="true" Bordered="true">
         <thead>
              <tr>
-                <th class="tableheader" colspan="13">@title</th>
+                <th class="tableheader expandable" colspan="@(expanded ? "31" : "13")" @onclick="(_ => expanded = !expanded)">
+                    @title 
+                    <MudIcon Icon="@ExpansionIcon" Size="Size.Medium"/>
+                </th>
             </tr>
            <tr>
                 <th colspan="4">Matches</th>
-                <th colspan="2">Front</th>
-                <th colspan="2">Back</th>
+                <th colspan="@(expanded ? "11" : "2")">Front</th>
+                <th colspan="@(expanded ? "11" : "2")">Back</th>
                 <th colspan="2">18</th>
                 <th colspan="2">4-Man Team</th>
                 <th></th>
@@ -23,8 +26,32 @@ else
                 <th class="nameCol">Players</th>
                 <th class="hcpCol">Hcp</th>
                 <th class="hcpCol">Strokes</th>
-                <th>Pts</th>
+                 @if(expanded)
+                {
+                    <th class="grossCol">1</th>
+                    <th class="grossCol">2</th>
+                    <th class="grossCol">3</th>
+                    <th class="grossCol">4</th>
+                    <th class="grossCol">5</th>
+                    <th class="grossCol">6</th>
+                    <th class="grossCol">7</th>
+                    <th class="grossCol">8</th>
+                    <th class="grossCol">9</th>
+                }
+               <th>Pts</th>
                 <th>$</th>
+                @if (expanded)
+                {
+                    <th class="grossCol">10</th>
+                    <th class="grossCol">11</th>
+                    <th class="grossCol">12</th>
+                    <th class="grossCol">13</th>
+                    <th class="grossCol">14</th>
+                    <th class="grossCol">15</th>
+                    <th class="grossCol">16</th>
+                    <th class="grossCol">17</th>
+                    <th class="grossCol">18</th>
+                }
                 <th>Pts</th>
                 <th>$</th>
                 <th>Pts</th>
@@ -38,45 +65,225 @@ else
             @foreach (var match in results)
             {
                 <tr class="matchplay">
-                    <td rowspan="4">@match.MatchNumber</td>
+                    <td class="matchNo" rowspan="@(expanded ? "8" : "4")">@match.MatchNumber</td>
                     <td class="team1 nameCol">@match.Team1.Player1.Name</td>
                     <td class="team1 hcpCol">@match.Team1.Player1.Hcp</td>
                     <td class="team1 hcpCol">@match.Team1.Player1.Strokes</td>
-                    <td rowspan="2">@DisplayPts(match.Team1.Points.Front)</td>
-                    <td class="moneyCol" rowspan="2">@Utilities.DisplayWinnings(match.Team1.Player1.MoneyFront)</td>
-                    <td rowspan="2">@DisplayPts(match.Team1.Points.Back)</td>
-                    <td class="moneyCol" rowspan="2">@Utilities.DisplayWinnings(match.Team1.Player1.MoneyBack)</td>
-                    <td rowspan="2">@DisplayPts(match.Team1.Points.Total)</td>
-                    <td class="moneyCol" rowspan="2">@Utilities.DisplayWinnings(match.Team1.Player1.Money18)</td>
-                    <td rowspan="2">@DisplayPts(TotalTeamPoints(1))</td>
-                    <td class="moneyCol" rowspan="2">@Utilities.DisplayWinnings(match.Team1.Player1.MoneyTeam)</td>
-                    <td class="moneyCol" rowspan="2">@Utilities.DisplayWinnings(match.Team1.Player1.MoneyTotal)</td>
+                     @if(expanded)
+                    {
+                        <td class="team1 grossCol">@match.Team1.Player1.Hole1</td>
+                        <td class="team1 grossCol">@match.Team1.Player1.Hole2</td>
+                        <td class="team1 grossCol">@match.Team1.Player1.Hole3</td>
+                        <td class="team1 grossCol">@match.Team1.Player1.Hole4</td>
+                        <td class="team1 grossCol">@match.Team1.Player1.Hole5</td>
+                        <td class="team1 grossCol">@match.Team1.Player1.Hole6</td>
+                        <td class="team1 grossCol">@match.Team1.Player1.Hole7</td>
+                        <td class="team1 grossCol">@match.Team1.Player1.Hole8</td>
+                        <td class="team1 grossCol">@match.Team1.Player1.Hole9</td>
+                    }
+                    <td class="team1" rowspan="@(expanded ? "4" : "2")">@DisplayPts(match.Team1.Points.Front)</td>
+                    <td class="team1 moneyCol" rowspan="@(expanded ? "4" : "2")">@Utilities.DisplayWinnings(match.Team1.Player1.MoneyFront)</td>
+                    @if (expanded)
+                    {
+                        <td class="team1 grossCol">@match.Team1.Player1.Hole10</td>
+                        <td class="team1 grossCol">@match.Team1.Player1.Hole11</td>
+                        <td class="team1 grossCol">@match.Team1.Player1.Hole12</td>
+                        <td class="team1 grossCol">@match.Team1.Player1.Hole13</td>
+                        <td class="team1 grossCol">@match.Team1.Player1.Hole14</td>
+                        <td class="team1 grossCol">@match.Team1.Player1.Hole15</td>
+                        <td class="team1 grossCol">@match.Team1.Player1.Hole16</td>
+                        <td class="team1 grossCol">@match.Team1.Player1.Hole17</td>
+                        <td class="team1 grossCol">@match.Team1.Player1.Hole18</td>
+                    }
+                    <td class="team1" rowspan="@(expanded ? "4" : "2")">@DisplayPts(match.Team1.Points.Back)</td>
+                    <td class="team1 moneyCol" rowspan="@(expanded ? "4" : "2")">@Utilities.DisplayWinnings(match.Team1.Player1.MoneyBack)</td>
+                    <td class="team1" rowspan="@(expanded ? "4" : "2")">@DisplayPts(match.Team1.Points.Total)</td>
+                    <td class="team1 moneyCol" rowspan="@(expanded ? "4" : "2")">@Utilities.DisplayWinnings(match.Team1.Player1.Money18)</td>
+                    <td class="team1" rowspan="@(expanded ? "4" : "2")">@DisplayPts(TotalTeamPoints(1))</td>
+                    <td class="team1 moneyCol" rowspan="@(expanded ? "4" : "2")">@Utilities.DisplayWinnings(match.Team1.Player1.MoneyTeam)</td>
+                    <td class="team1 moneyCol" rowspan="@(expanded ? "4" : "2")">@Utilities.DisplayWinnings(match.Team1.Player1.MoneyTotal)</td>
                 </tr>
-                <tr class="matchplay">
+                <tr class="matchplay team1">
                     <td class="team1 nameCol">@match.Team1.Player2.Name</td>
                     <td class="team1 hcpCol">@match.Team1.Player2.Hcp</td>
                     <td class="team1 hcpCol">@match.Team1.Player2.Strokes</td>
+                     @if(expanded)
+                    {
+                        <td class="team1 grossCol">@match.Team1.Player2.Hole1</td>
+                        <td class="team1 grossCol">@match.Team1.Player2.Hole2</td>
+                        <td class="team1 grossCol">@match.Team1.Player2.Hole3</td>
+                        <td class="team1 grossCol">@match.Team1.Player2.Hole4</td>
+                        <td class="team1 grossCol">@match.Team1.Player2.Hole5</td>
+                        <td class="team1 grossCol">@match.Team1.Player2.Hole6</td>
+                        <td class="team1 grossCol">@match.Team1.Player2.Hole7</td>
+                        <td class="team1 grossCol">@match.Team1.Player2.Hole8</td>
+                        <td class="team1 grossCol">@match.Team1.Player2.Hole9</td>
+                        <td class="team1 grossCol">@match.Team1.Player2.Hole10</td>
+                        <td class="team1 grossCol">@match.Team1.Player2.Hole11</td>
+                        <td class="team1 grossCol">@match.Team1.Player2.Hole12</td>
+                        <td class="team1 grossCol">@match.Team1.Player2.Hole13</td>
+                        <td class="team1 grossCol">@match.Team1.Player2.Hole14</td>
+                        <td class="team1 grossCol">@match.Team1.Player2.Hole15</td>
+                        <td class="team1 grossCol">@match.Team1.Player2.Hole16</td>
+                        <td class="team1 grossCol">@match.Team1.Player2.Hole17</td>
+                        <td class="team1 grossCol">@match.Team1.Player2.Hole18</td>
+                    }
                 </tr>
+                @if (expanded)
+                {
+                    <tr>
+                        <td class="team1" colspan="3">Low</td>
+                        <td class="team1 grossCol">@match.Team1.Team.Hole1</td>
+                        <td class="team1 grossCol">@match.Team1.Team.Hole2</td>
+                        <td class="team1 grossCol">@match.Team1.Team.Hole3</td>
+                        <td class="team1 grossCol">@match.Team1.Team.Hole4</td>
+                        <td class="team1 grossCol">@match.Team1.Team.Hole5</td>
+                        <td class="team1 grossCol">@match.Team1.Team.Hole6</td>
+                        <td class="team1 grossCol">@match.Team1.Team.Hole7</td>
+                        <td class="team1 grossCol">@match.Team1.Team.Hole8</td>
+                        <td class="team1 grossCol">@match.Team1.Team.Hole9</td>
+                        <td class="team1 grossCol">@match.Team1.Team.Hole10</td>
+                        <td class="team1 grossCol">@match.Team1.Team.Hole11</td>
+                        <td class="team1 grossCol">@match.Team1.Team.Hole12</td>
+                        <td class="team1 grossCol">@match.Team1.Team.Hole13</td>
+                        <td class="team1 grossCol">@match.Team1.Team.Hole14</td>
+                        <td class="team1 grossCol">@match.Team1.Team.Hole15</td>
+                        <td class="team1 grossCol">@match.Team1.Team.Hole16</td>
+                        <td class="team1 grossCol">@match.Team1.Team.Hole17</td>
+                        <td class="team1 grossCol">@match.Team1.Team.Hole18</td>
+                    </tr>
+                    <tr>
+                        <td class="team1" colspan="3">Points</td>
+                        <td class="team1 grossCol">@match.Team1.Points.Hole1</td>
+                        <td class="team1 grossCol">@match.Team1.Points.Hole2</td>
+                        <td class="team1 grossCol">@match.Team1.Points.Hole3</td>
+                        <td class="team1 grossCol">@match.Team1.Points.Hole4</td>
+                        <td class="team1 grossCol">@match.Team1.Points.Hole5</td>
+                        <td class="team1 grossCol">@match.Team1.Points.Hole6</td>
+                        <td class="team1 grossCol">@match.Team1.Points.Hole7</td>
+                        <td class="team1 grossCol">@match.Team1.Points.Hole8</td>
+                        <td class="team1 grossCol">@match.Team1.Points.Hole9</td>
+                        <td class="team1 grossCol">@match.Team1.Points.Hole10</td>
+                        <td class="team1 grossCol">@match.Team1.Points.Hole11</td>
+                        <td class="team1 grossCol">@match.Team1.Points.Hole12</td>
+                        <td class="team1 grossCol">@match.Team1.Points.Hole13</td>
+                        <td class="team1 grossCol">@match.Team1.Points.Hole14</td>
+                        <td class="team1 grossCol">@match.Team1.Points.Hole15</td>
+                        <td class="team1 grossCol">@match.Team1.Points.Hole16</td>
+                        <td class="team1 grossCol">@match.Team1.Points.Hole17</td>
+                        <td class="team1 grossCol">@match.Team1.Points.Hole18</td>
+                    </tr>
+                }
 
                 <tr class="matchplay">
                     <td class="team2 nameCol">@match.Team2.Player1.Name</td>
                     <td class="team2 hcpCol">@match.Team2.Player1.Hcp</td>
                     <td class="team2 hcpCol">@match.Team2.Player1.Strokes</td>
-                    <td rowspan="2">@DisplayPts(match.Team2.Points.Front)</td>
-                    <td class="moneyCol" rowspan="2">@Utilities.DisplayWinnings(match.Team2.Player1.MoneyFront)</td>
-                    <td rowspan="2">@DisplayPts(match.Team2.Points.Back)</td>
-                    <td class="moneyCol" rowspan="2">@Utilities.DisplayWinnings(match.Team2.Player1.MoneyBack)</td>
-                    <td rowspan="2">@DisplayPts(match.Team2.Points.Total)</td>
-                    <td class="moneyCol" rowspan="2">@Utilities.DisplayWinnings(match.Team2.Player1.Money18)</td>
-                    <td rowspan="2">@DisplayPts(TotalTeamPoints(2))</td>
-                    <td class="moneyCol" rowspan="2">@Utilities.DisplayWinnings(match.Team2.Player1.MoneyTeam)</td>
-                    <td class="moneyCol" rowspan="2">@Utilities.DisplayWinnings(match.Team2.Player1.MoneyTotal)</td>
+                    @if (expanded)
+                    {
+                        <td class="team2 grossCol">@match.Team2.Player1.Hole1</td>
+                        <td class="team2 grossCol">@match.Team2.Player1.Hole2</td>
+                        <td class="team2 grossCol">@match.Team2.Player1.Hole3</td>
+                        <td class="team2 grossCol">@match.Team2.Player1.Hole4</td>
+                        <td class="team2 grossCol">@match.Team2.Player1.Hole5</td>
+                        <td class="team2 grossCol">@match.Team2.Player1.Hole6</td>
+                        <td class="team2 grossCol">@match.Team2.Player1.Hole7</td>
+                        <td class="team2 grossCol">@match.Team2.Player1.Hole8</td>
+                        <td class="team2 grossCol">@match.Team2.Player1.Hole9</td>
+                    }
+                    <td class="team2" rowspan="@(expanded ? "4" : "2")">@DisplayPts(match.Team2.Points.Front)</td>
+                    <td class="team2 moneyCol" rowspan="@(expanded ? "4" : "2")">@Utilities.DisplayWinnings(match.Team2.Player1.MoneyFront)</td>
+                    @if (expanded)
+                    {
+                        <td class="team2 grossCol">@match.Team2.Player1.Hole10</td>
+                        <td class="team2 grossCol">@match.Team2.Player1.Hole11</td>
+                        <td class="team2 grossCol">@match.Team2.Player1.Hole12</td>
+                        <td class="team2 grossCol">@match.Team2.Player1.Hole13</td>
+                        <td class="team2 grossCol">@match.Team2.Player1.Hole14</td>
+                        <td class="team2 grossCol">@match.Team2.Player1.Hole15</td>
+                        <td class="team2 grossCol">@match.Team2.Player1.Hole16</td>
+                        <td class="team2 grossCol">@match.Team2.Player1.Hole17</td>
+                        <td class="team2 grossCol">@match.Team2.Player1.Hole18</td>
+                    }
+                    <td class="team2" rowspan=" @(expanded ? "4" : "2" )">@DisplayPts(match.Team2.Points.Back)</td>
+                    <td class="team2 moneyCol" rowspan="@(expanded ? "4" : "2")">@Utilities.DisplayWinnings(match.Team2.Player1.MoneyBack)</td>
+                    <td class="team2" rowspan="@(expanded ? "4" : "2")">@DisplayPts(match.Team2.Points.Total)</td>
+                    <td class="team2 moneyCol" rowspan="@(expanded ? "4" : "2")">@Utilities.DisplayWinnings(match.Team2.Player1.Money18)</td>
+                    <td class="team2" rowspan="@(expanded ? "4" : "2")">@DisplayPts(TotalTeamPoints(2))</td>
+                    <td class="team2 moneyCol" rowspan="@(expanded ? "4" : "2")">@Utilities.DisplayWinnings(match.Team2.Player1.MoneyTeam)</td>
+                    <td class="team2 moneyCol" rowspan="@(expanded ? "4" : "2")">@Utilities.DisplayWinnings(match.Team2.Player1.MoneyTotal)</td>
                 </tr>
                 <tr class="matchplay">
                     <td class="team2 nameCol">@match.Team2.Player2.Name</td>
                     <td class="team2 hcpCol">@match.Team2.Player2.Hcp</td>
                     <td class="team2 hcpCol">@match.Team2.Player2.Strokes</td>
+                    @if (expanded)
+                    {
+                        <td class="team2 grossCol">@match.Team2.Player2.Hole1</td>
+                        <td class="team2 grossCol">@match.Team2.Player2.Hole2</td>
+                        <td class="team2 grossCol">@match.Team2.Player2.Hole3</td>
+                        <td class="team2 grossCol">@match.Team2.Player2.Hole4</td>
+                        <td class="team2 grossCol">@match.Team2.Player2.Hole5</td>
+                        <td class="team2 grossCol">@match.Team2.Player2.Hole6</td>
+                        <td class="team2 grossCol">@match.Team2.Player2.Hole7</td>
+                        <td class="team2 grossCol">@match.Team2.Player2.Hole8</td>
+                        <td class="team2 grossCol">@match.Team2.Player2.Hole9</td>
+                        <td class="team2 grossCol">@match.Team2.Player2.Hole10</td>
+                        <td class="team2 grossCol">@match.Team2.Player2.Hole11</td>
+                        <td class="team2 grossCol">@match.Team2.Player2.Hole12</td>
+                        <td class="team2 grossCol">@match.Team2.Player2.Hole13</td>
+                        <td class="team2 grossCol">@match.Team2.Player2.Hole14</td>
+                        <td class="team2 grossCol">@match.Team2.Player2.Hole15</td>
+                        <td class="team2 grossCol">@match.Team2.Player2.Hole16</td>
+                        <td class="team2 grossCol">@match.Team2.Player2.Hole17</td>
+                        <td class="team2 grossCol">@match.Team2.Player2.Hole18</td>
+                    }
                 </tr>
+                @if (expanded)
+                {
+                    <tr>
+                        <td class="team2" colspan="3">Low</td>
+                        <td class="team2 grossCol">@match.Team2.Team.Hole1</td>
+                        <td class="team2 grossCol">@match.Team2.Team.Hole2</td>
+                        <td class="team2 grossCol">@match.Team2.Team.Hole3</td>
+                        <td class="team2 grossCol">@match.Team2.Team.Hole4</td>
+                        <td class="team2 grossCol">@match.Team2.Team.Hole5</td>
+                        <td class="team2 grossCol">@match.Team2.Team.Hole6</td>
+                        <td class="team2 grossCol">@match.Team2.Team.Hole7</td>
+                        <td class="team2 grossCol">@match.Team2.Team.Hole8</td>
+                        <td class="team2 grossCol">@match.Team2.Team.Hole9</td>
+                        <td class="team2 grossCol">@match.Team2.Team.Hole10</td>
+                        <td class="team2 grossCol">@match.Team2.Team.Hole11</td>
+                        <td class="team2 grossCol">@match.Team2.Team.Hole12</td>
+                        <td class="team2 grossCol">@match.Team2.Team.Hole13</td>
+                        <td class="team2 grossCol">@match.Team2.Team.Hole14</td>
+                        <td class="team2 grossCol">@match.Team2.Team.Hole15</td>
+                        <td class="team2 grossCol">@match.Team2.Team.Hole16</td>
+                        <td class="team2 grossCol">@match.Team2.Team.Hole17</td>
+                        <td class="team2 grossCol">@match.Team2.Team.Hole18</td>
+                    </tr>
+                    <tr>
+                        <td class="team2" colspan="3">Points</td>
+                        <td class="team2 grossCol">@match.Team2.Points.Hole1</td>
+                        <td class="team2 grossCol">@match.Team2.Points.Hole2</td>
+                        <td class="team2 grossCol">@match.Team2.Points.Hole3</td>
+                        <td class="team2 grossCol">@match.Team2.Points.Hole4</td>
+                        <td class="team2 grossCol">@match.Team2.Points.Hole5</td>
+                        <td class="team2 grossCol">@match.Team2.Points.Hole6</td>
+                        <td class="team2 grossCol">@match.Team2.Points.Hole7</td>
+                        <td class="team2 grossCol">@match.Team2.Points.Hole8</td>
+                        <td class="team2 grossCol">@match.Team2.Points.Hole9</td>
+                        <td class="team2 grossCol">@match.Team2.Points.Hole10</td>
+                        <td class="team2 grossCol">@match.Team2.Points.Hole11</td>
+                        <td class="team2 grossCol">@match.Team2.Points.Hole12</td>
+                        <td class="team2 grossCol">@match.Team2.Points.Hole13</td>
+                        <td class="team2 grossCol">@match.Team2.Points.Hole14</td>
+                        <td class="team2 grossCol">@match.Team2.Points.Hole15</td>
+                        <td class="team2 grossCol">@match.Team2.Points.Hole16</td>
+                        <td class="team2 grossCol">@match.Team2.Points.Hole17</td>
+                        <td class="team2 grossCol">@match.Team2.Points.Hole18</td>
+                    </tr>
+                }
             }
         </tbody>
 
@@ -94,6 +301,12 @@ else
         2 => results?.Sum(m => m.Team2.Points.Total) ?? 0,
         _ => 0
     };
+
+    private bool expanded = false;
+
+    private string TableClass => expanded ? "matchPlayExpanded" : "matchPlayCompressed";
+
+    private string ExpansionIcon => expanded ? Icons.Material.Filled.KeyboardDoubleArrowLeft : Icons.Material.Filled.KeyboardDoubleArrowRight;
 
     private string DisplayPts(double pts) => roundCompleted ? pts.ToString() : "";
     private bool ResultsPosted => results != null;

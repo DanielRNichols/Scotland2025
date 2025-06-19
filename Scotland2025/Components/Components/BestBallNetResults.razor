@@ -81,7 +81,7 @@ else
                     }
                     <td class="grossCol">@Utilities.DisplayGross(result.Player1.Total)</td>
                     <td class=@($"netCol {Utilities.NetClass(result.Player1.Net)}")>@Utilities.NetDisplay(result.Player1.Net)</td>
-                    <td class="moneyCol" rowspan="3">@Utilities.DisplayWinnings(result.Team.Winnings)</td>
+                    <td class="moneyCol" rowspan="3">@Utilities.DisplayWinnings(result.Team.Winnings, true)</td>
                 </tr>
                 <tr class=@($"{result.TeamName}")>
                     <td class=@($"{result.TeamName} nameCol")>@result.Player2.Name</td>

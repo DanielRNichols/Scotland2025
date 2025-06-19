@@ -82,7 +82,7 @@ else
                         <td class="team1 grossCol">@match.Team1.Player1.Hole9</td>
                     }
                     <td class="team1" rowspan="@(expanded ? "4" : "2")">@DisplayPts(match.Team1.Points.Front)</td>
-                    <td class="team1 moneyCol" rowspan="@(expanded ? "4" : "2")">@Utilities.DisplayWinnings(match.Team1.Player1.MoneyFront)</td>
+                    <td class="team1 moneyCol" rowspan="@(expanded ? "4" : "2")">@Utilities.DisplayWinnings(match.Team1.Player1.MoneyFront, true)</td>
                     @if (expanded)
                     {
                         <td class="team1 grossCol">@match.Team1.Player1.Hole10</td>
@@ -96,12 +96,12 @@ else
                         <td class="team1 grossCol">@match.Team1.Player1.Hole18</td>
                     }
                     <td class="team1" rowspan="@(expanded ? "4" : "2")">@DisplayPts(match.Team1.Points.Back)</td>
-                    <td class="team1 moneyCol" rowspan="@(expanded ? "4" : "2")">@Utilities.DisplayWinnings(match.Team1.Player1.MoneyBack)</td>
+                    <td class="team1 moneyCol" rowspan="@(expanded ? "4" : "2")">@Utilities.DisplayWinnings(match.Team1.Player1.MoneyBack, true)</td>
                     <td class="team1" rowspan="@(expanded ? "4" : "2")">@DisplayPts(match.Team1.Points.Total)</td>
-                    <td class="team1 moneyCol" rowspan="@(expanded ? "4" : "2")">@Utilities.DisplayWinnings(match.Team1.Player1.Money18)</td>
+                    <td class="team1 moneyCol" rowspan="@(expanded ? "4" : "2")">@Utilities.DisplayWinnings(match.Team1.Player1.Money18, true)</td>
                     <td class="team1" rowspan="@(expanded ? "4" : "2")">@DisplayPts(TotalTeamPoints(1))</td>
-                    <td class="team1 moneyCol" rowspan="@(expanded ? "4" : "2")">@Utilities.DisplayWinnings(match.Team1.Player1.MoneyTeam)</td>
-                    <td class="team1 moneyCol" rowspan="@(expanded ? "4" : "2")">@Utilities.DisplayWinnings(match.Team1.Player1.MoneyTotal)</td>
+                    <td class="team1 moneyCol" rowspan="@(expanded ? "4" : "2")">@Utilities.DisplayWinnings(match.Team1.Player1.MoneyTeam, true)</td>
+                    <td class="team1 moneyCol" rowspan="@(expanded ? "4" : "2")">@Utilities.DisplayWinnings(match.Team1.Player1.MoneyTotal, true)</td>
                 </tr>
                 <tr class="matchplay team1">
                     <td class="team1 nameCol">@match.Team1.Player2.Name</td>
@@ -192,7 +192,7 @@ else
                         <td class="team2 grossCol">@match.Team2.Player1.Hole9</td>
                     }
                     <td class="team2" rowspan="@(expanded ? "4" : "2")">@DisplayPts(match.Team2.Points.Front)</td>
-                    <td class="team2 moneyCol" rowspan="@(expanded ? "4" : "2")">@Utilities.DisplayWinnings(match.Team2.Player1.MoneyFront)</td>
+                    <td class="team2 moneyCol" rowspan="@(expanded ? "4" : "2")">@Utilities.DisplayWinnings(match.Team2.Player1.MoneyFront, true)</td>
                     @if (expanded)
                     {
                         <td class="team2 grossCol">@match.Team2.Player1.Hole10</td>
@@ -206,12 +206,12 @@ else
                         <td class="team2 grossCol">@match.Team2.Player1.Hole18</td>
                     }
                     <td class="team2" rowspan=" @(expanded ? "4" : "2" )">@DisplayPts(match.Team2.Points.Back)</td>
-                    <td class="team2 moneyCol" rowspan="@(expanded ? "4" : "2")">@Utilities.DisplayWinnings(match.Team2.Player1.MoneyBack)</td>
+                    <td class="team2 moneyCol" rowspan="@(expanded ? "4" : "2")">@Utilities.DisplayWinnings(match.Team2.Player1.MoneyBack, true)</td>
                     <td class="team2" rowspan="@(expanded ? "4" : "2")">@DisplayPts(match.Team2.Points.Total)</td>
-                    <td class="team2 moneyCol" rowspan="@(expanded ? "4" : "2")">@Utilities.DisplayWinnings(match.Team2.Player1.Money18)</td>
+                    <td class="team2 moneyCol" rowspan="@(expanded ? "4" : "2")">@Utilities.DisplayWinnings(match.Team2.Player1.Money18, true)</td>
                     <td class="team2" rowspan="@(expanded ? "4" : "2")">@DisplayPts(TotalTeamPoints(2))</td>
-                    <td class="team2 moneyCol" rowspan="@(expanded ? "4" : "2")">@Utilities.DisplayWinnings(match.Team2.Player1.MoneyTeam)</td>
-                    <td class="team2 moneyCol" rowspan="@(expanded ? "4" : "2")">@Utilities.DisplayWinnings(match.Team2.Player1.MoneyTotal)</td>
+                    <td class="team2 moneyCol" rowspan="@(expanded ? "4" : "2")">@Utilities.DisplayWinnings(match.Team2.Player1.MoneyTeam, true)</td>
+                    <td class="team2 moneyCol" rowspan="@(expanded ? "4" : "2")">@Utilities.DisplayWinnings(match.Team2.Player1.MoneyTotal, true)</td>
                 </tr>
                 <tr class="matchplay">
                     <td class="team2 nameCol">@match.Team2.Player2.Name</td>

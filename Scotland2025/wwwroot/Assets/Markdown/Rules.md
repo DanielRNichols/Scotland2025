@@ -102,23 +102,29 @@
 - Payout - $20
 
 
-<!---
-Handicap Adjustments
-Handicaps will be adjusted each day, and the adjusted handicaps will be used for Daily Individual tournaments, Daily Team events, and Daily Scats. Adjusted handicaps will not be used for the five-day individual championship.
-Adjusted Net (grading on the curve): The calculation of the adjusted handicap will be based on an adjusted net score for each round. The adjusted net score is the (net score) � (median net score for that round). For example, if the median net score for Day 1 is +2.  A net score of -1 would be adjusted to -3, a net score of +2 would be adjusted to zero, and a net score of +4 would be adjusted to +2.
-- Day 1  
-o Use original handicap
-- Day 2 
-o Adjustment = (Day 1 AdjNet)/ 4, rounded to nearest �. Note: Maximum adjustment is plus or minus 0.5
-o Adjusted Handicap = Original handicap + adjustment
-- Day 3
-o Adjustment = Lowest of (Day 1 AdjNet, Day 2 AdjNet) / 4, rounded to nearest �. Note: Maximum adjustment is plus or minus 1
-o Adjusted Handicap = Original handicap + adjustment
-- Day 4
-o Adjustment = Two Lowest (Day 1 AdjNet, Day 2 AdjNet, Day 3 AdjNet) / 4, rounded to nearest �. Note: Maximum adjustment is plus or minus 2
-o Adjusted Handicap = Original handicap + adjustment
-- Day 5
-o Adjustment = Three Lowest (Day 1 AdjNet, Day 2 AdjNet, Day 3 AdjNet, Day 4 AdjNet) / 4, rounded to nearest �. Note: Maximum adjustment is plus or minus 3
-o Adjusted Handicap = Original handicap + adjustment
+---
 
---->
+## Handicap Adjustments
+Handicaps will be adjusted each day, and the adjusted handicaps will be used for Daily Individual tournaments, Daily Team events, and Daily Scats. Adjusted handicaps will not be used for the five-day individual championship.
+#### Daily Adjusted Net (grading on the curve)
+ The calculation of the adjusted handicap will be based on an adjusted net score for each round. The adjusted net score is the (net score) - (median net score for that round). For example, if the median net score for Round 1 is +2.  A net score of -1 would be adjusted to -3, a net score of +2 would be adjusted to zero, and a net score of +4 would be adjusted to +2.
+- ##### Round 1  
+  - Use original handicap
+- ##### Round 2 
+  - Adjustment = (R1 AdjNet) / 2
+  - Maximum adjustment is plus or minus 1
+  - Adjusted Handicap = Original handicap + adjustment
+- ##### Round 3
+  - Adjustment = (R1 AdjNet + R2 AdjNet) / 3
+  - Maximum adjustment is plus or minus 1
+  - Adjusted Handicap = Original handicap + adjustment
+- ##### Round 4
+  - Adjustment = (R1 AdjNet + R2 AdjNet + R3 AdjNet) / 4
+  - Maximum adjustment is plus or minus 3
+  - Adjusted Handicap = Original handicap + adjustment
+- ##### Round 5
+  - Adjustment = (R1 AdjNet + R2 AdjNet + R3 AdjNet + R4 AdjNet) / 5
+  - Maximum adjustment is plus or minus 3
+  - Adjusted Handicap = Original handicap + adjustment
+
+

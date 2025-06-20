@@ -6,7 +6,7 @@ namespace Scotland2025.Versioning
     {
         public string GetVersion()
         {
-            var version = "0.7.0";
+            var version = "0.9.0";
             var releaseCandidate = "";
             return $"Version {version} {releaseCandidate}";
         }

@@ -191,10 +191,11 @@ background-color: #40baf7;
 background-color: #b7faef;
 }
 
-.mud-simple-table table tr.scorecardgroups td {
-background-color: #1861ac;
-color: lightgray;
-text-align: left
+.mud-simple-table table tr.scorecardgroups td,
+.mud-simple-table table tr.scorecardmatches td {
+    background-color: #1861ac;
+    color: white;
+    text-align: left
 }
 
 .mud-simple-table table tr td.scorecardheader {
@@ -216,22 +217,22 @@ background-color: #a9ddec;
 
 .mud-simple-table table tr td.team1,
 .mud-simple-table table tr.team1 td {
-    background-color: #f3e992;
+    background-color: #bae6ae;
 }
 
 .mud-simple-table table tr td.team2,
 .mud-simple-table table tr.team2 td {
-    background-color: #e6cbec;
+    background-color: #f3e992;
 }
 
 .mud-simple-table table tr td.team3,
 .mud-simple-table table tr.team3 td {
-    background-color: #bae6ae;
+    background-color: #f8c799;
 }
 
 .mud-simple-table table tr td.team4,
 .mud-simple-table table tr.team4 td {
-background-color: #afdae0;
+    background-color: #eebbf0;
 }
 
 
@@ -314,11 +315,6 @@ font-size: 1rem;
         height: 24rem;
     }
 
-    .mud-simple-table.bestBallNetCompressed,
-    .mud-simple-table.matchPlayCompressed,
-    .mud-simple-table.dailyIndResults {
-        width: 380px;
-    }
 
 }
 
@@ -327,9 +323,12 @@ font-size: 1rem;
         height: 28rem;
     }
 
-    .mud-simple-table.roster {
+    .mud-simple-table.roster,
+    .mud-simple-table.bestBallNetCompressed,
+    .mud-simple-table.dailyIndResults {
         width: 480px;
     }
+
 
     .footer {
         margin: 0.5rem 0 0.5rem 0;
@@ -342,6 +341,7 @@ font-size: 1rem;
     .imageCarousel {
         height: 32rem;
     }
+    
 }
 
 @media only screen and (min-width: 960px) {
@@ -354,8 +354,9 @@ font-size: 1rem;
         width: 750px;
     }
 
-    .mud-simple-table.matchPlayCompressed {
-        width: 900px;
+    .mud-simple-table.matchPlayCompressed,
+    .mud-simple-table.chicagoPtsCompressed {
+        width: 800px;
     }
 }
 

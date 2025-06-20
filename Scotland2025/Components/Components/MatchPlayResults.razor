@@ -8,13 +8,13 @@ else
     <MudSimpleTable Class="@TableClass" Dense="true" Bordered="true">
         <thead>
              <tr>
-                <th class="tableheader expandable" colspan="@(expanded ? "31" : "13")" @onclick="(_ => expanded = !expanded)">
+                <th class="tableheader expandable" colspan="@(expanded ? "30" : "12")" @onclick="(_ => expanded = !expanded)">
                     @title 
                     <MudIcon Icon="@ExpansionIcon" Size="Size.Medium"/>
                 </th>
             </tr>
            <tr>
-                <th colspan="4">Matches</th>
+                <th colspan="3">Matches</th>
                 <th colspan="@(expanded ? "11" : "2")">Front</th>
                 <th colspan="@(expanded ? "11" : "2")">Back</th>
                 <th colspan="2">18</th>
@@ -22,7 +22,6 @@ else
                 <th></th>
             </tr>
             <tr>
-                <th>#</th>
                 <th class="nameCol">Players</th>
                 <th class="hcpCol">Hcp</th>
                 <th class="hcpCol">Strokes</th>
@@ -64,8 +63,10 @@ else
         <tbody>
             @foreach (var match in results)
             {
+                <tr class="scorecardmatches">
+                    <td colspan="@(expanded ? "30" : "12")" style="text-align: left;">Match #@match.MatchNumber</td>
+                </tr>
                 <tr class="matchplay">
-                    <td class="matchNo" rowspan="@(expanded ? "8" : "4")">@match.MatchNumber</td>
                     <td class="team1 nameCol">@match.Team1.Player1.Name</td>
                     <td class="team1 hcpCol">@match.Team1.Player1.Hcp</td>
                     <td class="team1 hcpCol">@match.Team1.Player1.Strokes</td>

@@ -9,21 +9,46 @@
 else
 {
     <div class="mt-5"></div>
-    <MudSimpleTable Class="leaderboard" Dense="@true" Bordered="@true">
+    <MudSimpleTable Class="@TableClass" Dense="@true" Bordered="@true">
         <thead>
             <tr>
-                <th class="tableheader" colspan="10">Leaderboard</th>
+                <th class="tableheader" colspan="@(expanded ? "20" : "10")" @onclick="(_ => expanded = !expanded)">
+                    Individual Championship Leaderboard
+                    <MudIcon Icon="@ExpansionIcon" Size="Size.Medium" />
+                </th>
             </tr>
+
             <tr>
                 <th class="posCol">Pos</th>
                 <th class="nameCol">Name</th>
                 <th class="hcpCol">Hcp</th>
                 <th class="grossCol">Total</th>
-                <th class="netCol">R1</th>
-                <th class="netCol">R2</th>
-                <th class="netCol">R3</th>
-                <th class="netCol">R4</th>
-                <th class="netCol">R5</th>
+                @if (expanded)
+                {
+                    <th>R1 Hcp</th>
+                    <th>R1 Gross</th>
+                    <th class="netCol">R1 Net</th>
+                    <th>R2 Hcp</th>
+                    <th>R2 Gross</th>
+                    <th class="netCol">R2 Net</th>
+                    <th>R3 Hcp</th>
+                    <th>R3 Gross</th>
+                    <th class="netCol">R3 Net</th>
+                    <th>R4 Hcp</th>
+                    <th>R4 Gross</th>
+                    <th class="netCol">R4 Net</th>
+                    <th>R5 Hcp</th>
+                    <th>R5 Gross</th>
+                    <th class="netCol">R5 Net</th>
+                }
+                else
+                {
+                    <th class="netCol">R1</th>
+                    <th class="netCol">R2</th>
+                    <th class="netCol">R3</th>
+                    <th class="netCol">R4</th>
+                    <th class="netCol">R5</th>
+                }
                 <th class="moneyCol">$</th>
             </tr>
         </thead>
@@ -35,11 +60,32 @@ else
                     <td class="nameCol">@entry.Name</td>
                     <td class="hcpCol">@entry.Hcp</td>
                     <td class="totalCol @Utilities.NetClass(entry.Total)">@(leaderboard.RoundsCompleted > 0 ? Utilities.DisplayNet(entry.Pos, entry.Total) : "")</td>
-                    <td class="netCol @Utilities.NetClass(entry.Round1) @Drop(entry, 1)">@(leaderboard.RoundsCompleted > 0 ? Utilities.DisplayNet(entry.Pos, entry.Round1) : "")</td>
-                    <td class="netCol @Utilities.NetClass(entry.Round2) @Drop(entry, 2)">@(leaderboard.RoundsCompleted > 1 ? Utilities.DisplayNet(entry.Pos, entry.Round2) : "")</td>
-                    <td class="netCol @Utilities.NetClass(entry.Round3) @Drop(entry, 3)">@(leaderboard.RoundsCompleted > 2 ? Utilities.DisplayNet(entry.Pos, entry.Round3) : "")</td>
-                    <td class="netCol @Utilities.NetClass(entry.Round4)">@(leaderboard.RoundsCompleted > 3 ? Utilities.DisplayNet(entry.Pos, entry.Round4) : "")</td>
-                    <td class="netCol @Utilities.NetClass(entry.Round5)">@(leaderboard.RoundsCompleted > 4 ? Utilities.DisplayNet(entry.Pos, entry.Round5) : "")</td>
+                    @if (expanded)
+                    {
+                        <td class="hcpCol @TeeAdjusted(entry.Hcp, entry.Round1Hcp, 1)">@entry.Round1Hcp</td>
+                        <td class="grossCol">@(leaderboard.RoundsCompleted > 0 ? @Utilities.DisplayGross(entry.Round1Gross) : "")</td>
+                        <td class="netCol @Utilities.NetClass(entry.Round1Net) @Drop(entry, 1)">@(leaderboard.RoundsCompleted > 0 ? Utilities.DisplayNet(entry.Pos, entry.Round1Net) : "")</td>
+                        <td class="hcpCol @TeeAdjusted(entry.Hcp, entry.Round2Hcp, 2)">@(leaderboard.RoundsCompleted > 0 ? entry.Round2Hcp : "")</td>
+                        <td class="grossCol">@(leaderboard.RoundsCompleted > 1 ? @Utilities.DisplayGross(entry.Round2Gross) : "")</td>
+                        <td class="netCol @Utilities.NetClass(entry.Round2Net) @Drop(entry, 2)">@(leaderboard.RoundsCompleted > 1 ? Utilities.DisplayNet(entry.Pos, entry.Round2Net) : "")</td>
+                        <td class="hcpCol @TeeAdjusted(entry.Hcp, entry.Round3Hcp, 3)">@(leaderboard.RoundsCompleted > 1 ? entry.Round3Hcp : "")</td>
+                        <td class="grossCol">@(leaderboard.RoundsCompleted > 2 ? @Utilities.DisplayGross(entry.Round3Gross) : "")</td>
+                        <td class="netCol @Utilities.NetClass(entry.Round3Net) @Drop(entry, 3)">@(leaderboard.RoundsCompleted > 2 ? Utilities.DisplayNet(entry.Pos, entry.Round3Net) : "")</td>
+                        <td class="hcpCol @TeeAdjusted(entry.Hcp, entry.Round4Hcp, 4)">@(leaderboard.RoundsCompleted > 2 ? entry.Round4Hcp : "")</td>
+                        <td class="grossCol">@(leaderboard.RoundsCompleted > 3 ? @Utilities.DisplayGross(entry.Round4Gross) : "")</td>
+                        <td class="netCol @Utilities.NetClass(entry.Round4Net)">@(leaderboard.RoundsCompleted > 3 ? Utilities.DisplayNet(entry.Pos, entry.Round4Net) : "")</td>
+                        <td class="hcpCol @TeeAdjusted(entry.Hcp, entry.Round5Hcp, 5)">@(leaderboard.RoundsCompleted > 3 ? entry.Round5Hcp : "")</td>
+                        <td class="grossCol">@(leaderboard.RoundsCompleted > 4 ? @Utilities.DisplayGross(entry.Round5Gross) : "")</td>
+                        <td class="netCol @Utilities.NetClass(entry.Round5Net)">@(leaderboard.RoundsCompleted > 4 ? Utilities.DisplayNet(entry.Pos, entry.Round5Net) : "")</td>
+                    }
+                    else
+                    {
+                        <td class="netCol @Utilities.NetClass(entry.Round1Net) @Drop(entry, 1)">@(leaderboard.RoundsCompleted > 0 ? Utilities.DisplayNet(entry.Pos, entry.Round1Net) : "")</td>
+                        <td class="netCol @Utilities.NetClass(entry.Round2Net) @Drop(entry, 2)">@(leaderboard.RoundsCompleted > 1 ? Utilities.DisplayNet(entry.Pos, entry.Round2Net) : "")</td>
+                        <td class="netCol @Utilities.NetClass(entry.Round3Net) @Drop(entry, 3)">@(leaderboard.RoundsCompleted > 2 ? Utilities.DisplayNet(entry.Pos, entry.Round3Net) : "")</td>
+                        <td class="netCol @Utilities.NetClass(entry.Round4Net)">@(leaderboard.RoundsCompleted > 3 ? Utilities.DisplayNet(entry.Pos, entry.Round4Net) : "")</td>
+                        <td class="netCol @Utilities.NetClass(entry.Round5Net)">@(leaderboard.RoundsCompleted > 4 ? Utilities.DisplayNet(entry.Pos, entry.Round5Net) : "")</td>
+                    }
                     <td class="moneyCol">@Utilities.DisplayWinnings(entry.Winnings)</td>
                 </tr>
             }
@@ -48,16 +94,23 @@ else
 }
 
 @code {
-    [Inject]
-    public IJsonDocumentsDataService dataService { get; set; } = default!;
+        [Inject]
+        public IJsonDocumentsDataService dataService { get; set; } = default!;
 
     private Leaderboard? leaderboard;
+
+    private bool expanded = false;
+
 
 
     protected override async Task OnInitializedAsync()
     {
         leaderboard = await dataService.GetLeaderboardAsync();
     }
+
+    private string TableClass => expanded ? "leaderboardExpanded" : "leaderboardCompressed";
+
+    private string ExpansionIcon => expanded ? Icons.Material.Filled.KeyboardDoubleArrowLeft : Icons.Material.Filled.KeyboardDoubleArrowRight;
 
     private string Drop(LeaderboardEntry entry, int round)
     {
@@ -68,6 +121,14 @@ else
         return round == droppedRound ? "droppedScore" : string.Empty;
     }
 
+    private string TeeAdjusted(double hcp, double roundHcp, int round)
+    {
+        if(leaderboard is null || leaderboard.RoundsCompleted < round-1)
+            return string.Empty;
+
+        return (hcp != roundHcp ? "teeAdjusted" : string.Empty);
+    }
+
     private int GetDroppedRound(LeaderboardEntry entry)
     {
         if (leaderboard is null || leaderboard.RoundsCompleted < 3)
@@ -75,15 +136,15 @@ else
 
         var rounds = new List<double>
         {
-            entry.Round1,
-            entry.Round2,
-            entry.Round3
+            entry.Round1Net,
+            entry.Round2Net,
+            entry.Round3Net
         };
 
         var maxScore = rounds.Max();
-        if(entry.Round1 == maxScore)
+        if(entry.Round1Net == maxScore)
             return 1;
-        if(entry.Round2 == maxScore)
+        if(entry.Round2Net == maxScore)
             return 2;
 
         return 3;

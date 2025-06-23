@@ -76,8 +76,10 @@ h1:focus {
 .mud-simple-table.bestBallNetExpanded,
 .mud-simple-table.bestBallNetCompressed,
 .mud-simple-table.dailyIndResults,
-.mud-simple-table.roster,
-.mud-simple-table.leaderboard,
+.mud-simple-table.rosterExpanded,
+.mud-simple-table.rosterCompressed,
+.mud-simple-table.leaderboardExpanded,
+.mud-simple-table.leaderboardCompressed,
 .mud-simple-table.moneyTotals {
     width: 100%;
 }
@@ -177,6 +179,11 @@ h1:focus {
 .mud-simple-table table tr td.scatWinner {
     background-color: #fbf57f;
 }
+
+.mud-simple-table table tr td.teeAdjusted {
+    background-color: #efefc0;
+}
+
 
 /* scorecards */
 .mud-simple-table table tr.scorecardholes td {
@@ -341,6 +348,11 @@ font-size: 1rem;
     .imageCarousel {
         height: 32rem;
     }
+
+    .mud-simple-table.rosterCompressed {
+        width: 750px;
+    }
+
     
 }
 
@@ -349,7 +361,7 @@ font-size: 1rem;
         height: 32rem;
     }
 
-    .mud-simple-table.leaderboard,
+    .mud-simple-table.leaderboardCompressed,
     .mud-simple-table.moneyTotals {
         width: 750px;
     }

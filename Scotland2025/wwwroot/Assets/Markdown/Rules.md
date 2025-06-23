@@ -105,8 +105,12 @@
 ---
 
 ## Handicap Adjustments
+### Tee Adjustments
+Anyone 65 or over with a hcp index greater than 12 has the option to play from the forward tees. If you choose to play from the forward tees, your handicaps for that day, both for the Individiual Championship and for the daily events, will be adjusted (amount of adjustment TBD). Note the adjustment could be different at different courses.
+
+### Daily Hcp Adjustments
 Handicaps will be adjusted each day, and the adjusted handicaps will be used for Daily Individual tournaments, Daily Team events, and Daily Scats. Adjusted handicaps will not be used for the five-day individual championship.
-#### Daily Adjusted Net (grading on the curve)
+#### Adjusted Net (grading on the curve)
  The calculation of the adjusted handicap will be based on an adjusted net score for each round. The adjusted net score is the (net score) - (median net score for that round). For example, if the median net score for Round 1 is +2.  A net score of -1 would be adjusted to -3, a net score of +2 would be adjusted to zero, and a net score of +4 would be adjusted to +2.
 - ##### Round 1  
   - Use original handicap

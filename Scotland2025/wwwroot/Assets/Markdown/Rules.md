@@ -17,7 +17,7 @@
 
 ## Individual Championship
 - Five-day tournament using two best net scores from Kingsbarn, Dumbarnie, and The Castle Course, and net scores from The Old Course and Carnoustie
-- Original handicap will be used for all rounds
+- Original handicap (+/- any tee adjustments) will be used for all rounds
 - Triple bogey max on all holes
 - Payout
   - 1st Place - $175

@@ -7,7 +7,7 @@
 
 ## Tournament Rules
 - Putts inside or touching the tape on putter are considered good  (tape will be added before first round)
-- Bump ball in fairway, play it down in rough
+- Bump ball everywhere (max. 1 ft.)
 - OB played as lateral hazard
 - Lost ball, drop nearest to suspected location, one stroke penalty
 - Triple bogey max  

@@ -1,6 +1,7 @@
 ### @Scotland2025.Api_HostAddress = https://localhost:7243/api
 ### @Scotland2025.Api_HostAddress = https://localhost:7244/api
-@Scotland2025.Api_HostAddress = http://localhost:5054/api
+//@Scotland2025.Api_HostAddress = http://localhost:5054/api
+@Scotland2025.Api_HostAddress = http://scotland2025.api.nichols-br.net/api
 
 
 GET {{Scotland2025.Api_HostAddress}}/test/
@@ -19,7 +20,7 @@ Accept: application/json
 POST {{Scotland2025.Api_HostAddress}}/images
 Content-Type: application/json
 {
-  "url": "https://hosting.photobucket.com/71031e7a-93a0-48c1-8371-0e82ef5324a5/6c82f9cd-fc22-4d10-bf76-465d969bfeaf.jpeg?width=180&height=180&fit=bounds"
+  "url": "https://hosting.photobucket.com/71031e7a-93a0-48c1-8371-0e82ef5324a5/ada66881-76bc-485e-a1e6-5aaf550f850c.jpg?width=590&height=370&fit=bounds"
 }
 
 ###
